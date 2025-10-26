@@ -1,0 +1,324 @@
+================================================================================
+COMPREHENSIVE VERIFICATION ANALYSIS REPORT
+================================================================================
+
+Dataset Summary
+----------------------------------------
+Total tests: 196
+Unique circuits: 86
+Models: gpt-4o, claude
+Timestamp: 20251016_010323
+Files processed: 2
+
+
+================================================================================
+BASIC STATISTICS
+================================================================================
+
+1. Number of Unique Circuits Tested: 86
+
+2. Circuits by Complexity:
+   - Complex: 12 circuits
+   - Medium: 48 circuits
+   - Simple: 26 circuits
+
+3. Circuits by Category:
+   - Arithmetic - Buggy: 8 circuits
+   - Arithmetic - Normal: 8 circuits
+   - CPU Components - Buggy: 2 circuits
+   - CPU Components - Normal: 2 circuits
+   - Combinational - Buggy: 16 circuits
+   - Combinational - Normal: 18 circuits
+   - Sequential - Buggy: 12 circuits
+   - Sequential - Normal: 12 circuits
+   - State Machines - Buggy: 4 circuits
+   - State Machines - Normal: 4 circuits
+
+4. Normal vs Buggy Circuits:
+   - Normal circuits: 44
+   - Buggy circuits: 42
+
+================================================================================
+FUNCTIONAL CORRECTNESS COMPARISON: Claude vs GPT
+================================================================================
+
+SIMPLE CIRCUITS
+------------------------------------------------------------
+
+  Claude Sonnet 3.5:
+    Accuracy:  0.769 [0.579, 0.890]
+    Precision: 0.714 [0.454, 0.883]
+    Recall:    0.833 [0.552, 0.953]
+    F1-Score:  0.769
+    Tests:     26
+
+  GPT-4o:
+    Accuracy:  0.808 [0.621, 0.915]
+    Precision: 0.714 [0.454, 0.883]
+    Recall:    0.909 [0.623, 0.984]
+    F1-Score:  0.800
+    Tests:     26
+
+  Statistical Comparison (Paired t-test):
+    t-statistic: -0.5698
+    p-value:     0.5739
+    Cohen's d:   0.0000
+    Paired circuits: 26
+    Result: No significant difference (p >= 0.05)
+
+MEDIUM CIRCUITS
+------------------------------------------------------------
+
+  Claude Sonnet 3.5:
+    Accuracy:  0.783 [0.644, 0.877]
+    Precision: 0.609 [0.408, 0.778]
+    Recall:    0.933 [0.702, 0.988]
+    F1-Score:  0.737
+    Tests:     46
+
+  GPT-4o:
+    Accuracy:  0.609 [0.465, 0.736]
+    Precision: 0.261 [0.125, 0.465]
+    Recall:    0.857 [0.487, 0.974]
+    F1-Score:  0.400
+    Tests:     46
+
+  Statistical Comparison (Paired t-test):
+    t-statistic: 2.6968
+    p-value:     0.0098
+    Cohen's d:   0.0000
+    Paired circuits: 46
+    Result: Claude performs significantly better (p < 0.05)
+
+COMPLEX CIRCUITS
+------------------------------------------------------------
+
+  Claude Sonnet 3.5:
+    Accuracy:  0.833 [0.641, 0.933]
+    Precision: 0.667 [0.391, 0.862]
+    Recall:    1.000 [0.676, 1.000]
+    F1-Score:  0.800
+    Tests:     24
+
+  GPT-4o:
+    Accuracy:  0.667 [0.467, 0.820]
+    Precision: 0.333 [0.138, 0.609]
+    Recall:    1.000 [0.510, 1.000]
+    F1-Score:  0.500
+    Tests:     24
+
+  Statistical Comparison (Paired t-test):
+    t-statistic: 2.1448
+    p-value:     0.0428
+    Cohen's d:   0.0000
+    Paired circuits: 12
+    Result: Claude performs significantly better (p < 0.05)
+
+================================================================================
+ERROR ANALYSIS: False Positives and False Negatives
+================================================================================
+
+Claude Error Analysis:
+------------------------------------------------------------
+
+  False Positives (Normal → Buggy): 17
+  Affected circuits:
+    - Vending Machine FSM (complex, State Machines - Normal)
+    - Simple ALU with Flags (complex, CPU Components - Normal)
+    - 2:1 Mux (simple, Combinational - Normal)
+    - 4-bit Comparator (medium, Combinational - Normal)
+    - Simple 4-bit ALU (medium, Combinational - Normal)
+    - 4-bit Counter (simple, Sequential - Normal)
+    - D Flip-Flop (simple, Sequential - Normal)
+    - Shift Register (simple, Sequential - Normal)
+    - 4-bit UpDown Counter (medium, Sequential - Normal)
+    - Modulo-N Counter (medium, Sequential - Normal)
+    - 4-bit Ripple Carry Adder (medium, Arithmetic - Normal)
+    - 4-bit Subtractor (medium, Arithmetic - Normal)
+    - 2-bit Multiplier (medium, Arithmetic - Normal)
+    - 4-bit Magnitude Comparator (medium, Arithmetic - Normal)
+    - 4-bit Gray Code Converter (medium, Arithmetic - Normal)
+    - Simple UART Transmitter (complex, State Machines - Normal)
+    - Simple ALU with Flags (complex, CPU Components - Normal)
+
+  False Negatives (Buggy → Normal): 3
+  Affected circuits:
+    - Inverted AND (NAND) (simple, Combinational - Buggy)
+    - Inverted XOR (XNOR) (simple, Combinational - Buggy)
+    - Incrementer (always adds 2) (medium, Combinational - Buggy)
+
+  Detection Rates by Error Category:
+    Combinational - Buggy: 81.25% (13/16 detected)
+
+GPT-4o Error Analysis:
+------------------------------------------------------------
+
+  False Positives (Normal → Buggy): 29
+  Affected circuits:
+    - Traffic Light Controller (complex, State Machines - Normal)
+    - Simple UART Transmitter (complex, State Machines - Normal)
+    - Vending Machine FSM (complex, State Machines - Normal)
+    - Simple ALU with Flags (complex, CPU Components - Normal)
+    - 4-bit Incrementer (medium, Combinational - Normal)
+    - 4-bit Comparator (medium, Combinational - Normal)
+    - 4:1 Multiplexer (medium, Combinational - Normal)
+    - 8-bit Even Parity Generator (medium, Combinational - Normal)
+    - Simple 4-bit ALU (medium, Combinational - Normal)
+    - 4-bit Decrementer (medium, Combinational - Normal)
+    - 4-bit Counter (simple, Sequential - Normal)
+    - D Flip-Flop (simple, Sequential - Normal)
+    - T Flip-Flop (simple, Sequential - Normal)
+    - Shift Register (simple, Sequential - Normal)
+    - 4-bit UpDown Counter (medium, Sequential - Normal)
+    - 4-bit Johnson Counter (medium, Sequential - Normal)
+    - Loadable Shift Register (medium, Sequential - Normal)
+    - Edge Detector (medium, Sequential - Normal)
+    - Pulse Generator (medium, Sequential - Normal)
+    - Modulo-N Counter (medium, Sequential - Normal)
+    - 4-bit Ripple Carry Adder (medium, Arithmetic - Normal)
+    - 4-bit Subtractor (medium, Arithmetic - Normal)
+    - 2-bit Multiplier (medium, Arithmetic - Normal)
+    - 4-bit Magnitude Comparator (medium, Arithmetic - Normal)
+    - 4-bit Gray Code Converter (medium, Arithmetic - Normal)
+    - Traffic Light Controller (complex, State Machines - Normal)
+    - Simple UART Transmitter (complex, State Machines - Normal)
+    - Vending Machine FSM (complex, State Machines - Normal)
+    - Simple ALU with Flags (complex, CPU Components - Normal)
+
+  False Negatives (Buggy → Normal): 2
+  Affected circuits:
+    - Inverted AND (NAND) (simple, Combinational - Buggy)
+    - Barrel Shifter (wrong direction) (medium, Combinational - Buggy)
+
+  Detection Rates by Error Category:
+    Combinational - Buggy: 87.50% (14/16 detected)
+
+================================================================================
+RQ4: VAE VERIFICATION PERFORMANCE
+================================================================================
+
+Analyzing 86 unique circuits
+
+Overall VAE Performance:
+  Accuracy:  0.686 [0.582, 0.774]
+  Precision: 0.886 [0.760, 0.950]
+  Recall:    0.639 [0.514, 0.748]
+  F1-Score:  0.743
+
+Confusion Matrix:
+                Predicted
+              Normal  Buggy
+Actual Normal    20       5
+Actual Buggy     22      39
+
+Confidence Score Distribution:
+  Normal circuits: μ=0.439, σ=0.159
+  Buggy circuits:  μ=0.614, σ=0.251
+
+  Two-sample t-test:
+    t-statistic: -3.8924
+    p-value:     0.0002
+    Significant separation: Yes
+
+Performance by Category:
+
+  Combinational - Normal:
+    Accuracy: 0.944 (n=18)
+    F1-Score: 0.971
+
+  Combinational - Buggy:
+    Accuracy: 0.375 (n=16)
+    F1-Score: 0.000
+
+  Sequential - Normal:
+    Accuracy: 0.917 (n=12)
+    F1-Score: 0.957
+
+  Sequential - Buggy:
+    Accuracy: 0.500 (n=12)
+    F1-Score: 0.000
+
+  Arithmetic - Normal:
+    Accuracy: 0.750 (n=8)
+    F1-Score: 0.857
+
+  Arithmetic - Buggy:
+    Accuracy: 0.750 (n=8)
+    F1-Score: 0.000
+
+================================================================================
+RQ5: COMPLEMENTARITY EXPERIMENTS
+================================================================================
+
+Analyzing 98 test cases
+
+Unique Detection Analysis:
+  LLM correct only:    25 (25.5%)
+  VAE correct only:    14 (14.3%)
+  Both correct:        51 (52.0%)
+  Both wrong:           6 (6.1%)
+  At least one correct:  90 (91.8%)
+
+Agreement Analysis:
+  Agreement rate: 58.2% (57/98)
+  Accuracy when both agree: 0.895
+
+Consensus Performance (Weighted Voting):
+  LLM alone:       0.792
+  VAE alone:       0.673
+  Consensus:       0.745
+  Improvement:     -0.047
+
+Performance by Complexity:
+
+  Simple:
+    LLM: 0.769, VAE: 0.808, Consensus: 0.731
+    n=26
+
+  Medium:
+    LLM: 0.783, VAE: 0.646, Consensus: 0.729
+    n=48
+
+  Complex:
+    LLM: 0.833, VAE: 0.583, Consensus: 0.792
+    n=24
+
+McNemar's Test (LLM vs VAE error patterns):
+  Statistic: 2.5641
+  p-value:   0.1093
+  Result: No significant difference in error patterns (p >= 0.05)
+
+Paired t-tests (Consensus vs Individual):
+  Consensus vs LLM: t=-1.6475, p=0.1028
+  Consensus vs VAE: t=1.0683, p=0.2881
+
+Effect Sizes (Cohen's d):
+  Consensus vs LLM: -0.1681
+  Consensus vs VAE: 0.1090
+
+================================================================================
+KEY FINDINGS SUMMARY
+================================================================================
+
+1. OVERALL PERFORMANCE COMPARISON:
+   Claude Sonnet 3.5: 79.2% accuracy
+   GPT-4o:            67.7% accuracy
+   VAE:               68.6% accuracy
+
+2. FALSE POSITIVE RATES (Normal flagged as Buggy):
+   Claude: 27.9% (17 false positives)
+   GPT-4o: 39.2% (29 false positives)
+
+3. COMPLEMENTARITY BENEFIT:
+   Coverage with at least one verifier correct: 90/96 (93.8%)
+
+4. RECOMMENDATIONS:
+   ✓ Use Claude Sonnet 3.5 as primary verifier
+     (Better accuracy: 79.2% vs 67.7%)
+   ✓ Claude has 29% fewer false alarms
+   ✓ Use VAE for confirmation (precision: 88.6%)
+   ✓ Combine both methods for maximum coverage (93.8%)
+
+================================================================================
+END OF REPORT
+================================================================================

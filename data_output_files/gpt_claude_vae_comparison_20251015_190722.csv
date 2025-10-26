@@ -1,0 +1,935 @@
+circuit_name,category,expected_normal,vae_predicted_normal,vae_confidence,vae_correct,vae_available,vae_message,llm_model,llm_predicted_normal,llm_confidence,llm_correct,llm_available,llm_analysis,llm_raw_response,vae_time,llm_time,total_time
+2-Input AND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,False,True,"# Verilog Waveform Analysis Report
+
+## Overall Assessment: ✅ PASS
+
+### 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals found. All signals start at 0.
+- **Signal Stability Problems**: No stability issues observed. Signals transition as expected.
+- **Unexpected Transitions**: Signal transitions align with expected behavior of an AND gate.
+- **Drive Conflicts**: No drive conflicts detected. The signals are driven correctly.
+
+### 2. ⏰ Timing Analysis
+- **Setup/Hold","# Verilog Waveform Analysis Report
+
+## Overall Assessment: ✅ PASS
+
+### 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals found. All signals start at 0.
+- **Signal Stability Problems**: No stability issues observed. Signals transition as expected.
+- **Unexpected Transitions**: Signal transitions align with expected behavior of an AND gate.
+- **Drive Conflicts**: No drive conflicts detected. The signals are driven correctly.
+
+### 2. ⏰ Timing Analysis
+- **Setup/Hold Violations**: Not applicable. The design provided is combinational without any clocked elements.
+- **Clock Domain Issues**: Not applicable. There are no clocks or multiple clock domains in the design.
+- **Race Conditions**: None detected. The transitions follow the logical expectations for an AND gate.
+- **Clock-to-Output Delays**: Not applicable. The design is purely combinational.
+
+### 3. 🎯 Functional Verification
+- **Reset Behavior**: Not applicable. No reset logic is present in the design.
+",1.5,9.533078670501709,11.033078670501709
+2-Input AND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4239692687988281,0.07603073120117188
+2-Input OR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,True,0.5,True,True,"# Verilog Simulation Waveform Analysis Report
+
+## 📝 Overview
+
+This report analyzes the given Verilog simulation waveform data in conjunction with the `or_gate` design code. The goal is to identify potential issues and provide a structured assessment based on the provided checklist.
+
+## 🔍 Signal Integrity Issues
+
+### Findings
+
+- **Uninitialized Signals**: 
+  - The waveform data does not contain any uninitialized (`x` or `z`) values. All signals have clear binary values throughout the simulation p","# Verilog Simulation Waveform Analysis Report
+
+## 📝 Overview
+
+This report analyzes the given Verilog simulation waveform data in conjunction with the `or_gate` design code. The goal is to identify potential issues and provide a structured assessment based on the provided checklist.
+
+## 🔍 Signal Integrity Issues
+
+### Findings
+
+- **Uninitialized Signals**: 
+  - The waveform data does not contain any uninitialized (`x` or `z`) values. All signals have clear binary values throughout the simulation period.
+
+- **Signal Stability Problems**: 
+  - No signal stability issues are noted. All transitions appear stable.
+
+- **Unexpected Transitions**: 
+  - No unexpected transitions are detected in the waveform data. Each transition aligns with the expected behavior of an OR gate.
+
+- **Drive Conflicts**: 
+  - There are no indications of drive conflicts in the waveform data.
+
+### Confidence Level: High
+
+## ⏰ Timing Analysis
+
+### Findings
+
+- **Setup/Hold Violations**: 
+  - This checklist item is not ap",1.5,23.954880952835083,25.454880952835083
+2-Input OR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.3976249694824219,0.10237503051757812
+2-Input XOR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.5,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: 🚦 WARNING
+
+The analysis of the provided waveform data in the context of the Verilog code reveals potential issues that need addressing. Below is a structured report detailing the findings.
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Unexpected Transitions:**
+  - **Timestamp 30000 ns:**
+    - Signals `a` and `b` both are `1`, but `out` is `0`. According to XOR logic, the output should be `0` only when both inputs are the same; howev","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: 🚦 WARNING
+
+The analysis of the provided waveform data in the context of the Verilog code reveals potential issues that need addressing. Below is a structured report detailing the findings.
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Unexpected Transitions:**
+  - **Timestamp 30000 ns:**
+    - Signals `a` and `b` both are `1`, but `out` is `0`. According to XOR logic, the output should be `0` only when both inputs are the same; however, this does not match the expected behavior of an XOR gate for inputs `1, 1` which should result in output `0`. This is a correct behavior but worth mentioning as it is different from other transitions.
+
+- **Confidence Level:** High
+
+### 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations:** Not applicable as there is no clock signal present in the data.
+- **Clock Domain Issues:** None detected since the design is purely combinational.
+- **Race Conditions:** None detected.
+- **Clock-to-Output Dela",1.5,20.288764238357544,21.788764238357544
+2-Input XOR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4370653629302979,0.06293463706970215
+NOT Gate,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,False,True,"# Verilog Waveform Simulation Analysis Report 📊
+
+## Overall Assessment: PASS ✅
+
+The simulation of the `not_gate` Verilog module demonstrates expected behavior under the provided waveform data. The output of the NOT gate correctly reflects the inverse of the input signal `a`. Below is a structured analysis based on the comprehensive checklist provided.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**  
+  - **Finding:** No uninitialized signals (x or z values) are present in the","# Verilog Waveform Simulation Analysis Report 📊
+
+## Overall Assessment: PASS ✅
+
+The simulation of the `not_gate` Verilog module demonstrates expected behavior under the provided waveform data. The output of the NOT gate correctly reflects the inverse of the input signal `a`. Below is a structured analysis based on the comprehensive checklist provided.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**  
+  - **Finding:** No uninitialized signals (x or z values) are present in the waveform data.
+  - **Confidence Level:** High
+- **Signal Stability Problems:**  
+  - **Finding:** No signal stability issues are observed. Transitions occur as expected.
+  - **Confidence Level:** High
+- **Unexpected Transitions:**  
+  - **Finding:** No unexpected transitions are detected. The output transitions only occur when the input `a` changes.
+  - **Confidence Level:** High
+- **Drive Conflicts:**  
+  - **Finding:** No drive conflicts are present as `out` is solely driven by the NOT gate l",1.5,26.01213049888611,27.51213049888611
+NOT Gate,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4366252422332764,0.06337475776672363
+2-Input NAND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,True,0.5,True,True,"# 📝 Verilog Simulation Waveform Analysis Report
+
+## 🚦 Overall Assessment: WARNING
+
+### Summary
+The analyzed waveform data and Verilog design code indicate potential functional discrepancies in the NAND gate implementation. The observed output does not consistently match the expected behavior of a NAND gate, suggesting a possible issue in the design or simulation setup.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**  
+  - All signals are initialized with either 0 or 1. No uninit","# 📝 Verilog Simulation Waveform Analysis Report
+
+## 🚦 Overall Assessment: WARNING
+
+### Summary
+The analyzed waveform data and Verilog design code indicate potential functional discrepancies in the NAND gate implementation. The observed output does not consistently match the expected behavior of a NAND gate, suggesting a possible issue in the design or simulation setup.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**  
+  - All signals are initialized with either 0 or 1. No uninitialized (x or z) values were observed.  
+  - **Confidence Level:** High
+
+- **Signal Stability and Unexpected Transitions:**  
+  - No unexpected transitions were detected.  
+  - **Confidence Level:** High
+
+- **Drive Conflicts:**  
+  - No drive conflicts observed.  
+  - **Confidence Level:** High
+
+---
+
+## 🎯 Functional Verification
+
+- **Expected vs Actual Outputs:**  
+  - **Issue Found:** The expected behavior of a NAND gate is that the output should be `1` unless both inputs `a` and `b` are `1`, i",1.5,28.67033553123474,30.17033553123474
+2-Input NAND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.442579984664917,0.05742001533508301
+2-Input NOR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,True,0.5,True,True,"# Verilog Simulation Waveform Analysis Report
+
+## 📝 Overview
+
+This report analyzes the provided Verilog simulation waveform data in the context of a NOR gate implementation. The goal is to identify potential issues within the waveform data and provide actionable recommendations.
+
+### **Design Code Context**
+The Verilog code snippet under analysis is a simple NOR gate:
+```verilog
+`timescale 1ns/1ps
+module nor_gate(input wire a, b, output wire out);
+assign out = ~(a | b);
+endmodule
+```
+
+## 🔍 **1. ","# Verilog Simulation Waveform Analysis Report
+
+## 📝 Overview
+
+This report analyzes the provided Verilog simulation waveform data in the context of a NOR gate implementation. The goal is to identify potential issues within the waveform data and provide actionable recommendations.
+
+### **Design Code Context**
+The Verilog code snippet under analysis is a simple NOR gate:
+```verilog
+`timescale 1ns/1ps
+module nor_gate(input wire a, b, output wire out);
+assign out = ~(a | b);
+endmodule
+```
+
+## 🔍 **1. Signal Integrity Issues**
+
+- **Uninitialized Signals**: No uninitialized (`x` or `z`) values were detected in the waveform data.
+- **Signal Stability Problems**: Signals `a`, `b`, and `out` are stable between changes.
+- **Unexpected Transitions**: No unexpected transitions are present; all transitions seem logical given the inputs.
+- **Drive Conflicts**: No drive conflicts detected.
+
+**Confidence Level**: High
+
+## ⏰ **2. Timing Analysis**
+
+- **Setup/Hold Violations**: N/A for a combinational cir",1.5,13.49645185470581,14.99645185470581
+2-Input NOR,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4385266304016113,0.06147336959838867
+3-Input AND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data against the given `and3` module design context. The primary goal is to identify potential issues and assess the overall functionality and reliability of the design.
+
+## 1. 🔍 Signal Integrity Issues
+
+### Observations:
+- **Uninitialized Signals**: No uninitialized signals (x or z values) are observed in the provided data.
+- **Signal Stability**: All signals transition as ex","# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data against the given `and3` module design context. The primary goal is to identify potential issues and assess the overall functionality and reliability of the design.
+
+## 1. 🔍 Signal Integrity Issues
+
+### Observations:
+- **Uninitialized Signals**: No uninitialized signals (x or z values) are observed in the provided data.
+- **Signal Stability**: All signals transition as expected without unexpected fluctuations.
+- **Unexpected Transitions**: No unexpected transitions detected.
+- **Drive Conflicts**: No conflicts in signal driving.
+
+### Assessment:
+- **Confidence**: High
+- **Status**: PASS
+
+## 2. ⏰ Timing Analysis
+
+### Observations:
+- **Setup/Hold Violations**: Not applicable as there is no clock signal provided in the context.
+- **Clock Domain Issues**: No clock domains are involved.
+- **Race Conditions**: Not applicable for combinational logic.
+- **Clock-to-Outpu",1.5,7.690810918807983,9.190810918807983
+3-Input AND,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.438436508178711,0.06156349182128906
+2:1 Mux,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.5,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data to identify potential issues in the design of a 2-to-1 multiplexer. The analysis is structured based on a comprehensive checklist covering signal integrity, timing analysis, functional verification, critical issues, and design-specific analysis.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+### Findings:
+- **Signal Integrity**: No uninitialized signals (x or z values) or drive c","# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data to identify potential issues in the design of a 2-to-1 multiplexer. The analysis is structured based on a comprehensive checklist covering signal integrity, timing analysis, functional verification, critical issues, and design-specific analysis.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+### Findings:
+- **Signal Integrity**: No uninitialized signals (x or z values) or drive conflicts were detected. All signals are initialized and transitions appear to be valid logic levels (0 or 1).
+- **Unexpected Transitions**: Observed transition from `out` = 1 to `out` = 0 at timestamp 30000, which appears incorrect based on the logical functionality of the multiplexer.
+
+### Confidence Level: High
+
+### Recommendations:
+- Review the logic driving the `sel` signal to ensure it is correctly implemented and controlled.
+- Verify the correctness of data inputs `a` and `b` at transition",1.5,25.28899884223938,26.78899884223938
+2:1 Mux,Combinational - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4431335926055908,0.05686640739440918
+Stuck AND (always 0),Combinational - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'out' stuck at 0,gpt-4o,False,0.9,True,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment
+**Result:** ⚠️ WARNING  
+The analysis indicates potential issues primarily related to the Verilog design code and its expected functionality.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+### Findings
+- **Uninitialized Signals**: None detected. All signals are initialized at `timestamp 0`.
+- **Signal Stability Problems**: No signal stability issues detected within the provided data.
+- **Unexpected Transitions**: Transitions occur as e","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment
+**Result:** ⚠️ WARNING  
+The analysis indicates potential issues primarily related to the Verilog design code and its expected functionality.
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+### Findings
+- **Uninitialized Signals**: None detected. All signals are initialized at `timestamp 0`.
+- **Signal Stability Problems**: No signal stability issues detected within the provided data.
+- **Unexpected Transitions**: Transitions occur as expected based on the input values.
+- **Drive Conflicts**: No drive conflicts detected since the output is a constant `0`.
+
+### Recommendations
+- No immediate action required for signal integrity based on current data.
+
+### Confidence Level
+- High: The waveform data clearly shows stable transitions.
+
+---
+
+## 2. ⏰ Timing Analysis
+
+### Findings
+- **Setup/Hold Violations**: Not applicable, as no clock signal is present in the data.
+- **Clock Domain Issues**: Not applicable, no clocks or multiple dom",1.5,18.68399143218994,20.18399143218994
+Stuck AND (always 0),Combinational - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'out' stuck at 0,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4371206760406494,0.06287932395935059
+Stuck AND (always 1),Combinational - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'out' stuck at 1,gpt-4o,True,0.6,False,True,"# Verilog Waveform Data Analysis Report
+
+## 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals (x or z values) are present in the provided waveform data.
+- **Signal Stability Problems**: The signals `a`, `b`, and `out` maintain stable values during the recorded timestamps.
+- **Unexpected Transitions**: 
+  - No unexpected transitions are observed in the waveform data.
+- **Drive Conflicts**: There are no drive conflicts as the output `out` is constantly assigned to ","# Verilog Waveform Data Analysis Report
+
+## 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals (x or z values) are present in the provided waveform data.
+- **Signal Stability Problems**: The signals `a`, `b`, and `out` maintain stable values during the recorded timestamps.
+- **Unexpected Transitions**: 
+  - No unexpected transitions are observed in the waveform data.
+- **Drive Conflicts**: There are no drive conflicts as the output `out` is constantly assigned to `1'b1` in the design code.
+
+**Confidence Level**: High
+
+## 2. ⏰ Timing Analysis
+- **Setup/Hold Violations**: Not applicable as there are no clock signals or edge-based operations in the provided data.
+- **Clock Domain Issues**: Not applicable due to the absence of clock signals.
+- **Race Conditions**: Not observed since the output does not depend on the input signals.
+- **Clock-to-Output Delays**: Not applicable as there are no clock signals involved.
+
+**Confidence Level**: High
+
+## 3. 🎯 Functio",1.5,22.22527003288269,23.72527003288269
+Stuck AND (always 1),Combinational - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'out' stuck at 1,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4474031925201416,0.0525968074798584
+Inverted AND (NAND),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,gpt-4o,,0.0,,True,"# 📝 Verilog Simulation Waveform Analysis Report
+
+## 📊 Overall Assessment: **FAIL**
+
+### 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals (`x` or `z` values) were observed in the given waveform data. ✔️
+- **Signal Stability**: Signals appear stable with no unexpected transitions within the provided timestamps. ✔️
+- **Unexpected Transitions**: The `out` signal value at timestamp 30000 is unexpected based on the design code. ❌
+- **Drive Conflicts**: No drive confli","# 📝 Verilog Simulation Waveform Analysis Report
+
+## 📊 Overall Assessment: **FAIL**
+
+### 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals**: No uninitialized signals (`x` or `z` values) were observed in the given waveform data. ✔️
+- **Signal Stability**: Signals appear stable with no unexpected transitions within the provided timestamps. ✔️
+- **Unexpected Transitions**: The `out` signal value at timestamp 30000 is unexpected based on the design code. ❌
+- **Drive Conflicts**: No drive conflicts detected. ✔️
+
+**Confidence Level**: High
+
+### 2. ⏰ Timing Analysis
+- **Setup/Hold Violations**: Not applicable, as no clock signals are provided in the data. ⚠️
+- **Clock Domain Issues**: Not applicable due to the absence of clock signals. ⚠️
+- **Race Conditions**: No evidence of race conditions with the available data. ✔️
+- **Clock-to-Output Delays**: Not relevant in this context. ⚠️
+
+**Confidence Level**: Medium
+
+### 3. 🎯 Functional Verification
+- **Expected vs Actual Outputs**: The `out` ",1.5,26.371633052825928,27.871633052825928
+Inverted AND (NAND),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4430530071258545,0.05694699287414551
+Wrong OR (acts like AND),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,True,True,"# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment: 🔴 FAIL**
+
+## 1. 🔍 Signal Integrity Issues
+
+### Observations:
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the data.
+- **Signal Stability**: All signals appear stable between transitions.
+- **Unexpected Transitions**: No unexpected transitions were observed. Changes occur as per input changes.
+- **Drive Conflicts**: There is no evidence of drive conflicts in the provided data.
+
+### Concl","# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment: 🔴 FAIL**
+
+## 1. 🔍 Signal Integrity Issues
+
+### Observations:
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the data.
+- **Signal Stability**: All signals appear stable between transitions.
+- **Unexpected Transitions**: No unexpected transitions were observed. Changes occur as per input changes.
+- **Drive Conflicts**: There is no evidence of drive conflicts in the provided data.
+
+### Conclusion:
+- **Confidence Level**: High
+- **Recommendations**: No issues detected related to signal integrity.
+
+## 2. ⏰ Timing Analysis
+
+### Observations:
+- **Setup/Hold Violations**: Not applicable as there are no clock edges provided or implied in the data.
+- **Clock Domain Issues**: No clock domain crossings are indicated in this simple combinational logic.
+- **Race Conditions**: None detected due to the simple nature of the design.
+- **Clock-to-Output Delays**: Not applicable as there is no cloc",1.5,20.948786973953247,22.448786973953247
+Wrong OR (acts like AND),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4441957473754883,0.05580425262451172
+Inverted XOR (XNOR),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,True,True,"# Verilog Simulation Waveform Analysis Report
+
+## 📋 Overview
+This report provides an analysis of the Verilog simulation waveform data for the `bad_xor` module provided. The focus is on identifying potential issues related to signal integrity, timing, functional verification, critical issues, and design-specific analysis.
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the waveform data.
+- **Signal Stability Problems**: Signals","# Verilog Simulation Waveform Analysis Report
+
+## 📋 Overview
+This report provides an analysis of the Verilog simulation waveform data for the `bad_xor` module provided. The focus is on identifying potential issues related to signal integrity, timing, functional verification, critical issues, and design-specific analysis.
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the waveform data.
+- **Signal Stability Problems**: Signals appear stable without unexpected transitions.
+- **Unexpected Transitions**: No unexpected transitions were noted.
+- **Drive Conflicts**: No drive conflicts were detected.
+
+**Confidence Level**: High
+
+## ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: Not applicable as no clock signal is defined.
+- **Clock Domain Issues**: Not applicable due to lack of clock signals.
+- **Race Conditions**: None detected based on the given data.
+- **Clock-to-Output Delays**: Not applicable.
+
+**Confidence Level**:",1.5,17.652631044387817,19.152631044387817
+Inverted XOR (XNOR),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.430595874786377,0.06940412521362305
+Partial Mux (ignores sel),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,gpt-4o,,0.0,,True,"# Verilog Simulation Waveform Analysis
+
+## 📝 Overall Assessment: **FAIL**
+
+In analyzing the given waveform data and the Verilog design code, several critical issues were identified that affect the intended functionality of the `bad_mux` module. Below is a structured analysis based on the provided checklist.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were detected in the waveform data.
+- **Signal Stability Problems**: No unexpected tr","# Verilog Simulation Waveform Analysis
+
+## 📝 Overall Assessment: **FAIL**
+
+In analyzing the given waveform data and the Verilog design code, several critical issues were identified that affect the intended functionality of the `bad_mux` module. Below is a structured analysis based on the provided checklist.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were detected in the waveform data.
+- **Signal Stability Problems**: No unexpected transitions or instability detected within stable regions.
+- **Drive Conflicts**: No drive conflicts identified from the waveform data.
+
+**Confidence Level**: High
+
+---
+
+## ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: Not applicable as there are no clocks in the design provided.
+- **Clock Domain Issues**: Not applicable as the design does not include clock signals.
+- **Race Conditions**: Not directly applicable due to the design's simplicity.
+- **Clock-to-Output Delays**: Not applicable since n",1.5,35.898688316345215,37.398688316345215
+Partial Mux (ignores sel),Combinational - Buggy,False,True,0.4,False,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4410042762756348,0.058995723724365234
+4-bit Counter,Sequential - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.6,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+### Summary
+The analysis of the provided Verilog simulation waveform data reveals several issues that need to be addressed. The primary concerns pertain to the unexpected behavior of the `count` signal and potential reset functionality issues. Below is a detailed analysis based on the provided data and design context.
+
+## Detailed Analysis
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**
+  - **Observ","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+### Summary
+The analysis of the provided Verilog simulation waveform data reveals several issues that need to be addressed. The primary concerns pertain to the unexpected behavior of the `count` signal and potential reset functionality issues. Below is a detailed analysis based on the provided data and design context.
+
+## Detailed Analysis
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**
+  - **Observation:** The `count` signal is uninitialized at the start of the waveform data (`timestamp 0`).
+  - **Recommendation:** Ensure that all signals are initialized properly to avoid undefined behavior.
+
+- **Unexpected Transitions:**
+  - **Observation:** The `count` signal remains undefined for most of the simulation until `timestamp 105000`, when it jumps to a value of `10`.
+  - **Recommendation:** Investigate the signal assignment logic and ensure that the counter logic is being executed correctly ",1.5,30.752185106277466,32.252185106277466
+4-bit Counter,Sequential - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4420158863067627,0.057984113693237305
+D Flip-Flop,Sequential - Normal,True,True,0.3,True,True,"NORMAL - sequential behavior appears normal, VAE: 0.074",gpt-4o,False,0.7,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+Based on the analysis of the given waveform data and the Verilog code, the following issues and observations have been identified. The design may not fully meet the expected functionality, particularly concerning timing and functional correctness.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (`x` or `z` values) are observed in the waveform data. ✅
+- **Signal Stability Pr","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+Based on the analysis of the given waveform data and the Verilog code, the following issues and observations have been identified. The design may not fully meet the expected functionality, particularly concerning timing and functional correctness.
+
+---
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (`x` or `z` values) are observed in the waveform data. ✅
+- **Signal Stability Problems**: All signals (`rst`, `d`, `q`) appear to change value without glitches or unexpected transitions within the given timestamps. ✅
+- **Unexpected Transitions**: The `q` signal appears to transition as expected based on the `rst` and `d` inputs, but there are concerns about timing (discussed below). ❗️
+- **Drive Conflicts**: No evidence of drive conflicts is found in the waveform data. ✅
+
+**Confidence Level**: High
+
+---
+
+## ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: The waveform data d",1.5,24.017566680908203,25.517566680908203
+D Flip-Flop,Sequential - Normal,True,True,0.3,True,True,"NORMAL - sequential behavior appears normal, VAE: 0.077",claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4453141689300537,0.05468583106994629
+T Flip-Flop,Sequential - Normal,True,True,0.3,True,True,"NORMAL - sequential behavior appears normal, VAE: 0.092",gpt-4o,False,0.6,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+---
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized 'x' or 'z' values detected in the waveform data.
+- **Signal Stability Problems**: No issues detected with stability.
+- **Unexpected Transitions**: Transitions appear consistent with a T flip-flop behavior.
+- **Drive Conflicts**: No drive conflicts observed.
+
+**Confidence Level**: High
+
+### 2. ⏰ Timing Analysis
+
+- **Setup/Hold Viola","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+---
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized 'x' or 'z' values detected in the waveform data.
+- **Signal Stability Problems**: No issues detected with stability.
+- **Unexpected Transitions**: Transitions appear consistent with a T flip-flop behavior.
+- **Drive Conflicts**: No drive conflicts observed.
+
+**Confidence Level**: High
+
+### 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: The waveform data does not provide clock information. However, assuming a correct clock implementation, no specific setup/hold violations can be detected from the data provided.
+- **Clock Domain Issues**: Without clock data, clock domain issues cannot be assessed.
+- **Race Conditions**: Potential race conditions cannot be definitively identified without clock edge timing.
+- **Clock-to-Output Delays**: Not assessable due to lack of clock information.
+
+**Confidence Level**: Medium
+
+### 3.",1.5,24.902451753616333,26.402451753616333
+T Flip-Flop,Sequential - Normal,True,True,0.3,True,True,"NORMAL - sequential behavior appears normal, VAE: 0.089",claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4368422031402588,0.06315779685974121
+Shift Register,Sequential - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,gpt-4o,False,0.5,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+This analysis found potential issues that require attention to ensure the design functions correctly under all conditions. Below is a structured breakdown of findings based on the comprehensive analysis checklist.
+
+---
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were detected in the waveform data.
+- **Signal Stability**: No issues with signal stability we","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: ⚠️ WARNING
+
+This analysis found potential issues that require attention to ensure the design functions correctly under all conditions. Below is a structured breakdown of findings based on the comprehensive analysis checklist.
+
+---
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were detected in the waveform data.
+- **Signal Stability**: No issues with signal stability were found.
+- **Unexpected Transitions**: No unexpected transitions were observed; the transitions align with expected behavior.
+- **Drive Conflicts**: No drive conflicts detected.
+
+**Confidence Level**: High
+
+---
+
+### 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: Unable to assess from the waveform data alone since clock edges are not provided. Ensure clock timing constraints are met in synthesis and place-and-route.
+- **Clock Domain Issues**: Not applicable as only a single clock domain is r",1.5,20.696112155914307,22.196112155914307
+Shift Register,Sequential - Normal,True,True,0.4,True,True,NORMAL - behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4329543113708496,0.06704568862915039
+Stuck Counter,Sequential - Buggy,False,False,0.8,True,True,ANOMALOUS - outputs don't respond to inputs,gpt-4o,True,0.9,False,True,"# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment: **⚠️ WARNING
+
+## 📄 Sections:
+
+1. **Signal Integrity Issues**
+2. **Timing Analysis**
+3. **Functional Verification**
+4. **Critical Issues**
+5. **Design-Specific Analysis**
+6. **Recommendations**
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**
+  - **Issue:** The `count` signal is not initialized in the waveform data.
+  - **Timestamp:** `0ns` and `10000ns`
+  - **Confidence Level:** High
+
+- **Signal Stability Pro","# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment: **⚠️ WARNING
+
+## 📄 Sections:
+
+1. **Signal Integrity Issues**
+2. **Timing Analysis**
+3. **Functional Verification**
+4. **Critical Issues**
+5. **Design-Specific Analysis**
+6. **Recommendations**
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:**
+  - **Issue:** The `count` signal is not initialized in the waveform data.
+  - **Timestamp:** `0ns` and `10000ns`
+  - **Confidence Level:** High
+
+- **Signal Stability Problems:**
+  - **Issue:** No transitions observed for `count`.
+  - **Confidence Level:** High
+
+- **Drive Conflicts & Unexpected Transitions:**
+  - No drive conflicts observed.
+  - **Confidence Level:** Moderate
+
+---
+
+## 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations & Clock Domain Issues:**
+  - Not enough data to determine setup/hold violations or clock domain issues due to lack of clock signal information.
+  - **Confidence Level:** Low
+
+- **Race Conditions & Clock-to-Output Delays:**
+  - Cannot ",1.5,14.046424150466919,15.546424150466919
+Stuck Counter,Sequential - Buggy,False,False,0.8,True,True,ANOMALOUS - outputs don't respond to inputs,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4446980953216553,0.05530190467834473
+Counter (no reset),Sequential - Buggy,False,False,0.8,True,True,ANOMALOUS - outputs don't respond to inputs,gpt-4o,True,0.5,False,True,"# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment:** ⚠️ WARNING
+
+## 📄 Summary
+The analysis highlights several issues with the provided Verilog design and waveform data. The potential issues range from uninitialized signals to reset behavior, which might lead to incorrect functionality. Below is a detailed assessment based on the comprehensive analysis checklist.
+
+## 🔍 Signal Integrity Issues
+
+### Findings:
+- **Uninitialized Signals:** 
+  - The `count` signal is uninitialized at","# Verilog Simulation Waveform Analysis Report
+
+**Overall Assessment:** ⚠️ WARNING
+
+## 📄 Summary
+The analysis highlights several issues with the provided Verilog design and waveform data. The potential issues range from uninitialized signals to reset behavior, which might lead to incorrect functionality. Below is a detailed assessment based on the comprehensive analysis checklist.
+
+## 🔍 Signal Integrity Issues
+
+### Findings:
+- **Uninitialized Signals:** 
+  - The `count` signal is uninitialized at timestamp `0` and `10000`. This is evident from the absence of a value for `count`.
+- **Drive Conflicts:** 
+  - No evidence of drive conflicts from the provided data.
+
+### Recommendations:
+- Ensure that `count` is initialized properly, especially after reset. Consider adding an initialization block or resetting `count` in the design.
+
+### Confidence Level: High
+
+## ⏰ Timing Analysis
+
+### Findings:
+- **Setup/Hold Violations:** 
+  - Not directly visible from the provided data but potential issues",1.5,19.598079681396484,21.098079681396484
+Counter (no reset),Sequential - Buggy,False,False,0.8,True,True,ANOMALOUS - outputs don't respond to inputs,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4480721950531006,0.051927804946899414
+DFF (stuck output),Sequential - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'q' stuck at 0,gpt-4o,False,0.6,True,True,"# Verilog Simulation Waveform Analysis Report
+
+## 📋 Overview
+
+This report analyzes the given Verilog simulation waveform data, focusing on the identified potential issues in the `bad_dff` module. The analysis is structured based on the comprehensive analysis checklist provided.
+
+## 🎯 Overall Assessment: **FAIL**
+
+### Key Issues Identified:
+- The output `q` does not change as expected according to the D flip-flop behavior.
+- The design code logic does not update `q` based on the input `d`.
+
+## 🔍 ","# Verilog Simulation Waveform Analysis Report
+
+## 📋 Overview
+
+This report analyzes the given Verilog simulation waveform data, focusing on the identified potential issues in the `bad_dff` module. The analysis is structured based on the comprehensive analysis checklist provided.
+
+## 🎯 Overall Assessment: **FAIL**
+
+### Key Issues Identified:
+- The output `q` does not change as expected according to the D flip-flop behavior.
+- The design code logic does not update `q` based on the input `d`.
+
+## 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: 
+  - No uninitialized signals (`x` or `z`) were observed in the waveform data.
+  - **Confidence Level**: High
+
+- **Signal Stability Problems**: 
+  - The signals maintain stable values without unexpected transitions.
+  - **Confidence Level**: High
+
+- **Unexpected Transitions**: 
+  - No unexpected transitions were observed in the waveform data.
+  - **Confidence Level**: High
+
+- **Drive Conflicts**: 
+  - No drive conflicts detected.
+  - **Confid",1.5,13.050432205200195,14.550432205200195
+DFF (stuck output),Sequential - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'q' stuck at 0,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4477016925811768,0.05229830741882324
+Shift Register (no shift),Sequential - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'dout' stuck at 0,gpt-4o,,0.0,,True,"# 🚀 Verilog Simulation Waveform Analysis Report
+
+## 🌟 Overall Assessment: **FAIL**
+
+### 📄 Summary
+The analysis of the Verilog simulation waveform data highlights several critical issues related to the functionality of the `bad_shift` module. The major problems stem from the lack of signal propagation logic and incomplete design implementation, resulting in a failure to produce expected outputs.
+
+---
+
+## 📝 Detailed Analysis
+
+### 1. 🔍 **Signal Integrity Issues**
+
+- **Uninitialized Signals**: The s","# 🚀 Verilog Simulation Waveform Analysis Report
+
+## 🌟 Overall Assessment: **FAIL**
+
+### 📄 Summary
+The analysis of the Verilog simulation waveform data highlights several critical issues related to the functionality of the `bad_shift` module. The major problems stem from the lack of signal propagation logic and incomplete design implementation, resulting in a failure to produce expected outputs.
+
+---
+
+## 📝 Detailed Analysis
+
+### 1. 🔍 **Signal Integrity Issues**
+
+- **Uninitialized Signals**: The signal `dout` is initialized correctly due to the reset condition; it starts at `0000`. However, no further changes are observed.
+- **Signal Stability Problems**: The signal `dout` remains constant at `0000` despite input changes, indicating a lack of functional logic.
+- **Unexpected Transitions**: There are no unexpected transitions; however, the lack of any transition in `dout` is problematic.
+- **Drive Conflicts**: No drive conflicts detected.
+
+**Confidence Level**: High
+
+### 2. ⏰ **Timing Ana",1.5,18.059555053710938,19.559555053710938
+Shift Register (no shift),Sequential - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'dout' stuck at 0,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.443204641342163,0.056795358657836914
+Half Adder,Arithmetic - Normal,True,True,0.4,True,True,NORMAL - arithmetic behavior appears normal,gpt-4o,False,0.9,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data and design code for potential issues. The focus is on signal integrity, timing analysis, functional verification, critical issues, and design-specific aspects.
+
+### Overall Assessment: **PASS**
+
+## 1. 🔍 Signal Integrity Issues
+- **Uninitialized signals**: No signals are uninitialized (no 'x' or 'z' values observed).
+- **Signal stability problems**: Signals transition clea","# Verilog Simulation Waveform Analysis Report
+
+## Overview
+This report analyzes the provided Verilog simulation waveform data and design code for potential issues. The focus is on signal integrity, timing analysis, functional verification, critical issues, and design-specific aspects.
+
+### Overall Assessment: **PASS**
+
+## 1. 🔍 Signal Integrity Issues
+- **Uninitialized signals**: No signals are uninitialized (no 'x' or 'z' values observed).
+- **Signal stability problems**: Signals transition clearly between 0 and 1 without instability.
+- **Unexpected transitions**: All transitions appear as expected according to the half-adder logic.
+- **Drive conflicts**: No evidence of drive conflicts in the waveform data.
+
+**Confidence Level**: High
+
+## 2. ⏰ Timing Analysis
+- **Setup/hold violations**: Not applicable as there's no clocked logic in a combinational circuit like a half-adder.
+- **Clock domain issues**: Not applicable.
+- **Race conditions**: None detected; the half-adder is purely combin",1.5,12.31434416770935,13.81434416770935
+Half Adder,Arithmetic - Normal,True,True,0.4,True,True,NORMAL - arithmetic behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4462287425994873,0.053771257400512695
+Full Adder,Arithmetic - Normal,True,True,0.4,True,True,NORMAL - arithmetic behavior appears normal,gpt-4o,False,0.6,False,True,"# Verilog Simulation Waveform Data Analysis
+
+## 📋 Structured Report
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the given data. All signals have explicit 0 or 1 values.
+- **Signal Stability Problems**: No stability issues detected. The signals change states as expected at the given timestamps.
+- **Unexpected Transitions**: No unexpected transitions observed. All transitions adhere to expected behavior based on the Veri","# Verilog Simulation Waveform Data Analysis
+
+## 📋 Structured Report
+
+### 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals**: No uninitialized signals (x or z values) were observed in the given data. All signals have explicit 0 or 1 values.
+- **Signal Stability Problems**: No stability issues detected. The signals change states as expected at the given timestamps.
+- **Unexpected Transitions**: No unexpected transitions observed. All transitions adhere to expected behavior based on the Verilog code.
+- **Drive Conflicts**: No evidence of drive conflicts in the waveform data.
+
+### 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations**: The provided waveform data does not include clock signals, so setup/hold analysis is not applicable directly.
+- **Clock Domain Issues**: No clock signals or clock domain crossing issues provided in the data.
+- **Race Conditions**: No race conditions detectable from the current data.
+- **Clock-to-Output Delays**: Not applicable as there's no clock signal in",1.5,10.358575344085693,11.858575344085693
+Full Adder,Arithmetic - Normal,True,True,0.4,True,True,NORMAL - arithmetic behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4420936107635498,0.057906389236450195
+Half Adder (wrong sum),Arithmetic - Buggy,False,True,0.4,False,True,NORMAL - arithmetic behavior appears normal,gpt-4o,True,0.6,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overview
+
+This report analyzes the given Verilog simulation waveform data of a simple half-adder circuit implemented in Verilog. The objective is to identify potential issues across various categories, including signal integrity, timing, functionality, and critical design aspects.
+
+**Overall Assessment:** 🚨 **FAIL**
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:** No uninitialized signals (e.g., 'x' or 'z' values) are present i","# Verilog Simulation Waveform Analysis Report
+
+## Overview
+
+This report analyzes the given Verilog simulation waveform data of a simple half-adder circuit implemented in Verilog. The objective is to identify potential issues across various categories, including signal integrity, timing, functionality, and critical design aspects.
+
+**Overall Assessment:** 🚨 **FAIL**
+
+---
+
+## 1. 🔍 Signal Integrity Issues
+
+- **Uninitialized Signals:** No uninitialized signals (e.g., 'x' or 'z' values) are present in the waveform data.
+- **Signal Stability Problems:** No instability is observed; all signals remain stable between transitions.
+- **Unexpected Transitions:** The transitions observed match the changes in inputs, though incorrect output logic is noted.
+- **Drive Conflicts:** No drive conflicts were detected.
+
+**Confidence Level:** High
+
+---
+
+## 2. ⏰ Timing Analysis
+
+- **Setup/Hold Violations:** Not applicable as no clock signals are involved in this half-adder design.
+- **Clock Domain Issues:** ",1.5,9.46758508682251,10.96758508682251
+Half Adder (wrong sum),Arithmetic - Buggy,False,True,0.4,False,True,NORMAL - arithmetic behavior appears normal,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4441938400268555,0.05580615997314453
+Full Adder (no carry),Arithmetic - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'cout' stuck at 0,gpt-4o,True,0.7,False,True,"# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: 🚨 WARNING
+
+### Summary
+The waveform data was analyzed against the provided Verilog design code. The design appears to have a critical flaw in the functionality of the full adder, specifically in the carry-out (`cout`) logic. The waveform data indicates that the `cout` is always zero, which does not align with the expected behavior of a full adder when `a`, `b`, and `cin` should produce a carry.
+
+---
+
+## Detailed Analysis
+
+### ","# Verilog Simulation Waveform Analysis Report
+
+## Overall Assessment: 🚨 WARNING
+
+### Summary
+The waveform data was analyzed against the provided Verilog design code. The design appears to have a critical flaw in the functionality of the full adder, specifically in the carry-out (`cout`) logic. The waveform data indicates that the `cout` is always zero, which does not align with the expected behavior of a full adder when `a`, `b`, and `cin` should produce a carry.
+
+---
+
+## Detailed Analysis
+
+### 1. 🔍 Signal Integrity Issues
+- **Uninitialized Signals:** No uninitialized signals (x or z) were observed in the waveform data.
+- **Signal Stability Problems:** Signals appear stable with no unexpected transitions.
+- **Unexpected Transitions:** No unexpected transitions were observed; however, the `cout` behavior is consistently incorrect.
+- **Drive Conflicts:** No drive conflicts were detected.
+
+### 2. ⏰ Timing Analysis
+- **Setup/Hold Violations:** Not applicable as there are no clock edges or ",1.5,12.536803483963013,14.036803483963013
+Full Adder (no carry),Arithmetic - Buggy,False,False,0.9,True,True,ANOMALOUS - output 'cout' stuck at 0,claude,,0.0,,True,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,❌ Analysis failed: Unknown model: claude-sonnet-4-5-20250929,1.5,-1.4438138008117676,0.05618619918823242

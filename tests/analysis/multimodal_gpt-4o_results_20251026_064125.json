@@ -1,0 +1,1242 @@
+{
+  "metadata": {
+    "test_date": "2025-10-26T06:41:25.534386",
+    "total_circuits": 30,
+    "model": "gpt-4o",
+    "test_type": "three_way_multimodal"
+  },
+  "statistics": {
+    "total_circuits": 30,
+    "prompt_only": {
+      "correct": 6,
+      "total": 30,
+      "percentage": 20.0
+    },
+    "mermaid_only": {
+      "correct": 7,
+      "total": 30,
+      "percentage": 23.333333333333332
+    },
+    "combined": {
+      "correct": 7,
+      "total": 30,
+      "percentage": 23.333333333333332
+    }
+  },
+  "results": [
+    {
+      "circuit_id": 1,
+      "circuit_name": "2-to-1 MUX",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.3934664726257324,
+        "simulation_time": 14.057301044464111,
+        "lines_of_code": 52,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.437612771987915,
+        "simulation_time": 9.677484273910522,
+        "lines_of_code": 73,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.091505289077759,
+        "simulation_time": 11.233917713165283,
+        "lines_of_code": 67,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 2,
+      "circuit_name": "D Flip-Flop",
+      "category": "Sequential",
+      "complexity": "simple",
+      "original_prompt": "Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.8721277713775635,
+        "simulation_time": 9.537352323532104,
+        "lines_of_code": 53,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.7717955112457275,
+        "simulation_time": 8.623562335968018,
+        "lines_of_code": 51,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.6091291904449463,
+        "simulation_time": 8.178811311721802,
+        "lines_of_code": 54,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 3,
+      "circuit_name": "4-bit Counter",
+      "category": "Sequential",
+      "complexity": "simple",
+      "original_prompt": "Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.469377279281616,
+        "simulation_time": 19.013150453567505,
+        "lines_of_code": 52,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 1.9597039222717285,
+        "simulation_time": 7.594933032989502,
+        "lines_of_code": 52,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.36649751663208,
+        "simulation_time": 9.190558433532715,
+        "lines_of_code": 52,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 4,
+      "circuit_name": "Full Adder",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.5349137783050537,
+        "simulation_time": 12.782527685165405,
+        "lines_of_code": 48,
+        "anomalous": false,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.456470251083374,
+        "simulation_time": 7.705197095870972,
+        "lines_of_code": 73,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.586323976516724,
+        "simulation_time": 10.247640371322632,
+        "lines_of_code": 74,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 5,
+      "circuit_name": "2-bit Comparator",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.737748384475708,
+        "simulation_time": 12.551419734954834,
+        "lines_of_code": 58,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.819343090057373,
+        "simulation_time": 7.444725275039673,
+        "lines_of_code": 55,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.2981157302856445,
+        "simulation_time": 6.43185567855835,
+        "lines_of_code": 68,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 6,
+      "circuit_name": "4-bit ALU",
+      "category": "Arithmetic",
+      "complexity": "medium",
+      "original_prompt": "Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.8010175228118896,
+        "simulation_time": 7.735181570053101,
+        "lines_of_code": 59,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.768580198287964,
+        "simulation_time": 7.579268932342529,
+        "lines_of_code": 59,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.078630208969116,
+        "simulation_time": 7.309785842895508,
+        "lines_of_code": 75,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 7,
+      "circuit_name": "8:1 Multiplexer",
+      "category": "Combinational",
+      "complexity": "medium",
+      "original_prompt": "Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.5624780654907227,
+        "simulation_time": 8.833122968673706,
+        "lines_of_code": 56,
+        "anomalous": false,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.718690872192383,
+        "simulation_time": 6.168920993804932,
+        "lines_of_code": 55,
+        "anomalous": false,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.843644857406616,
+        "simulation_time": 10.779621124267578,
+        "lines_of_code": 58,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 8,
+      "circuit_name": "Sequence Detector",
+      "category": "State Machine",
+      "complexity": "medium",
+      "original_prompt": "Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 7.373453855514526,
+        "simulation_time": 12.575092077255249,
+        "lines_of_code": 117,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 8.104609489440918,
+        "simulation_time": 7.946069002151489,
+        "lines_of_code": 114,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.8841702938079834,
+        "simulation_time": 10.45357060432434,
+        "lines_of_code": 81,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 9,
+      "circuit_name": "4-bit Shift Register",
+      "category": "Sequential",
+      "complexity": "medium",
+      "original_prompt": "Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.562835693359375,
+        "simulation_time": 8.887599229812622,
+        "lines_of_code": 65,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.556037187576294,
+        "simulation_time": 9.406644582748413,
+        "lines_of_code": 66,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.857904434204102,
+        "simulation_time": 8.529801368713379,
+        "lines_of_code": 67,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 10,
+      "circuit_name": "Priority Encoder",
+      "category": "Combinational",
+      "complexity": "medium",
+      "original_prompt": "Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.8794426918029785,
+        "simulation_time": 11.705846309661865,
+        "lines_of_code": 60,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.8544421195983887,
+        "simulation_time": 10.508248567581177,
+        "lines_of_code": 67,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.495274305343628,
+        "simulation_time": 13.563740253448486,
+        "lines_of_code": 59,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 11,
+      "circuit_name": "Traffic Light Controller",
+      "category": "State Machine",
+      "complexity": "complex",
+      "original_prompt": "Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.685851335525513,
+        "simulation_time": 8.233834743499756,
+        "lines_of_code": 114,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.809112787246704,
+        "simulation_time": 8.183674812316895,
+        "lines_of_code": 110,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 10.954586267471313,
+        "simulation_time": 7.358477592468262,
+        "lines_of_code": 113,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 12,
+      "circuit_name": "UART Transmitter",
+      "category": "State Machine",
+      "complexity": "complex",
+      "original_prompt": "Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 8.090820550918579,
+        "simulation_time": 7.839626789093018,
+        "lines_of_code": 118,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 10.00011658668518,
+        "simulation_time": 11.033077001571655,
+        "lines_of_code": 181,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 9.161052703857422,
+        "simulation_time": 7.1248884201049805,
+        "lines_of_code": 137,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 13,
+      "circuit_name": "8-bit Register File",
+      "category": "CPU Component",
+      "complexity": "complex",
+      "original_prompt": "Create 8-register \u00d7 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.336884260177612,
+        "simulation_time": 9.342270374298096,
+        "lines_of_code": 85,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 8.9784517288208,
+        "simulation_time": 10.895200490951538,
+        "lines_of_code": 79,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 7.218971014022827,
+        "simulation_time": 7.317796945571899,
+        "lines_of_code": 83,
+        "anomalous": false,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 14,
+      "circuit_name": "PWM Generator",
+      "category": "Advanced Sequential",
+      "complexity": "complex",
+      "original_prompt": "Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.1154420375823975,
+        "simulation_time": 10.427140951156616,
+        "lines_of_code": 62,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.9695982933044434,
+        "simulation_time": 8.525695323944092,
+        "lines_of_code": 76,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.683963775634766,
+        "simulation_time": 13.775626182556152,
+        "lines_of_code": 62,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 15,
+      "circuit_name": "SPI Master",
+      "category": "Protocol",
+      "complexity": "complex",
+      "original_prompt": "Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 8.021450757980347,
+        "simulation_time": 8.465898036956787,
+        "lines_of_code": 101,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 13.274097681045532,
+        "simulation_time": 9.096979141235352,
+        "lines_of_code": 158,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 14.874604940414429,
+        "simulation_time": 9.153120756149292,
+        "lines_of_code": 193,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 16,
+      "circuit_name": "3-to-8 Decoder",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Design a 3-to-8 decoder with inputs a[2:0], enable en, and outputs y[7:0]. When enabled, only one output is high based on input. Include testbench testing all combinations.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.2218477725982666,
+        "simulation_time": 7.696443319320679,
+        "lines_of_code": 67,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.6850314140319824,
+        "simulation_time": 10.676201820373535,
+        "lines_of_code": 62,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.9926724433898926,
+        "simulation_time": 9.213711738586426,
+        "lines_of_code": 66,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 17,
+      "circuit_name": "JK Flip-Flop",
+      "category": "Sequential",
+      "complexity": "simple",
+      "original_prompt": "Create a JK flip-flop with clock, reset, inputs j and k, and outputs q and q_bar. Include testbench verifying all four input combinations (00, 01, 10, 11).",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.7012791633605957,
+        "simulation_time": 10.06897783279419,
+        "lines_of_code": 64,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.661188125610352,
+        "simulation_time": 4.472374439239502,
+        "lines_of_code": 65,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.303502321243286,
+        "simulation_time": 7.100295782089233,
+        "lines_of_code": 78,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 18,
+      "circuit_name": "8-bit SIPO Shift Register",
+      "category": "Sequential",
+      "complexity": "simple",
+      "original_prompt": "Design an 8-bit Serial-In Parallel-Out (SIPO) shift register with clock, reset, serial input, and parallel output[7:0]. Include testbench shifting in pattern 10101100.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.3778390884399414,
+        "simulation_time": 10.04947280883789,
+        "lines_of_code": 56,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.149695634841919,
+        "simulation_time": 9.444611549377441,
+        "lines_of_code": 55,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.415832757949829,
+        "simulation_time": 7.422565937042236,
+        "lines_of_code": 58,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 19,
+      "circuit_name": "4-bit XOR Array",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Create a 4-bit XOR gate array with inputs a[3:0], b[3:0], and output result[3:0] where each bit is result[i] = a[i] XOR b[i]. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.8388688564300537,
+        "simulation_time": 8.970601320266724,
+        "lines_of_code": 42,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": false,
+        "compiled": false,
+        "simulated": false,
+        "has_waveform": false,
+        "anomalous": null
+      },
+      "combined": {
+        "success": false,
+        "compiled": false,
+        "simulated": false,
+        "has_waveform": false,
+        "anomalous": null
+      }
+    },
+    {
+      "circuit_id": 20,
+      "circuit_name": "4-bit Magnitude Comparator",
+      "category": "Combinational",
+      "complexity": "simple",
+      "original_prompt": "Design a 4-bit magnitude comparator with inputs a[3:0], b[3:0] and outputs equal, greater, less. Include testbench with boundary cases.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.3545241355896,
+        "simulation_time": 7.195173263549805,
+        "lines_of_code": 64,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": false,
+        "compiled": false,
+        "simulated": false,
+        "has_waveform": false,
+        "anomalous": null
+      },
+      "combined": {
+        "success": false,
+        "compiled": false,
+        "simulated": false,
+        "has_waveform": false,
+        "anomalous": null
+      }
+    },
+    {
+      "circuit_id": 21,
+      "circuit_name": "8-bit Barrel Shifter",
+      "category": "Arithmetic",
+      "complexity": "medium",
+      "original_prompt": "Design an 8-bit barrel shifter supporting left shift, right shift, and rotate operations. Inputs: data[7:0], shift_amt[2:0], op[1:0] (00=LSL, 01=LSR, 10=ROL, 11=ROR). Output: result[7:0]. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.7512102127075195,
+        "simulation_time": 5.396158933639526,
+        "lines_of_code": 54,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.93034291267395,
+        "simulation_time": 12.416481971740723,
+        "lines_of_code": 60,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.997187852859497,
+        "simulation_time": 8.977119207382202,
+        "lines_of_code": 64,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 22,
+      "circuit_name": "1-to-8 Demux",
+      "category": "Combinational",
+      "complexity": "medium",
+      "original_prompt": "Create a 1-to-8 demultiplexer with input data_in, select sel[2:0], enable en, and outputs out[7:0]. When enabled, data_in routes to selected output. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.105021238327026,
+        "simulation_time": 7.180282354354858,
+        "lines_of_code": 67,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 13.208508729934692,
+        "simulation_time": 15.89546012878418,
+        "lines_of_code": 67,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.5997960567474365,
+        "simulation_time": 11.787115097045898,
+        "lines_of_code": 68,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 23,
+      "circuit_name": "Mealy Sequence Detector",
+      "category": "State Machine",
+      "complexity": "medium",
+      "original_prompt": "Design a Mealy FSM detecting sequence 101 in serial input with non-overlapping detection. Output high for one cycle when pattern detected. Include testbench with sequence: 1101011010.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.201241493225098,
+        "simulation_time": 9.427140235900879,
+        "lines_of_code": 87,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.204932689666748,
+        "simulation_time": 9.879178762435913,
+        "lines_of_code": 86,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.640046119689941,
+        "simulation_time": 10.894784450531006,
+        "lines_of_code": 91,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 24,
+      "circuit_name": "8-bit Bidirectional Shift Register",
+      "category": "Sequential",
+      "complexity": "medium",
+      "original_prompt": "Create an 8-bit bidirectional shift register with clock, reset, load, direction (1=right, 0=left), parallel input[7:0], serial_in_left, serial_in_right, and parallel output[7:0]. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.7905967235565186,
+        "simulation_time": 8.062726259231567,
+        "lines_of_code": 70,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.037802457809448,
+        "simulation_time": 6.80247688293457,
+        "lines_of_code": 81,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 9.608732223510742,
+        "simulation_time": 6.847126245498657,
+        "lines_of_code": 83,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 25,
+      "circuit_name": "Binary to Gray Converter",
+      "category": "Combinational",
+      "complexity": "medium",
+      "original_prompt": "Design a 4-bit binary to Gray code converter with input binary[3:0] and output gray[3:0]. Include testbench verifying all 16 conversions.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.1980810165405273,
+        "simulation_time": 4.95080304145813,
+        "lines_of_code": 50,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.4600985050201416,
+        "simulation_time": 5.901946783065796,
+        "lines_of_code": 49,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.445375919342041,
+        "simulation_time": 5.516671895980835,
+        "lines_of_code": 37,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 26,
+      "circuit_name": "Vending Machine Controller",
+      "category": "State Machine",
+      "complexity": "complex",
+      "original_prompt": "Design a vending machine FSM that accepts 5\u00a2 and 10\u00a2 coins until 15\u00a2 is reached, then dispenses item and returns change. Inputs: clk, rst, nickel, dime. Outputs: dispense, change[1:0] (in 5\u00a2 units). Include testbench with multiple purchase scenarios.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.491028785705566,
+        "simulation_time": 8.386356353759766,
+        "lines_of_code": 111,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.2826879024505615,
+        "simulation_time": 8.12698221206665,
+        "lines_of_code": 111,
+        "anomalous": true,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.573498010635376,
+        "simulation_time": 6.800724506378174,
+        "lines_of_code": 115,
+        "anomalous": true,
+        "vae_anomalous": false
+      }
+    },
+    {
+      "circuit_id": 27,
+      "circuit_name": "I2C Master Controller",
+      "category": "Protocol",
+      "complexity": "complex",
+      "original_prompt": "Design an I2C master controller with start condition, stop condition, byte transmission, and ACK/NACK handling. Inputs: clk, rst, start, stop, data_in[7:0], wr_en. Outputs: scl, sda_out, sda_oe, busy, ack_received. Include testbench with write transaction.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 9.42591667175293,
+        "simulation_time": 8.781664848327637,
+        "lines_of_code": 129,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.851990699768066,
+        "simulation_time": 6.350734233856201,
+        "lines_of_code": 138,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.922124624252319,
+        "simulation_time": 6.8453209400177,
+        "lines_of_code": 148,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 28,
+      "circuit_name": "16x8 Dual-Port RAM",
+      "category": "CPU Component",
+      "complexity": "complex",
+      "original_prompt": "Create a 16x8 dual-port RAM with independent read/write ports. Port A: clk_a, we_a, addr_a[3:0], din_a[7:0], dout_a[7:0]. Port B: clk_b, we_b, addr_b[3:0], din_b[7:0], dout_b[7:0]. Include testbench with simultaneous operations.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 4.577527284622192,
+        "simulation_time": 6.7646589279174805,
+        "lines_of_code": 80,
+        "anomalous": false,
+        "vae_anomalous": false
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.390912055969238,
+        "simulation_time": 6.403975486755371,
+        "lines_of_code": 77,
+        "anomalous": false,
+        "vae_anomalous": false
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 6.709955930709839,
+        "simulation_time": 9.847118854522705,
+        "lines_of_code": 85,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 29,
+      "circuit_name": "Programmable Frequency Divider",
+      "category": "Advanced Sequential",
+      "complexity": "complex",
+      "original_prompt": "Design a programmable frequency divider with 8-bit division ratio. Inputs: clk, rst, divisor[7:0] (divides by 2 to 256). Output: clk_out. Generate 50% duty cycle output. Include testbench with divisor values: 2, 4, 8, 16.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 3.533728837966919,
+        "simulation_time": 7.629396677017212,
+        "lines_of_code": 64,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 5.148585796356201,
+        "simulation_time": 6.217721462249756,
+        "lines_of_code": 138,
+        "anomalous": true,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 2.876351833343506,
+        "simulation_time": 6.801858425140381,
+        "lines_of_code": 70,
+        "anomalous": true,
+        "vae_anomalous": true
+      }
+    },
+    {
+      "circuit_id": 30,
+      "circuit_name": "UART Receiver",
+      "category": "Protocol",
+      "complexity": "complex",
+      "original_prompt": "Design a UART receiver with states: IDLE, START, DATA, STOP. Protocol: detect START(0), receive 8 data bits LSB-first, verify STOP(1). Inputs: clk, rst, rx. Outputs: rx_data[7:0], rx_valid, frame_error. Baud rate divider. Include testbench.",
+      "model": "gpt-4o",
+      "prompt_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 8.945525646209717,
+        "simulation_time": 0.0656883716583252,
+        "lines_of_code": 134,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "mermaid_only": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 18.954341888427734,
+        "simulation_time": 0.05960893630981445,
+        "lines_of_code": 249,
+        "anomalous": false,
+        "vae_anomalous": true
+      },
+      "combined": {
+        "success": true,
+        "compiled": true,
+        "simulated": true,
+        "has_waveform": true,
+        "generation_time": 15.194982767105103,
+        "simulation_time": 0.7889537811279297,
+        "lines_of_code": 154,
+        "anomalous": false,
+        "vae_anomalous": true
+      }
+    }
+  ]
+}

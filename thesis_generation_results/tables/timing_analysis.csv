@@ -1,0 +1,5 @@
+Phase,Claude Avg (s),GPT-4o Avg (s),Difference
+Generation,10.22,9.54,+0.69
+Simulation,5.71,8.33,-2.62
+Verification,7.68,6.76,+0.92
+Total,23.61,24.62,-1.01

@@ -1,0 +1,33 @@
+```mermaid
+graph LR
+    CLK[clk] --> CTRL(I2C Control FSM)
+    RST[rst] --> CTRL
+    START[start] --> CTRL
+    STOP[stop] --> CTRL
+    DATA[data_in[7:0]] --> SHIFT[[Shift Register]]
+    WREN[wr_en] --> CTRL
+
+    CTRL --> |state|IDLE{IDLE}
+    CTRL --> |state|START_COND{START}
+    CTRL --> |state|SEND_BYTE{SEND}
+    CTRL --> |state|ACK_CHECK{ACK}
+    CTRL --> |state|STOP_COND{STOP}
+
+    CLKGEN[[SCL Generator]] --> SCL[scl]
+    CLK --> CLKGEN
+    CTRL --> CLKGEN
+
+    SHIFT --> SDA_OUT[sda_out]
+    CTRL --> SDA_OE[sda_oe]
+    CTRL --> BUSY[busy]
+    CTRL --> ACK[ack_received]
+
+    TB[Testbench] --> START
+    TB --> STOP
+    TB --> DATA
+    TB --> WREN
+    SCL --> TB
+    SDA_OUT --> TB
+    BUSY --> TB
+    ACK --> TB
+```

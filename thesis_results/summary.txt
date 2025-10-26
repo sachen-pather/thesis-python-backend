@@ -1,0 +1,46 @@
+================================================================================
+THESIS RESULTS SUMMARY
+Hardware Verification Using LLMs vs Traditional ML
+================================================================================
+
+Total Circuits Tested: 86
+Total Tests Conducted: 172
+Test Date: 20251016_014108
+
+PERFORMANCE BY COMPLEXITY LEVEL
+--------------------------------------------------------------------------------
+
+SIMPLE CIRCUITS:
+  VAE                 :  80.8% (P:100.0% R: 58.3% F1: 73.7)
+  GPT-4o              :  80.8% (P: 73.3% R: 91.7% F1: 81.5)
+  Claude Sonnet 3.5   :  76.9% (P: 71.4% R: 83.3% F1: 76.9)
+
+MEDIUM CIRCUITS:
+  VAE                 :  64.6% (P: 73.3% R: 45.8% F1: 56.4)
+  GPT-4o              :  60.9% (P: 56.4% R: 95.7% F1: 71.0)
+  Claude Sonnet 3.5   :  78.3% (P: 71.0% R: 95.7% F1: 81.5)
+
+COMPLEX CIRCUITS:
+  VAE                 :  58.3% (P: 66.7% R: 33.3% F1: 44.4)
+  GPT-4o              :  66.7% (P: 60.0% R:100.0% F1: 75.0)
+  Claude Sonnet 3.5   :  83.3% (P: 75.0% R:100.0% F1: 85.7)
+
+================================================================================
+KEY FINDINGS
+================================================================================
+
+1. Claude Sonnet 3.5 Performance Trend:
+   - Simple: 76.9%
+   - Medium: 78.3%
+   - Complex: 83.3%
+   - Overall Change: +6.4% (IMPROVEMENT)
+
+2. Model Rankings by Complexity:
+   Simple  : VAE (80.8%)
+   Medium  : Claude Sonnet 3.5 (78.3%)
+   Complex : Claude Sonnet 3.5 (83.3%)
+
+3. Best Overall Model:
+   Claude Sonnet 3.5: 78.6% accuracy
+
+================================================================================

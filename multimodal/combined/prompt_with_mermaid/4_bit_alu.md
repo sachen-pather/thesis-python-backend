@@ -1,0 +1,38 @@
+# 4-bit ALU
+
+**Category**: Arithmetic  
+**Complexity**: medium
+
+## Original Prompt
+
+```
+Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.
+```
+
+## Generated Mermaid Diagram
+
+```mermaid
+graph LR
+    A["a[3:0]"] --> ALU((4-bit ALU))
+    B["b[3:0]"] --> ALU
+    OP["op[1:0]"] --> CTRL((Control Decoder))
+    CTRL --> ALU
+
+    ALU --> RES["result[3:0]"]
+    ALU --> ZERO[zero]
+
+    TB1[Testbench Inputs] --> |"a=4'b1010"| TEST((Test Vectors))
+    TB2[Testbench Inputs] --> |"b=4'b0011"| TEST
+    TB3[Testbench Inputs] --> |"op=2'b00"| TEST
+    TEST --> |Stimulus| A
+    TEST --> |Stimulus| B
+    TEST --> |Stimulus| OP
+    RES --> CMP{Compare}
+    ZERO --> CMP
+    CMP --> PASS[Test Pass/Fail]
+
+    style ALU fill:#f9f,stroke:#333
+    style CTRL fill:#bbf,stroke:#333
+    style TEST fill:#bfb,stroke:#333
+    style CMP fill:#fbb,stroke:#333
+```

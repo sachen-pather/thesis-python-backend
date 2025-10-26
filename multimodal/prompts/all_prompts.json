@@ -1,0 +1,221 @@
+{
+  "metadata": {
+    "total_circuits": 30,
+    "extracted_date": "2025-10-26",
+    "source": "combined_collection",
+    "mermaid_model": "claude",
+    "mermaid_included": true
+  },
+  "prompts": [
+    {
+      "id": 1,
+      "name": "2-to-1 MUX",
+      "prompt": "Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 2,
+      "name": "D Flip-Flop",
+      "prompt": "Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.",
+      "category": "Sequential",
+      "complexity": "simple"
+    },
+    {
+      "id": 3,
+      "name": "4-bit Counter",
+      "prompt": "Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.",
+      "category": "Sequential",
+      "complexity": "simple"
+    },
+    {
+      "id": 4,
+      "name": "Full Adder",
+      "prompt": "Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 5,
+      "name": "2-bit Comparator",
+      "prompt": "Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 6,
+      "name": "4-bit ALU",
+      "prompt": "Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.",
+      "category": "Arithmetic",
+      "complexity": "medium"
+    },
+    {
+      "id": 7,
+      "name": "8:1 Multiplexer",
+      "prompt": "Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.",
+      "category": "Combinational",
+      "complexity": "medium"
+    },
+    {
+      "id": 8,
+      "name": "Sequence Detector",
+      "prompt": "Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.",
+      "category": "State Machine",
+      "complexity": "medium"
+    },
+    {
+      "id": 9,
+      "name": "4-bit Shift Register",
+      "prompt": "Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.",
+      "category": "Sequential",
+      "complexity": "medium"
+    },
+    {
+      "id": 10,
+      "name": "Priority Encoder",
+      "prompt": "Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.",
+      "category": "Combinational",
+      "complexity": "medium"
+    },
+    {
+      "id": 11,
+      "name": "Traffic Light Controller",
+      "prompt": "Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.",
+      "category": "State Machine",
+      "complexity": "complex"
+    },
+    {
+      "id": 12,
+      "name": "UART Transmitter",
+      "prompt": "Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.",
+      "category": "State Machine",
+      "complexity": "complex"
+    },
+    {
+      "id": 13,
+      "name": "8-bit Register File",
+      "prompt": "Create 8-register × 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.",
+      "category": "CPU Component",
+      "complexity": "complex"
+    },
+    {
+      "id": 14,
+      "name": "PWM Generator",
+      "prompt": "Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.",
+      "category": "Advanced Sequential",
+      "complexity": "complex"
+    },
+    {
+      "id": 15,
+      "name": "SPI Master",
+      "prompt": "Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.",
+      "category": "Protocol",
+      "complexity": "complex"
+    },
+    {
+      "id": 16,
+      "name": "3-to-8 Decoder",
+      "prompt": "Design a 3-to-8 decoder with inputs a[2:0], enable en, and outputs y[7:0]. When enabled, only one output is high based on input. Include testbench testing all combinations.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 17,
+      "name": "JK Flip-Flop",
+      "prompt": "Create a JK flip-flop with clock, reset, inputs j and k, and outputs q and q_bar. Include testbench verifying all four input combinations (00, 01, 10, 11).",
+      "category": "Sequential",
+      "complexity": "simple"
+    },
+    {
+      "id": 18,
+      "name": "8-bit SIPO Shift Register",
+      "prompt": "Design an 8-bit Serial-In Parallel-Out (SIPO) shift register with clock, reset, serial input, and parallel output[7:0]. Include testbench shifting in pattern 10101100.",
+      "category": "Sequential",
+      "complexity": "simple"
+    },
+    {
+      "id": 19,
+      "name": "4-bit XOR Array",
+      "prompt": "Create a 4-bit XOR gate array with inputs a[3:0], b[3:0], and output result[3:0] where each bit is result[i] = a[i] XOR b[i]. Include testbench.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 20,
+      "name": "4-bit Magnitude Comparator",
+      "prompt": "Design a 4-bit magnitude comparator with inputs a[3:0], b[3:0] and outputs equal, greater, less. Include testbench with boundary cases.",
+      "category": "Combinational",
+      "complexity": "simple"
+    },
+    {
+      "id": 21,
+      "name": "8-bit Barrel Shifter",
+      "prompt": "Design an 8-bit barrel shifter supporting left shift, right shift, and rotate operations. Inputs: data[7:0], shift_amt[2:0], op[1:0] (00=LSL, 01=LSR, 10=ROL, 11=ROR). Output: result[7:0]. Include testbench.",
+      "category": "Arithmetic",
+      "complexity": "medium"
+    },
+    {
+      "id": 22,
+      "name": "1-to-8 Demux",
+      "prompt": "Create a 1-to-8 demultiplexer with input data_in, select sel[2:0], enable en, and outputs out[7:0]. When enabled, data_in routes to selected output. Include testbench.",
+      "category": "Combinational",
+      "complexity": "medium"
+    },
+    {
+      "id": 23,
+      "name": "Mealy Sequence Detector",
+      "prompt": "Design a Mealy FSM detecting sequence 101 in serial input with non-overlapping detection. Output high for one cycle when pattern detected. Include testbench with sequence: 1101011010.",
+      "category": "State Machine",
+      "complexity": "medium"
+    },
+    {
+      "id": 24,
+      "name": "8-bit Bidirectional Shift Register",
+      "prompt": "Create an 8-bit bidirectional shift register with clock, reset, load, direction (1=right, 0=left), parallel input[7:0], serial_in_left, serial_in_right, and parallel output[7:0]. Include testbench.",
+      "category": "Sequential",
+      "complexity": "medium"
+    },
+    {
+      "id": 25,
+      "name": "Binary to Gray Converter",
+      "prompt": "Design a 4-bit binary to Gray code converter with input binary[3:0] and output gray[3:0]. Include testbench verifying all 16 conversions.",
+      "category": "Combinational",
+      "complexity": "medium"
+    },
+    {
+      "id": 26,
+      "name": "Vending Machine Controller",
+      "prompt": "Design a vending machine FSM that accepts 5¢ and 10¢ coins until 15¢ is reached, then dispenses item and returns change. Inputs: clk, rst, nickel, dime. Outputs: dispense, change[1:0] (in 5¢ units). Include testbench with multiple purchase scenarios.",
+      "category": "State Machine",
+      "complexity": "complex"
+    },
+    {
+      "id": 27,
+      "name": "I2C Master Controller",
+      "prompt": "Design an I2C master controller with start condition, stop condition, byte transmission, and ACK/NACK handling. Inputs: clk, rst, start, stop, data_in[7:0], wr_en. Outputs: scl, sda_out, sda_oe, busy, ack_received. Include testbench with write transaction.",
+      "category": "Protocol",
+      "complexity": "complex"
+    },
+    {
+      "id": 28,
+      "name": "16x8 Dual-Port RAM",
+      "prompt": "Create a 16x8 dual-port RAM with independent read/write ports. Port A: clk_a, we_a, addr_a[3:0], din_a[7:0], dout_a[7:0]. Port B: clk_b, we_b, addr_b[3:0], din_b[7:0], dout_b[7:0]. Include testbench with simultaneous operations.",
+      "category": "CPU Component",
+      "complexity": "complex"
+    },
+    {
+      "id": 29,
+      "name": "Programmable Frequency Divider",
+      "prompt": "Design a programmable frequency divider with 8-bit division ratio. Inputs: clk, rst, divisor[7:0] (divides by 2 to 256). Output: clk_out. Generate 50% duty cycle output. Include testbench with divisor values: 2, 4, 8, 16.",
+      "category": "Advanced Sequential",
+      "complexity": "complex"
+    },
+    {
+      "id": 30,
+      "name": "UART Receiver",
+      "prompt": "Design a UART receiver with states: IDLE, START, DATA, STOP. Protocol: detect START(0), receive 8 data bits LSB-first, verify STOP(1). Inputs: clk, rst, rx. Outputs: rx_data[7:0], rx_valid, frame_error. Baud rate divider. Include testbench.",
+      "category": "Protocol",
+      "complexity": "complex"
+    }
+  ]
+}

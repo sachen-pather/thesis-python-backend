@@ -1,0 +1,10 @@
+Model,Complexity,Accuracy,Precision,Recall,F1-Score,Count
+VAE,simple,80.77,100.00,58.33,73.68,52
+VAE,medium,64.58,73.33,45.83,56.41,96
+VAE,complex,58.33,66.67,33.33,44.44,24
+GPT-4o,simple,80.77,73.33,91.67,81.48,26
+GPT-4o,medium,60.87,56.41,95.65,70.97,46
+GPT-4o,complex,66.67,60.00,100.00,75.00,12
+Claude Sonnet 3.5,simple,76.92,71.43,83.33,76.92,26
+Claude Sonnet 3.5,medium,78.26,70.97,95.65,81.48,46
+Claude Sonnet 3.5,complex,83.33,75.00,100.00,85.71,12

@@ -1,0 +1,174 @@
+{
+  "insight_1_circuit_count": {
+    "total_circuits": 240,
+    "by_complexity": {
+      "simple": 80,
+      "medium": 80,
+      "complex": 80
+    },
+    "by_category": {
+      "Combinational": 80,
+      "Sequential": 48,
+      "Arithmetic": 16,
+      "State Machine": 48,
+      "CPU Component": 16,
+      "Advanced Sequential": 16,
+      "Protocol": 16
+    },
+    "by_model": {
+      "claude": 120,
+      "gpt-4o": 120
+    }
+  },
+  "insight_2_functional_correctness": {
+    "claude": {
+      "simple": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 28,
+          "accuracy": 70.0
+        },
+        "mermaid_only": {
+          "correct": 28,
+          "accuracy": 70.0
+        },
+        "combined": {
+          "correct": 31,
+          "accuracy": 77.5
+        }
+      },
+      "medium": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 25,
+          "accuracy": 62.5
+        },
+        "mermaid_only": {
+          "correct": 21,
+          "accuracy": 52.5
+        },
+        "combined": {
+          "correct": 29,
+          "accuracy": 72.5
+        }
+      },
+      "complex": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 23,
+          "accuracy": 57.49999999999999
+        },
+        "mermaid_only": {
+          "correct": 28,
+          "accuracy": 70.0
+        },
+        "combined": {
+          "correct": 30,
+          "accuracy": 75.0
+        }
+      }
+    },
+    "gpt-4o": {
+      "simple": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 28,
+          "accuracy": 70.0
+        },
+        "mermaid_only": {
+          "correct": 27,
+          "accuracy": 67.5
+        },
+        "combined": {
+          "correct": 35,
+          "accuracy": 87.5
+        }
+      },
+      "medium": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 21,
+          "accuracy": 52.5
+        },
+        "mermaid_only": {
+          "correct": 13,
+          "accuracy": 32.5
+        },
+        "combined": {
+          "correct": 33,
+          "accuracy": 82.5
+        }
+      },
+      "complex": {
+        "total_circuits": 40,
+        "prompt_only": {
+          "correct": 12,
+          "accuracy": 30.0
+        },
+        "mermaid_only": {
+          "correct": 12,
+          "accuracy": 30.0
+        },
+        "combined": {
+          "correct": 33,
+          "accuracy": 82.5
+        }
+      }
+    }
+  },
+  "insight_3_approach_accuracy": {
+    "overall": {
+      "prompt_only": {
+        "correct": 137,
+        "total": 240,
+        "accuracy": 57.08333333333333
+      },
+      "mermaid_only": {
+        "correct": 129,
+        "total": 240,
+        "accuracy": 53.75
+      },
+      "combined": {
+        "correct": 191,
+        "total": 240,
+        "accuracy": 79.58333333333333
+      }
+    },
+    "by_model": {
+      "claude": {
+        "prompt_only": {
+          "correct": 76,
+          "total": 120,
+          "accuracy": 63.33333333333333
+        },
+        "mermaid_only": {
+          "correct": 77,
+          "total": 120,
+          "accuracy": 64.16666666666667
+        },
+        "combined": {
+          "correct": 90,
+          "total": 120,
+          "accuracy": 75.0
+        }
+      },
+      "gpt-4o": {
+        "prompt_only": {
+          "correct": 61,
+          "total": 120,
+          "accuracy": 50.83333333333333
+        },
+        "mermaid_only": {
+          "correct": 52,
+          "total": 120,
+          "accuracy": 43.333333333333336
+        },
+        "combined": {
+          "correct": 101,
+          "total": 120,
+          "accuracy": 84.16666666666667
+        }
+      }
+    }
+  }
+}

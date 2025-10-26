@@ -1,0 +1,7 @@
+Metric,Claude,GPT-4o,Difference
+Functional Correctness,68.2%,45.5%,+22.7%
+Generation Success,100.0%,100.0%,+0.0%
+Compilation Rate,100.0%,100.0%,+0.0%
+Simulation Rate,100.0%,100.0%,+0.0%
+Testbench Inclusion,100.0%,100.0%,+0.0%
+Avg Lines of Code,74,71,+3

@@ -1,0 +1,24 @@
+# Virtual environments
+verilog_system_env/
+venv/
+env/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Libraries
+iverilog/
+pyvcd/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

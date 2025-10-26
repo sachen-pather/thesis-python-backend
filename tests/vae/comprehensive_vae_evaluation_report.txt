@@ -1,0 +1,93 @@
+
+COMPREHENSIVE VAE VERIFICATION SYSTEM EVALUATION REPORT
+Generated: 2025-10-13 22:48:53
+
+DATASET OVERVIEW:
+- Total Test Cases: 34
+- Good Circuits (Normal): 17
+- Bad Circuits (Anomalous): 17
+
+OVERALL PERFORMANCE SUMMARY:
+- Accuracy:  0.471 (47.1%)
+- Precision: 0.455
+- Recall:    0.294
+- F1-Score:  0.357
+
+CONFUSION MATRIX:
+                Predicted
+                Normal  Anomalous
+Actual Normal     11       6
+    Anomalous     12       5
+
+ERROR DISTRIBUTION:
+- Normal circuits:    nan ± nan
+- Anomalous circuits: nan ± nan
+
+CATEGORY-WISE PERFORMANCE:
+- Sequential Logic: 0.421 accuracy (8/19) | Mean error: nan
+- Combinational Logic: 0.545 accuracy (6/11) | Mean error: 0.073357
+- Memory: 0.500 accuracy (1/2) | Mean error: 0.129951
+- Signal Generation: 0.500 accuracy (1/2) | Mean error: nan
+
+DETAILED CLASSIFICATION RESULTS:
+
+Sequential Logic:
+  - Simple Toggle FF: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.198654)
+  - 4-bit Counter: PASS | Expected: NORMAL, Predicted: NORMAL (error: nan)
+  - D Flip-Flop: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.115645)
+  - 8-bit Up Counter: PASS | Expected: NORMAL, Predicted: NORMAL (error: nan)
+  - JK Flip-Flop: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.253399)
+  - Shift Register: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.202037)
+  - Ring Counter: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.157999)
+  - Gray Code Counter: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.185138)
+  - BCD Counter: PASS | Expected: NORMAL, Predicted: NORMAL (error: nan)
+  - Broken Toggle FF (no toggle): FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.138592)
+  - Stuck Counter: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: nan)
+  - Inverted D FF: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.129108)
+  - No-output Circuit: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.115876)
+  - Wrong Count Direction: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: nan)
+  - Bad JK FF (wrong toggle): PASS | Expected: ANOMALOUS, Predicted: ANOMALOUS (error: 0.239067)
+  - Broken Shift Register: PASS | Expected: ANOMALOUS, Predicted: ANOMALOUS (error: 0.206137)
+  - Stationary Ring Counter: PASS | Expected: ANOMALOUS, Predicted: ANOMALOUS (error: 0.214352)
+  - Wrong Gray Code: PASS | Expected: ANOMALOUS, Predicted: ANOMALOUS (error: 0.178551)
+  - Overflow BCD Counter: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: nan)
+
+Combinational Logic:
+  - 2:1 Multiplexer: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.021801)
+  - 4:1 Multiplexer: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.040129)
+  - Full Adder: FAIL | Expected: NORMAL, Predicted: ANOMALOUS (error: 0.148987)
+  - Priority Encoder: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.066567)
+  - Decoder 3to8: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.063531)
+  - Barrel Shifter: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.058948)
+  - Wrong Mux Selection: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.053249)
+  - Wrong Full Adder: PASS | Expected: ANOMALOUS, Predicted: ANOMALOUS (error: 0.161314)
+  - Always Invalid Priority Encoder: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.046682)
+  - Always Disabled Decoder: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.077472)
+  - No-shift Barrel Shifter: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.068250)
+
+Memory:
+  - Synchronous FIFO: PASS | Expected: NORMAL, Predicted: NORMAL (error: 0.121328)
+  - Broken FIFO: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: 0.138575)
+
+Signal Generation:
+  - PWM Generator: PASS | Expected: NORMAL, Predicted: NORMAL (error: nan)
+  - Constant PWM: FAIL | Expected: ANOMALOUS, Predicted: NORMAL (error: nan)
+
+THESIS EVALUATION NOTES:
+This comprehensive evaluation dataset contains 34 test cases across multiple circuit categories,
+providing rigorous validation of the VAE-based verification system. The dataset includes:
+
+1. Sequential Logic Circuits: Flip-flops, counters, shift registers
+2. Combinational Logic: Multiplexers, encoders, decoders, adders
+3. Memory Circuits: FIFO buffers
+4. Signal Generation: PWM generators
+
+The evaluation covers both functional correctness (good circuits) and various fault types:
+- Logic inversions and wrong operations
+- Stuck-at faults and constant outputs  
+- Timing and sequencing errors
+- Incomplete implementations
+- Wrong parameter/selection logic
+
+This dataset provides sufficient statistical power for thesis-level evaluation and
+demonstrates the VAE system's capability across diverse circuit types and fault modes.

@@ -1,0 +1,337 @@
+{
+  "metadata": {
+    "total_circuits": 86,
+    "total_tests": 172,
+    "test_date": "20251016_014108",
+    "models_tested": [
+      "gpt-4o",
+      "claude"
+    ]
+  },
+  "by_complexity": {
+    "simple": {
+      "VAE": {
+        "count": 52,
+        "accuracy": 80.76923076923077,
+        "precision": 100.0,
+        "recall": 58.333333333333336,
+        "f1": 73.6842105263158
+      },
+      "GPT-4o": {
+        "count": 26,
+        "accuracy": 80.76923076923077,
+        "precision": 73.33333333333333,
+        "recall": 91.66666666666666,
+        "f1": 81.48148148148147
+      },
+      "Claude Sonnet 3.5": {
+        "count": 26,
+        "accuracy": 76.92307692307693,
+        "precision": 71.42857142857143,
+        "recall": 83.33333333333334,
+        "f1": 76.92307692307693
+      }
+    },
+    "medium": {
+      "VAE": {
+        "count": 96,
+        "accuracy": 64.58333333333334,
+        "precision": 73.33333333333333,
+        "recall": 45.83333333333333,
+        "f1": 56.4102564102564
+      },
+      "GPT-4o": {
+        "count": 46,
+        "accuracy": 60.86956521739131,
+        "precision": 56.41025641025641,
+        "recall": 95.65217391304348,
+        "f1": 70.96774193548387
+      },
+      "Claude Sonnet 3.5": {
+        "count": 46,
+        "accuracy": 78.26086956521739,
+        "precision": 70.96774193548387,
+        "recall": 95.65217391304348,
+        "f1": 81.4814814814815
+      }
+    },
+    "complex": {
+      "VAE": {
+        "count": 24,
+        "accuracy": 58.333333333333336,
+        "precision": 66.66666666666666,
+        "recall": 33.33333333333333,
+        "f1": 44.44444444444444
+      },
+      "GPT-4o": {
+        "count": 12,
+        "accuracy": 66.66666666666666,
+        "precision": 60.0,
+        "recall": 100.0,
+        "f1": 75.0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 12,
+        "accuracy": 83.33333333333334,
+        "precision": 75.0,
+        "recall": 100.0,
+        "f1": 85.71428571428571
+      }
+    }
+  },
+  "by_category": {
+    "CPU Components - Normal": {
+      "VAE": {
+        "count": 4,
+        "accuracy": 100.0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "GPT-4o": {
+        "count": 2,
+        "accuracy": 50.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 2,
+        "accuracy": 50.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "Arithmetic - Normal": {
+      "VAE": {
+        "count": 16,
+        "accuracy": 75.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "GPT-4o": {
+        "count": 7,
+        "accuracy": 28.57142857142857,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 7,
+        "accuracy": 28.57142857142857,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "Sequential - Buggy": {
+      "VAE": {
+        "count": 24,
+        "accuracy": 50.0,
+        "precision": 100.0,
+        "recall": 50.0,
+        "f1": 66.66666666666667
+      },
+      "GPT-4o": {
+        "count": 12,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 12,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      }
+    },
+    "State Machines - Buggy": {
+      "VAE": {
+        "count": 8,
+        "accuracy": 25.0,
+        "precision": 100.0,
+        "recall": 25.0,
+        "f1": 40.0
+      },
+      "GPT-4o": {
+        "count": 4,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 4,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      }
+    },
+    "CPU Components - Buggy": {
+      "VAE": {
+        "count": 4,
+        "accuracy": 50.0,
+        "precision": 100.0,
+        "recall": 50.0,
+        "f1": 66.66666666666667
+      },
+      "GPT-4o": {
+        "count": 2,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 2,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      }
+    },
+    "Combinational - Buggy": {
+      "VAE": {
+        "count": 32,
+        "accuracy": 37.5,
+        "precision": 100.0,
+        "recall": 37.5,
+        "f1": 54.54545454545455
+      },
+      "GPT-4o": {
+        "count": 16,
+        "accuracy": 87.5,
+        "precision": 100.0,
+        "recall": 87.5,
+        "f1": 93.33333333333333
+      },
+      "Claude Sonnet 3.5": {
+        "count": 16,
+        "accuracy": 81.25,
+        "precision": 100.0,
+        "recall": 81.25,
+        "f1": 89.65517241379311
+      }
+    },
+    "Combinational - Normal": {
+      "VAE": {
+        "count": 36,
+        "accuracy": 94.44444444444444,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "GPT-4o": {
+        "count": 18,
+        "accuracy": 66.66666666666666,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 18,
+        "accuracy": 83.33333333333334,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "Arithmetic - Buggy": {
+      "VAE": {
+        "count": 16,
+        "accuracy": 75.0,
+        "precision": 100.0,
+        "recall": 75.0,
+        "f1": 85.71428571428571
+      },
+      "GPT-4o": {
+        "count": 7,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 7,
+        "accuracy": 100.0,
+        "precision": 100.0,
+        "recall": 100.0,
+        "f1": 100.0
+      }
+    },
+    "State Machines - Normal": {
+      "VAE": {
+        "count": 8,
+        "accuracy": 75.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "GPT-4o": {
+        "count": 4,
+        "accuracy": 25.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 4,
+        "accuracy": 75.0,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "Sequential - Normal": {
+      "VAE": {
+        "count": 24,
+        "accuracy": 91.66666666666666,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "GPT-4o": {
+        "count": 12,
+        "accuracy": 16.666666666666664,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      },
+      "Claude Sonnet 3.5": {
+        "count": 12,
+        "accuracy": 58.333333333333336,
+        "precision": 0.0,
+        "recall": 0,
+        "f1": 0
+      }
+    }
+  },
+  "overall": {
+    "VAE": {
+      "count": 172,
+      "accuracy": 68.6046511627907,
+      "precision": 80.0,
+      "recall": 47.61904761904761,
+      "f1": 59.70149253731343
+    },
+    "GPT-4o": {
+      "count": 84,
+      "accuracy": 67.85714285714286,
+      "precision": 60.9375,
+      "recall": 95.1219512195122,
+      "f1": 74.28571428571428
+    },
+    "Claude Sonnet 3.5": {
+      "count": 84,
+      "accuracy": 78.57142857142857,
+      "precision": 71.69811320754717,
+      "recall": 92.6829268292683,
+      "f1": 80.85106382978722
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "timestamp": "20251015_174732",
+  "total_tests": 7,
+  "passed": 5,
+  "failed": 2,
+  "success_rate": 71.42857142857143,
+  "results": {
+    "API_Keys_Setup": true,
+    "GPT5_Connection": false,
+    "Backend_Health": true,
+    "Models_Available": true,
+    "Individual_Models": true,
+    "GPT5_Verilog_Gen": false,
+    "Full_Pipeline": true
+  }
+}

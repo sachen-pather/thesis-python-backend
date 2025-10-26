@@ -1,0 +1,46 @@
+# Vending Machine Controller
+
+**Category**: State Machine  
+**Complexity**: complex
+
+## Original Prompt
+
+```
+Design a vending machine FSM that accepts 5¢ and 10¢ coins until 15¢ is reached, then dispenses item and returns change. Inputs: clk, rst, nickel, dime. Outputs: dispense, change[1:0] (in 5¢ units). Include testbench with multiple purchase scenarios.
+```
+
+## Generated Mermaid Diagram
+
+```mermaid
+graph TD
+    CLK[clk] --> FSM[[State Register]]
+    RST[rst] --> FSM
+    NICKEL[nickel] --> FSM
+    DIME[dime] --> FSM
+    
+    FSM --> DECODE(State Decoder)
+    DECODE --> DISP[dispense]
+    DECODE --> CHG[change[1:0]]
+    
+    TB[Testbench] -.-> CLK
+    TB -.-> RST
+    TB -.-> NICKEL
+    TB -.-> DIME
+    TB -.-> |verify|DISP
+    TB -.-> |verify|CHG
+    
+    subgraph States
+        S0[0¢]
+        S5[5¢]
+        S10[10¢]
+        S15[15¢ - Dispense]
+    end
+    
+    S0 -->|nickel| S5
+    S0 -->|dime| S10
+    S5 -->|nickel| S10
+    S5 -->|dime| S15
+    S10 -->|nickel| S15
+    S10 -->|dime| S15
+    S15 --> S0
+```

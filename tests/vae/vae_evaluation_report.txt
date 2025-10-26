@@ -1,0 +1,24 @@
+
+VAE Verification System Evaluation Report
+Generated: 2025-10-13 22:33:41
+
+PERFORMANCE SUMMARY:
+- Test Cases: 8
+- Accuracy: 50.0%
+- Precision: 0.000
+- Recall: 0.000
+- F1-Score: 0.000
+
+ERROR DISTRIBUTION:
+- Normal circuits: nan ± nan
+- Anomalous circuits: nan ± nan
+
+CLASSIFICATION BREAKDOWN:
+- Simple Toggle FF: PASS (error: 0.197115)
+- 4-bit Counter: PASS (error: nan)
+- D Flip-Flop: PASS (error: 0.137920)
+- 2:1 Multiplexer: PASS (error: 0.116532)
+- Broken Toggle FF (no toggle): FAIL (error: 0.117873)
+- Stuck Counter: FAIL (error: nan)
+- Inverted D FF: FAIL (error: 0.166453)
+- No-output Circuit: FAIL (error: 0.104321)

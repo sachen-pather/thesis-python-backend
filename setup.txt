@@ -1,0 +1,199 @@
+# 🚀 Quick Start Guide - Verilog Generation System
+
+## 📋 Prerequisites
+- Python 3.11+ with conda/miniconda
+- Node.js and npm
+- Icarus Verilog (iverilog)
+- Groq API key in `.env` file
+
+## ⚡ Quick Start (5 minutes)
+
+### 1. Start Backend
+```bash
+# Navigate to project directory
+cd /mnt/c/Users/sache/thesis-python-backend
+
+# Activate environment (should show (verilog_system_env) in prompt)
+source verilog_system_env/bin/activate
+
+# Start FastAPI backend
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+**✅ Backend Success:** You should see "Uvicorn running on http://0.0.0.0:8000"
+
+### 2. Start Frontend (New Terminal)
+```bash
+# Navigate to frontend directory
+cd /mnt/c/Users/sache/thesis-python-backend/frontend
+
+# Start React frontend
+npm run dev
+```
+
+**✅ Frontend Success:** You should see "Local: http://localhost:3000/"
+
+### 3. Access Application
+- **Main App:** http://localhost:3000
+- **API Docs:** http://localhost:8000/docs
+- **Health Check:** http://localhost:8000/api/health
+
+## 🎯 How to Use the Application
+
+### Step 1: Design Input
+1. Choose **Natural Language** or **Direct Mermaid**
+2. Enter your hardware description (e.g., "4-bit counter with clock and reset")
+3. Click **"Generate Architecture Diagram"**
+
+### Step 2: Verify Architecture
+1. Review the generated Mermaid diagram
+2. Edit the Mermaid code if needed
+3. Click **"Approve & Generate Verilog"**
+
+### Step 3: Generate & Simulate
+1. Review the generated Verilog code
+2. Click **"Run Simulation"**
+3. View simulation output and waveforms
+
+### Step 4: Analyze Results
+1. Click **"Analyze with AI"** for detailed analysis
+2. View waveform visualization
+3. Export results if needed
+
+## 🔧 Troubleshooting
+
+### Backend Won't Start
+```bash
+# Check if environment is activated
+conda env list
+conda activate verilog_system_env
+
+# Check if packages are installed
+pip list | grep -E "(langchain|fastapi)"
+
+# Install missing packages
+pip install -r requirements.txt
+```
+
+### Frontend Won't Start
+```bash
+# Install dependencies
+npm install
+
+# Check if backend is running
+curl http://localhost:8000/api/health
+```
+
+### Mermaid Diagrams Not Rendering
+- Clear browser cache
+- Check browser console for errors
+- Diagrams may show as text initially - this is normal
+
+### Waveform Issues
+```bash
+# Install VCD libraries
+pip install vcd pyvcd
+
+# Check if iverilog is installed
+iverilog -V
+```
+
+## 📁 Project Structure
+```
+thesis-python-backend/
+├── main.py                 # FastAPI backend
+├── services/               # Business logic
+├── models/                 # API models
+├── .env                    # API keys (Groq)
+├── requirements.txt        # Python dependencies
+└── frontend/               # React frontend
+    ├── src/App.jsx         # Main React app
+    ├── package.json        # Node dependencies
+    └── vite.config.js      # Vite configuration
+```
+
+## 🔑 Environment Variables
+
+**Backend (.env):**
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+**Frontend (.env):**
+```env
+VITE_API_URL=http://localhost:8000
+```
+
+## 🧪 Testing Commands
+
+**Test Backend API:**
+```bash
+python test_backend.py
+```
+
+**Test Individual Components:**
+```bash
+# Test health
+curl http://localhost:8000/api/health
+
+# Test examples
+curl http://localhost:8000/api/design/examples
+```
+
+## 📊 Example Designs to Try
+
+1. **4-bit Counter:**
+   "Create a 4-bit binary counter with clock, reset, and enable signals"
+
+2. **4-to-1 Multiplexer:**
+   "Design a 4-to-1 multiplexer with 4 data inputs, 2 select lines, and 1 output"
+
+3. **8-bit Shift Register:**
+   "Create an 8-bit serial-in parallel-out shift register with clock and reset"
+
+4. **Simple ALU:**
+   "Design a simple 4-bit ALU with ADD, SUB, AND, OR operations"
+
+## 🆘 Common Issues & Solutions
+
+| Issue | Solution |
+|-------|----------|
+| "Module not found" | `conda activate verilog_system_env` |
+| Backend won't start | Check if port 8000 is free: `lsof -i :8000` |
+| Frontend 404 errors | Ensure backend is running first |
+| Blank Mermaid diagrams | Wait a few seconds for rendering |
+| No waveform data | Install VCD: `pip install vcd pyvcd` |
+| CORS errors | Check VITE_API_URL in frontend/.env |
+
+## 💡 Pro Tips
+
+- **Keep both terminals open** - one for backend, one for frontend
+- **Backend must start first** before frontend
+- **Check browser console** for frontend errors
+- **Use examples** to test functionality quickly
+- **API docs** at http://localhost:8000/docs show all available endpoints
+
+## 🎉 Success Indicators
+
+**Backend Ready:**
+```
+INFO:     Uvicorn running on http://0.0.0.0:8000
+INFO:     Application startup complete.
+```
+
+**Frontend Ready:**
+```
+➜  Local:   http://localhost:3000/
+➜  Network: http://172.x.x.x:3000/
+```
+
+**Full System Working:**
+- ✅ Generate Mermaid diagrams
+- ✅ Generate Verilog code  
+- ✅ Run simulations
+- ✅ View waveforms
+- ✅ AI analysis working
+
+---
+
+**🚀 You're ready to design hardware with AI!**

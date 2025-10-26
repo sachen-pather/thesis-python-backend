@@ -1,0 +1,238 @@
+{
+  "aggregation_date": "2025-10-26T13:34:42.057698",
+  "aggregated_statistics": {
+    "total_files": 6,
+    "total_circuits_tested": 180,
+    "models_tested": [
+      "claude"
+    ],
+    "test_dates": [
+      "2025-10-26T06:21:17.580674",
+      "2025-10-26T07:04:05.568419",
+      "2025-10-26T07:49:29.313208",
+      "2025-10-26T08:31:35.888000",
+      "2025-10-26T12:32:28.321017",
+      "2025-10-26T13:15:40.714461"
+    ],
+    "by_model": {
+      "claude": {
+        "total_circuits": 180,
+        "prompt_only": {
+          "correct": 129,
+          "total": 180,
+          "success_rate": 71.66666666666667
+        },
+        "mermaid_only": {
+          "correct": 113,
+          "total": 180,
+          "success_rate": 62.77777777777778
+        },
+        "combined": {
+          "correct": 114,
+          "total": 180,
+          "success_rate": 63.33333333333333
+        },
+        "test_count": 6
+      }
+    },
+    "overall": {
+      "prompt_only": {
+        "correct": 129,
+        "total": 180,
+        "success_rate": 71.66666666666667
+      },
+      "mermaid_only": {
+        "correct": 113,
+        "total": 180,
+        "success_rate": 62.77777777777778
+      },
+      "combined": {
+        "correct": 114,
+        "total": 180,
+        "success_rate": 63.33333333333333
+      }
+    },
+    "by_category": {
+      "Combinational": {
+        "prompt_only": {
+          "correct": 50,
+          "total": 60,
+          "success_rate": 83.33333333333334
+        },
+        "mermaid_only": {
+          "correct": 33,
+          "total": 60,
+          "success_rate": 55.00000000000001
+        },
+        "combined": {
+          "correct": 36,
+          "total": 60,
+          "success_rate": 60.0
+        }
+      },
+      "Sequential": {
+        "prompt_only": {
+          "correct": 32,
+          "total": 36,
+          "success_rate": 88.88888888888889
+        },
+        "mermaid_only": {
+          "correct": 29,
+          "total": 36,
+          "success_rate": 80.55555555555556
+        },
+        "combined": {
+          "correct": 29,
+          "total": 36,
+          "success_rate": 80.55555555555556
+        }
+      },
+      "Arithmetic": {
+        "prompt_only": {
+          "correct": 7,
+          "total": 12,
+          "success_rate": 58.333333333333336
+        },
+        "mermaid_only": {
+          "correct": 5,
+          "total": 12,
+          "success_rate": 41.66666666666667
+        },
+        "combined": {
+          "correct": 6,
+          "total": 12,
+          "success_rate": 50.0
+        }
+      },
+      "State Machine": {
+        "prompt_only": {
+          "correct": 23,
+          "total": 30,
+          "success_rate": 76.66666666666667
+        },
+        "mermaid_only": {
+          "correct": 24,
+          "total": 30,
+          "success_rate": 80.0
+        },
+        "combined": {
+          "correct": 23,
+          "total": 30,
+          "success_rate": 76.66666666666667
+        }
+      },
+      "CPU Component": {
+        "prompt_only": {
+          "correct": 4,
+          "total": 12,
+          "success_rate": 33.33333333333333
+        },
+        "mermaid_only": {
+          "correct": 2,
+          "total": 12,
+          "success_rate": 16.666666666666664
+        },
+        "combined": {
+          "correct": 4,
+          "total": 12,
+          "success_rate": 33.33333333333333
+        }
+      },
+      "Advanced Sequential": {
+        "prompt_only": {
+          "correct": 6,
+          "total": 12,
+          "success_rate": 50.0
+        },
+        "mermaid_only": {
+          "correct": 7,
+          "total": 12,
+          "success_rate": 58.333333333333336
+        },
+        "combined": {
+          "correct": 5,
+          "total": 12,
+          "success_rate": 41.66666666666667
+        }
+      },
+      "Protocol": {
+        "prompt_only": {
+          "correct": 7,
+          "total": 18,
+          "success_rate": 38.88888888888889
+        },
+        "mermaid_only": {
+          "correct": 13,
+          "total": 18,
+          "success_rate": 72.22222222222221
+        },
+        "combined": {
+          "correct": 11,
+          "total": 18,
+          "success_rate": 61.111111111111114
+        }
+      }
+    },
+    "by_complexity": {
+      "simple": {
+        "prompt_only": {
+          "correct": 51,
+          "total": 60,
+          "success_rate": 85.0
+        },
+        "mermaid_only": {
+          "correct": 40,
+          "total": 60,
+          "success_rate": 66.66666666666666
+        },
+        "combined": {
+          "correct": 37,
+          "total": 60,
+          "success_rate": 61.66666666666667
+        }
+      },
+      "medium": {
+        "prompt_only": {
+          "correct": 49,
+          "total": 60,
+          "success_rate": 81.66666666666667
+        },
+        "mermaid_only": {
+          "correct": 37,
+          "total": 60,
+          "success_rate": 61.66666666666667
+        },
+        "combined": {
+          "correct": 45,
+          "total": 60,
+          "success_rate": 75.0
+        }
+      },
+      "complex": {
+        "prompt_only": {
+          "correct": 29,
+          "total": 60,
+          "success_rate": 48.333333333333336
+        },
+        "mermaid_only": {
+          "correct": 36,
+          "total": 60,
+          "success_rate": 60.0
+        },
+        "combined": {
+          "correct": 32,
+          "total": 60,
+          "success_rate": 53.333333333333336
+        }
+      }
+    }
+  },
+  "source_files": [
+    "multimodal_claude_results_20251026_062117.json",
+    "multimodal_claude_results_20251026_070405.json",
+    "multimodal_claude_results_20251026_074929.json",
+    "multimodal_claude_results_20251026_083135.json",
+    "multimodal_claude_results_20251026_123228.json",
+    "multimodal_claude_results_20251026_131540.json"
+  ]
+}

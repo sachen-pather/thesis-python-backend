@@ -1,0 +1,31 @@
+name,category,expected,predicted,correct,confidence,message
+NAND Gate (2-input),Logic - NAND/NOR,False,False,True,0.4,NORMAL - behavior appears normal
+Broken NAND (acts like AND),Logic - NAND/NOR,True,True,True,0.8,ANOMALOUS - implements and instead of nand
+NOR Gate (2-input),Logic - NAND/NOR,False,False,True,0.4,NORMAL - behavior appears normal
+Wrong NOR (inverted inputs),Logic - NAND/NOR,True,True,True,0.8,ANOMALOUS - implements nand instead of nor
+3-Input AND Gate,Logic - Multi-input,False,False,True,0.4,NORMAL - behavior appears normal
+Broken 3-Input AND (2-input only),Logic - Multi-input,True,False,False,0.4,NORMAL - behavior appears normal
+AOI (AND-OR-INVERT),Logic - Mixed,False,False,True,0.4,NORMAL - behavior appears normal
+Wrong AOI (missing inversion),Logic - Mixed,True,False,False,0.4,NORMAL - behavior appears normal
+4-bit Shift Register,Sequential - Shift Register,False,False,True,0.3,"NORMAL - sequential behavior appears normal, VAE: 0.140"
+Broken Shift Register (no shift),Sequential - Shift Register,True,True,True,0.9,ANOMALOUS - output 'data_out' stuck at 0
+Simple 2-State FSM,Sequential - State Machine,False,False,True,0.3,"NORMAL - sequential behavior appears normal, VAE: 0.134"
+Stuck State Machine,Sequential - State Machine,True,True,True,0.9,ANOMALOUS - output 'state' stuck at 0
+Up-Down Counter,Sequential - Counter,False,False,True,0.3,"NORMAL - sequential behavior appears normal, VAE: 0.169"
+Wrong Up-Down (always up),Sequential - Counter,True,False,False,0.3,"NORMAL - sequential behavior appears normal, VAE: 0.169"
+Full Adder,Arithmetic - Adder,False,False,True,0.4,NORMAL - arithmetic behavior appears normal
+Broken Full Adder (wrong carry),Arithmetic - Adder,True,False,False,0.4,NORMAL - arithmetic behavior appears normal
+1-bit Subtractor,Arithmetic - Subtractor,False,False,True,0.4,NORMAL - arithmetic behavior appears normal
+Wrong Subtractor (acts like adder),Arithmetic - Subtractor,True,False,False,0.4,NORMAL - arithmetic behavior appears normal
+2-bit Comparator,Arithmetic - Comparator,False,False,True,0.4,NORMAL - arithmetic behavior appears normal
+Broken Comparator (inverted logic),Arithmetic - Comparator,True,False,False,0.4,NORMAL - behavior appears normal
+Simple Buffer,Edge Case - Simple,False,True,False,1.0,ANOMALOUS: Compilation/simulation failed - 
+Broken Buffer (always 1),Edge Case - Simple,True,True,True,0.9,ANOMALOUS - output 'outp' stuck at 1
+AND with Unusual Names,Edge Case - Naming,False,False,True,0.4,NORMAL - behavior appears normal
+Broken Logic with Unusual Names,Edge Case - Naming,True,False,False,0.4,NORMAL - behavior appears normal
+Behavioral AND,Edge Case - Coding Style,False,False,True,0.4,NORMAL - behavior appears normal
+Broken Behavioral AND,Edge Case - Coding Style,True,True,True,0.9,ANOMALOUS - output 'res' stuck at x
+4-bit Priority Encoder,Complex - Encoder,False,False,True,0.4,NORMAL - behavior appears normal
+Wrong Priority Encoder,Complex - Encoder,True,False,False,0.4,NORMAL - behavior appears normal
+4:1 Multiplexer,Complex - Multiplexer,False,False,True,0.4,NORMAL - behavior appears normal
+Broken 4:1 Mux (wrong mapping),Complex - Multiplexer,True,False,False,0.4,NORMAL - behavior appears normal

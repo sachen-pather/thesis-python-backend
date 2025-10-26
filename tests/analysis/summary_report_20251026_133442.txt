@@ -1,0 +1,269 @@
+================================================================================
+MULTIMODAL HDL VERIFICATION - DETAILED SUMMARY REPORT
+================================================================================
+
+Generated: 2025-10-26 13:34:42
+Files Analyzed: 6
+Total Circuits Tested: 180
+Models: claude
+
+================================================================================
+
+OVERALL CORRECTNESS
+--------------------------------------------------------------------------------
+
+Prompt Only:
+  Correct: 129/180 circuits
+  Success Rate: 71.67%
+  Failed: 51 circuits
+
+Mermaid Only:
+  Correct: 113/180 circuits
+  Success Rate: 62.78%
+  Failed: 67 circuits
+
+Combined:
+  Correct: 114/180 circuits
+  Success Rate: 63.33%
+  Failed: 66 circuits
+
+Best Performing Approach: Prompt Only
+  (71.67%)
+
+================================================================================
+
+CORRECTNESS BY CATEGORY
+--------------------------------------------------------------------------------
+
+ADVANCED SEQUENTIAL:
+
+  Prompt Only:
+    Correct: 6/12
+    Success Rate: 50.00%
+    Failed: 6
+
+  Mermaid Only:
+    Correct: 7/12
+    Success Rate: 58.33%
+    Failed: 5
+
+  Combined:
+    Correct: 5/12
+    Success Rate: 41.67%
+    Failed: 7
+
+ARITHMETIC:
+
+  Prompt Only:
+    Correct: 7/12
+    Success Rate: 58.33%
+    Failed: 5
+
+  Mermaid Only:
+    Correct: 5/12
+    Success Rate: 41.67%
+    Failed: 7
+
+  Combined:
+    Correct: 6/12
+    Success Rate: 50.00%
+    Failed: 6
+
+CPU COMPONENT:
+
+  Prompt Only:
+    Correct: 4/12
+    Success Rate: 33.33%
+    Failed: 8
+
+  Mermaid Only:
+    Correct: 2/12
+    Success Rate: 16.67%
+    Failed: 10
+
+  Combined:
+    Correct: 4/12
+    Success Rate: 33.33%
+    Failed: 8
+
+COMBINATIONAL:
+
+  Prompt Only:
+    Correct: 50/60
+    Success Rate: 83.33%
+    Failed: 10
+
+  Mermaid Only:
+    Correct: 33/60
+    Success Rate: 55.00%
+    Failed: 27
+
+  Combined:
+    Correct: 36/60
+    Success Rate: 60.00%
+    Failed: 24
+
+PROTOCOL:
+
+  Prompt Only:
+    Correct: 7/18
+    Success Rate: 38.89%
+    Failed: 11
+
+  Mermaid Only:
+    Correct: 13/18
+    Success Rate: 72.22%
+    Failed: 5
+
+  Combined:
+    Correct: 11/18
+    Success Rate: 61.11%
+    Failed: 7
+
+SEQUENTIAL:
+
+  Prompt Only:
+    Correct: 32/36
+    Success Rate: 88.89%
+    Failed: 4
+
+  Mermaid Only:
+    Correct: 29/36
+    Success Rate: 80.56%
+    Failed: 7
+
+  Combined:
+    Correct: 29/36
+    Success Rate: 80.56%
+    Failed: 7
+
+STATE MACHINE:
+
+  Prompt Only:
+    Correct: 23/30
+    Success Rate: 76.67%
+    Failed: 7
+
+  Mermaid Only:
+    Correct: 24/30
+    Success Rate: 80.00%
+    Failed: 6
+
+  Combined:
+    Correct: 23/30
+    Success Rate: 76.67%
+    Failed: 7
+
+================================================================================
+
+CORRECTNESS BY COMPLEXITY
+--------------------------------------------------------------------------------
+
+COMPLEX:
+
+  Prompt Only:
+    Correct: 29/60
+    Success Rate: 48.33%
+    Failed: 31
+
+  Mermaid Only:
+    Correct: 36/60
+    Success Rate: 60.00%
+    Failed: 24
+
+  Combined:
+    Correct: 32/60
+    Success Rate: 53.33%
+    Failed: 28
+
+MEDIUM:
+
+  Prompt Only:
+    Correct: 49/60
+    Success Rate: 81.67%
+    Failed: 11
+
+  Mermaid Only:
+    Correct: 37/60
+    Success Rate: 61.67%
+    Failed: 23
+
+  Combined:
+    Correct: 45/60
+    Success Rate: 75.00%
+    Failed: 15
+
+SIMPLE:
+
+  Prompt Only:
+    Correct: 51/60
+    Success Rate: 85.00%
+    Failed: 9
+
+  Mermaid Only:
+    Correct: 40/60
+    Success Rate: 66.67%
+    Failed: 20
+
+  Combined:
+    Correct: 37/60
+    Success Rate: 61.67%
+    Failed: 23
+
+================================================================================
+
+LINES OF CODE ANALYSIS
+--------------------------------------------------------------------------------
+
+Average Lines of Code per Approach:
+
+  Prompt Only:
+    Average: 80.9 lines
+    Min: 34 lines
+    Max: 170 lines
+    Total samples: 160
+
+  Mermaid Only:
+    Average: 83.2 lines
+    Min: 41 lines
+    Max: 167 lines
+    Total samples: 149
+
+  Combined:
+    Average: 87.9 lines
+    Min: 41 lines
+    Max: 186 lines
+    Total samples: 149
+
+
+Average Lines of Code by Complexity:
+
+  Complex:
+    Prompt Only: 117.5 lines
+    Mermaid Only: 111.3 lines
+    Combined: 122.0 lines
+
+  Medium:
+    Prompt Only: 72.2 lines
+    Mermaid Only: 72.3 lines
+    Combined: 73.1 lines
+
+  Simple:
+    Prompt Only: 56.3 lines
+    Mermaid Only: 65.1 lines
+    Combined: 68.8 lines
+
+================================================================================
+
+KEY FINDINGS
+--------------------------------------------------------------------------------
+
+1. Best Overall Approach: Prompt Only (71.67%)
+
+2. Complexity Impact: -36.7% performance drop from simplest to most complex
+
+3. Best Category: Sequential (88.89%)
+
+================================================================================
+END OF REPORT
+================================================================================

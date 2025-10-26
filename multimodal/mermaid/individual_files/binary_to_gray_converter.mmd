@@ -1,0 +1,29 @@
+```mermaid
+graph LR
+    B0[binary[0]] --> CONV((Binary to Gray))
+    B1[binary[1]] --> CONV
+    B2[binary[2]] --> CONV
+    B3[binary[3]] --> CONV
+    CONV --> G0[gray[0]]
+    CONV --> G1[gray[1]]
+    CONV --> G2[gray[2]]
+    CONV --> G3[gray[3]]
+
+    TB[Testbench] --> B0
+    TB --> B1
+    TB --> B2
+    TB --> B3
+
+    G0 --> VER{Verify Conversion}
+    G1 --> VER
+    G2 --> VER
+    G3 --> VER
+    VER --> PASS[Test Results]
+
+    subgraph Conversion_Logic
+        XOR1[G3 = B3]
+        XOR2[G2 = B3 XOR B2]
+        XOR3[G1 = B2 XOR B1]
+        XOR4[G0 = B1 XOR B0]
+    end
+```

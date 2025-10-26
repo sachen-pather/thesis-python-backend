@@ -1,0 +1,55 @@
+{
+  "num_runs": 5,
+  "total_tests": 150,
+  "timestamp": "20251021_045055",
+  "overall_stats": {
+    "prompt_only_wins": 46,
+    "mermaid_only_wins": 11,
+    "combined_wins": 5,
+    "overall_winner": "Prompt Only"
+  },
+  "per_run_results": [
+    {
+      "run": 1,
+      "winner": "Prompt Only",
+      "prompt_only_rate": "60.0%",
+      "mermaid_only_rate": "70.0%",
+      "combined_rate": "63.3%"
+    },
+    {
+      "run": 2,
+      "winner": "Prompt Only",
+      "prompt_only_rate": "63.3%",
+      "mermaid_only_rate": "63.3%",
+      "combined_rate": "46.7%"
+    },
+    {
+      "run": 3,
+      "winner": "Prompt Only",
+      "prompt_only_rate": "63.3%",
+      "mermaid_only_rate": "50.0%",
+      "combined_rate": "63.3%"
+    },
+    {
+      "run": 4,
+      "winner": "Prompt Only",
+      "prompt_only_rate": "63.3%",
+      "mermaid_only_rate": "53.3%",
+      "combined_rate": "63.3%"
+    },
+    {
+      "run": 5,
+      "winner": "Prompt Only",
+      "prompt_only_rate": "63.3%",
+      "mermaid_only_rate": "46.7%",
+      "combined_rate": "50.0%"
+    }
+  ],
+  "consistency": {
+    "winner_distribution": {
+      "Prompt Only": 5
+    },
+    "most_consistent": "Prompt Only",
+    "consistency_rate": "100.0%"
+  }
+}

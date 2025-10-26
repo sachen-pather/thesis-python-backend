@@ -1,0 +1,33 @@
+```mermaid
+graph TD
+    CLK[clk] --> FSM[[State Register]]
+    RST[rst] --> FSM
+    EMG[emergency] --> FSM
+    
+    FSM --> COUNTER[[Cycle Counter]]
+    CLK --> COUNTER
+    RST --> COUNTER
+    
+    FSM --> DECODE(State Decoder)
+    COUNTER --> NEXT(Next State Logic)
+    FSM --> NEXT
+    EMG --> NEXT
+    
+    NEXT --> FSM
+    
+    DECODE --> NS["ns_light[1:0]"]
+    DECODE --> EW["ew_light[1:0]"]
+    
+    TB[Testbench] -.-> CLK
+    TB -.-> RST
+    TB -.-> EMG
+    TB -.-> |verify|NS
+    TB -.-> |verify|EW
+    
+    subgraph States
+    S1[NS_GREEN]
+    S2[NS_YELLOW]
+    S3[EW_GREEN]
+    S4[EW_YELLOW]
+    end
+```

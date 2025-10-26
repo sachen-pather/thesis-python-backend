@@ -1,0 +1,161 @@
+{
+  "metadata": {
+    "total_circuits": 15,
+    "extracted_date": "2025-10-23 21:06:32",
+    "source": "test_multimodal_mermaid.py",
+    "mermaid_model": "claude",
+    "mermaid_included": true
+  },
+  "circuits": [
+    {
+      "id": 1,
+      "name": "2-to-1 MUX",
+      "prompt": "Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.",
+      "category": "Combinational",
+      "complexity": "simple",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    A[Input A] --> MUX{2:1 MUX}\n    B[Input B] --> MUX\n    SEL[Select] --> MUX\n    MUX --> OUT[Output]\n    TB[[Testbench]]\n    TB --\"Test 1: sel=0,a=0,b=0\"--> MUX\n    TB --\"Test 2: sel=0,a=0,b=1\"--> MUX\n    TB --\"Test 3: sel=0,a=1,b=0\"--> MUX\n    TB --\"Test 4: sel=0,a=1,b=1\"--> MUX\n    TB --\"Test 5: sel=1,a=0,b=0\"--> MUX\n    TB --\"Test 6: sel=1,a=0,b=1\"--> MUX\n    TB --\"Test 7: sel=1,a=1,b=0\"--> MUX\n    TB --\"Test 8: sel=1,a=1,b=1\"--> MUX",
+      "mermaid_error": null
+    },
+    {
+      "id": 2,
+      "name": "D Flip-Flop",
+      "prompt": "Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.",
+      "category": "Sequential",
+      "complexity": "simple",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock Input] --> DFF[[D Flip-Flop]]\n    RST[Reset] --> DFF\n    D[Data Input] --> DFF\n    DFF --> Q[Q Output]\n    TB[Testbench] --> |Clock Gen|CLK\n    TB --> |Reset Stimulus|RST\n    TB --> |Test Vector|D\n    Q --> |Verify|TV{Timing Verify}\n    CLK --> |Clock Edge|TV\n    TV --> |Pass/Fail|RESULT[Test Results]\n    style DFF fill:#f9f,stroke:#333\n    style TV fill:#ffd,stroke:#333",
+      "mermaid_error": null
+    },
+    {
+      "id": 3,
+      "name": "4-bit Counter",
+      "prompt": "Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.",
+      "category": "Sequential",
+      "complexity": "simple",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> CNT((Counter Logic))\n    RST[Reset] --> CNT\n    EN[Enable] --> CNT\n    CNT --> REG[[4-bit Register]]\n    CLK --> REG\n    RST --> REG\n    REG --> OUT[Count[3:0]]\n    TCLK[TB Clock] --> TB((Testbench))\n    TRST[TB Reset] --> TB\n    TEN[TB Enable] --> TB\n    TB --> TMON{Monitor}\n    OUT --> TMON\n    TB --> EXP[[Expected Values]]\n    EXP --> TMON\n    TMON --> PASS[Test Pass/Fail]",
+      "mermaid_error": null
+    },
+    {
+      "id": 4,
+      "name": "Full Adder",
+      "prompt": "Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.",
+      "category": "Combinational",
+      "complexity": "simple",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    A[Input A] --> FA((Full Adder))\n    B[Input B] --> FA\n    CIN[Carry In] --> FA\n    FA --> SUM[Sum Output]\n    FA --> COUT[Carry Out]\n    subgraph TestBench\n        TB[Test Cases]\n        T0[A=0 B=0 CIN=0 SUM=0 COUT=0]\n        T1[A=0 B=0 CIN=1 SUM=1 COUT=0]\n        T2[A=0 B=1 CIN=0 SUM=1 COUT=0]\n        T3[A=0 B=1 CIN=1 SUM=0 COUT=1]\n        T4[A=1 B=0 CIN=0 SUM=1 COUT=0]\n        T5[A=1 B=0 CIN=1 SUM=0 COUT=1]\n        T6[A=1 B=1 CIN=0 SUM=0 COUT=1]\n        T7[A=1 B=1 CIN=1 SUM=1 COUT=1]\n        TB --> T0\n        TB --> T1\n        TB --> T2\n        TB --> T3\n        TB --> T4\n        TB --> T5\n        TB --> T6\n        TB --> T7\n    end",
+      "mermaid_error": null
+    },
+    {
+      "id": 5,
+      "name": "2-bit Comparator",
+      "prompt": "Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.",
+      "category": "Combinational",
+      "complexity": "simple",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    A[a1:0] --> COMP((2-bit Comparator))\n    B[b1:0] --> COMP\n    COMP --> EQ[eq]\n    COMP --> GT[gt]\n    COMP --> LT[lt]\n    TB[Testbench] --> |Test Vectors| A\n    TB --> |Test Vectors| B\n    EQ --> |Expected 1 when a=b| TB\n    GT --> |Expected 1 when a>b| TB\n    LT --> |Expected 1 when a<b| TB\n    CLK[Clock] --> TB\n    RST[Reset] --> TB\n    TB --> |Verify| RESULT{Test Results}",
+      "mermaid_error": null
+    },
+    {
+      "id": 6,
+      "name": "4-bit ALU",
+      "prompt": "Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.",
+      "category": "Arithmetic",
+      "complexity": "medium",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    A[a[3:0]] --> ALU((4-bit ALU))\n    B[b[3:0]] --> ALU\n    OP[op[1:0]] --> CTRL((Control Decoder))\n    CTRL --> ALU\n\n    ALU --> RES[result[3:0]]\n    ALU --> ZERO[zero]\n\n    TB1[Testbench Inputs] --> |a=4'b1010| TEST((Test Vectors))\n    TB2[Testbench Inputs] --> |b=4'b0011| TEST\n    TB3[Testbench Inputs] --> |op=2'b00| TEST\n    TEST --> |Stimulus| A\n    TEST --> |Stimulus| B\n    TEST --> |Stimulus| OP\n    RES --> CMP{Compare}\n    ZERO --> CMP\n    CMP --> PASS[Test Pass/Fail]\n\n    style ALU fill:#f9f,stroke:#333\n    style CTRL fill:#bbf,stroke:#333\n    style TEST fill:#bfb,stroke:#333\n    style CMP fill:#fbb,stroke:#333",
+      "mermaid_error": null
+    },
+    {
+      "id": 7,
+      "name": "8:1 Multiplexer",
+      "prompt": "Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.",
+      "category": "Combinational",
+      "complexity": "medium",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    D0[data[0]] --> MUX{8:1 MUX}\n    D1[data[1]] --> MUX\n    D2[data[2]] --> MUX\n    D3[data[3]] --> MUX\n    D4[data[4]] --> MUX\n    D5[data[5]] --> MUX\n    D6[data[6]] --> MUX\n    D7[data[7]] --> MUX\n    S0[sel[0]] --> MUX\n    S1[sel[1]] --> MUX\n    S2[sel[2]] --> MUX\n    MUX --> OUT[out]\n    TB[[Testbench]]\n    TB --> D0\n    TB --> D1\n    TB --> D2\n    TB --> D3\n    TB --> D4\n    TB --> D5\n    TB --> D6\n    TB --> D7\n    TB --> S0\n    TB --> S1\n    TB --> S2\n    OUT --> TB",
+      "mermaid_error": null
+    },
+    {
+      "id": 8,
+      "name": "Sequence Detector",
+      "prompt": "Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.",
+      "category": "State Machine",
+      "complexity": "medium",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> FSM((FSM Core))\n    RST[Reset] --> FSM\n    SI[Serial Input] --> FSM\n    FSM --> DET[Detector Output]\n    \n    TB1[[Testbench Sequence 10110111011]] --> SI\n    \n    FSM -->|S0| S0((Idle))\n    FSM -->|S1| S1((Got 1))\n    FSM -->|S2| S2((Got 10))\n    FSM -->|S3| S3((Got 101))\n    FSM -->|S4| S4((Got 1011))\n    \n    S0 -->|1| S1\n    S0 -->|0| S0\n    S1 -->|0| S2\n    S1 -->|1| S1\n    S2 -->|1| S3\n    S2 -->|0| S0\n    S3 -->|1| S4\n    S3 -->|0| S0\n    S4 -->|1| S1\n    S4 -->|0| S2",
+      "mermaid_error": null
+    },
+    {
+      "id": 9,
+      "name": "4-bit Shift Register",
+      "prompt": "Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.",
+      "category": "Sequential",
+      "complexity": "medium",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> REG[[4-bit Register]]\n    RST[Reset] --> REG\n    LOAD[Load] --> MUX\n    PIN0[Pin0] --> REG\n    PIN1[Pin1] --> REG\n    PIN2[Pin2] --> REG\n    PIN3[Pin3] --> REG\n    REG --> MUX{2:1 MUX}\n    REG --> REG1[[Bit 2]]\n    REG --> REG2[[Bit 1]]\n    REG --> REG3[[Bit 0]]\n    MUX --> SOUT[Serial Out]\n    CLK --> REG1\n    CLK --> REG2\n    CLK --> REG3\n    RST --> REG1\n    RST --> REG2\n    RST --> REG3\n    REG1 --> MUX1{2:1 MUX}\n    REG2 --> MUX2{2:1 MUX}\n    REG3 --> MUX3{2:1 MUX}\n    MUX1 --> REG1\n    MUX2 --> REG2\n    MUX3 --> REG3\n    LOAD --> MUX1\n    LOAD --> MUX2\n    LOAD --> MUX3",
+      "mermaid_error": null
+    },
+    {
+      "id": 10,
+      "name": "Priority Encoder",
+      "prompt": "Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.",
+      "category": "Combinational",
+      "complexity": "medium",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    IN0[in[0]] --> ENC((Priority Logic))\n    IN1[in[1]] --> ENC\n    IN2[in[2]] --> ENC\n    IN3[in[3]] --> ENC\n    ENC --> OUT[out[1:0]]\n    ENC --> V[valid]\n    TB[Testbench] -.-> IN0\n    TB -.-> IN1\n    TB -.-> IN2\n    TB -.-> IN3\n    OUT -.-> TB\n    V -.-> TB\n    subgraph Priority_Encoder\n        ENC\n    end\n    subgraph Testbench_Block\n        TB\n    end",
+      "mermaid_error": null
+    },
+    {
+      "id": 11,
+      "name": "Traffic Light Controller",
+      "prompt": "Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.",
+      "category": "State Machine",
+      "complexity": "complex",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph TD\n    CLK[clk] --> FSM[[State Register]]\n    RST[rst] --> FSM\n    EMG[emergency] --> FSM\n    \n    FSM --> COUNTER[[Cycle Counter]]\n    CLK --> COUNTER\n    RST --> COUNTER\n    \n    FSM --> DECODE(State Decoder)\n    COUNTER --> NEXT(Next State Logic)\n    FSM --> NEXT\n    EMG --> NEXT\n    \n    NEXT --> FSM\n    \n    DECODE --> NS[ns_light[1:0]]\n    DECODE --> EW[ew_light[1:0]]\n    \n    TB[Testbench] -.-> CLK\n    TB -.-> RST\n    TB -.-> EMG\n    TB -.-> |verify|NS\n    TB -.-> |verify|EW\n    \n    subgraph States\n    S1[NS_GREEN]\n    S2[NS_YELLOW]\n    S3[EW_GREEN]\n    S4[EW_YELLOW]\n    end",
+      "mermaid_error": null
+    },
+    {
+      "id": 12,
+      "name": "UART Transmitter",
+      "prompt": "Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.",
+      "category": "State Machine",
+      "complexity": "complex",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> CTRL(FSM Control)\n    RST[Reset] --> CTRL\n    TX_START[TX Start] --> CTRL\n    TX_DATA[TX Data] --> SHIFTREG[[Shift Register]]\n\n    CTRL --> |state|IDLE{IDLE}\n    CTRL --> |state|START{START}\n    CTRL --> |state|DATA{DATA}\n    CTRL --> |state|STOP{STOP}\n\n    BAUD_DIV[[Baud Divider]] --> CTRL\n    CLK --> BAUD_DIV\n\n    SHIFTREG --> |serial_out|MUX{Bit Select}\n    START --> MUX\n    STOP --> MUX\n    MUX --> TX_OUT[TX Output]\n\n    COUNTER[[Bit Counter]] --> CTRL\n    CTRL --> COUNTER\n    CLK --> COUNTER\n\n    TB[Testbench] --> TX_START\n    TB --> TX_DATA\n    TX_OUT --> TB",
+      "mermaid_error": null
+    },
+    {
+      "id": 13,
+      "name": "8-bit Register File",
+      "prompt": "Create 8-register \u00d7 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.",
+      "category": "CPU Component",
+      "complexity": "complex",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> RF[[8x8 Register File]]\n    RST[Reset] --> RF\n    WEN[Write Enable] --> RF\n    WADDR[Write Address] --> RF\n    WDATA[Write Data] --> RF\n    RA1[Read Address 1] --> RF\n    RA2[Read Address 2] --> RF\n    RF --> RD1[Read Data 1]\n    RF --> RD2[Read Data 2]\n    subgraph TestBench\n        TB_CLK[Test Clock] --> TB[Test Controller]\n        TB_RST[Test Reset] --> TB\n        TB --> WADDR\n        TB --> WDATA\n        TB --> WEN\n        TB --> RA1\n        TB --> RA2\n        RD1 --> VERIFY{Verification}\n        RD2 --> VERIFY\n    end",
+      "mermaid_error": null
+    },
+    {
+      "id": 14,
+      "name": "PWM Generator",
+      "prompt": "Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.",
+      "category": "Advanced Sequential",
+      "complexity": "complex",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock] --> CNTRL\n    RST[Reset] --> CNTRL\n    DUTY[Duty Cycle Input] --> [[DUTY_REG]]\n    [[DUTY_REG]] --> COMP\n    CNTRL(Control Logic) --> CTR\n    CTR[[8-bit Counter]] --> COMP{Comparator}\n    COMP --> OUT[PWM Output]\n    TB_DUTY[Test Values:<br>0%<br>25%<br>50%<br>75%<br>100%] --> [[DUTY_REG]]\n    CLK --> CTR\n    RST --> CTR\n    CLK --> [[DUTY_REG]]\n    RST --> [[DUTY_REG]]\n    CLK --> COMP",
+      "mermaid_error": null
+    },
+    {
+      "id": 15,
+      "name": "SPI Master",
+      "prompt": "Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.",
+      "category": "Protocol",
+      "complexity": "complex",
+      "mermaid_generation_success": true,
+      "mermaid_code": "graph LR\n    CLK[Clock Input] --> CLKGEN(Clock Generator)\n    RST[Reset] --> CLKGEN\n    RST --> CTRL(SPI Control FSM)\n    CLK --> CTRL\n\n    CLKGEN --> SCLK[SCLK Output]\n    CLKGEN --> CTRL\n\n    DATA_IN[TX Data] --> SHIFTER[[Shift Register]]\n    CTRL --> SHIFTER\n    SHIFTER --> MOSI[MOSI Output]\n\n    MISO[MISO Input] --> RX_SHIFT[[RX Shift Register]]\n    CTRL --> RX_SHIFT\n    RX_SHIFT --> DATA_OUT[RX Data]\n\n    CS_CTRL[CS Control] --> CTRL\n    CTRL --> CS[CS Output]\n\n    TB_CLK[TB Clock] -.-> TB{Testbench}\n    TB_RST[TB Reset] -.-> TB\n    TB -.-> DATA_IN\n    TB -.-> CS_CTRL\n    MOSI -.-> TB\n    MISO -.-> TB\n    SCLK -.-> TB\n    DATA_OUT -.-> TB",
+      "mermaid_error": null
+    }
+  ]
+}

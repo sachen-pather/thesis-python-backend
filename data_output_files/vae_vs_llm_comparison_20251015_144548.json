@@ -1,0 +1,101 @@
+{
+  "summary": {
+    "total_tests": 6,
+    "vae_accuracy": 83.33333333333334,
+    "llm_accuracy": 50.0,
+    "vae_count": 6,
+    "llm_count": 6
+  },
+  "agreement": {
+    "both_correct": 2,
+    "vae_only": 3,
+    "llm_only": 1,
+    "both_wrong": 0
+  },
+  "detailed_results": [
+    {
+      "name": "2-Input AND",
+      "category": "Combinational - Normal",
+      "expected_normal": true,
+      "vae_available": true,
+      "vae_predicted_normal": true,
+      "vae_confidence": 0.4,
+      "vae_correct": true,
+      "vae_message": "NORMAL - behavior appears normal",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": false,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    },
+    {
+      "name": "2-Input OR",
+      "category": "Combinational - Normal",
+      "expected_normal": true,
+      "vae_available": true,
+      "vae_predicted_normal": true,
+      "vae_confidence": 0.4,
+      "vae_correct": true,
+      "vae_message": "NORMAL - behavior appears normal",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": false,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    },
+    {
+      "name": "Stuck AND (always 0)",
+      "category": "Combinational - Buggy",
+      "expected_normal": false,
+      "vae_available": true,
+      "vae_predicted_normal": false,
+      "vae_confidence": 0.9,
+      "vae_correct": true,
+      "vae_message": "ANOMALOUS - output 'out' stuck at 0",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": true,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    },
+    {
+      "name": "Inverted AND (NAND)",
+      "category": "Combinational - Buggy",
+      "expected_normal": false,
+      "vae_available": true,
+      "vae_predicted_normal": true,
+      "vae_confidence": 0.4,
+      "vae_correct": false,
+      "vae_message": "NORMAL - behavior appears normal",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": true,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    },
+    {
+      "name": "4-bit Counter",
+      "category": "Sequential - Normal",
+      "expected_normal": true,
+      "vae_available": true,
+      "vae_predicted_normal": true,
+      "vae_confidence": 0.4,
+      "vae_correct": true,
+      "vae_message": "NORMAL - behavior appears normal",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": false,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    },
+    {
+      "name": "Stuck Counter",
+      "category": "Sequential - Buggy",
+      "expected_normal": false,
+      "vae_available": true,
+      "vae_predicted_normal": false,
+      "vae_confidence": 0.8,
+      "vae_correct": true,
+      "vae_message": "ANOMALOUS - outputs don't respond to inputs",
+      "llm_available": true,
+      "llm_predicted_normal": false,
+      "llm_correct": true,
+      "llm_analysis": "\u274c Analysis failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `llama-3.3-70b-versatile` in organization `org_01k236vhz3eqpsn0x0c471tafb` service tier `on_demand` on tokens p..."
+    }
+  ]
+}

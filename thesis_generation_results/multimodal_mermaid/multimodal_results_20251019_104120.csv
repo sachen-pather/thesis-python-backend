@@ -1,0 +1,6153 @@
+circuit_name,category,complexity,original_prompt,model,standard_mermaid,standard_verilog,standard_generation_success,standard_lines_of_code,standard_has_testbench,standard_compilation_success,standard_simulation_success,standard_vae_verdict,standard_vae_confidence,standard_consensus_anomalous,standard_generation_time,standard_simulation_time,multimodal_prompt,multimodal_verilog,multimodal_generation_success,multimodal_lines_of_code,multimodal_has_testbench,multimodal_compilation_success,multimodal_simulation_success,multimodal_vae_verdict,multimodal_vae_confidence,multimodal_consensus_anomalous,multimodal_generation_time,multimodal_simulation_time,improvement_in_correctness,improvement_in_simulation,code_length_difference,generation_time_difference,approach_winner
+2-to-1 MUX,Combinational,simple,"Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.",claude,"graph LR
+    A[Input a] --> MUX{2:1 MUX}
+    B[Input b] --> MUX
+    SEL[Select] --> MUX
+    MUX --> OUT[Output out]
+    subgraph TestBench
+        TB_A[[a=0,1]] --> TB_TEST((Test All<br>Combinations))
+        TB_B[[b=0,1]] --> TB_TEST
+        TB_SEL[[sel=0,1]] --> TB_TEST
+        TB_TEST --> TB_OUT[[Expected:<br>sel=0: out=a<br>sel=1: out=b]]
+    end","`timescale 1ns/1ps
+
+module mux2to1(
+    input wire a,
+    input wire b,
+    input wire sel,
+    output reg out
+);
+
+always @(*) begin
+    case(sel)
+        1'b0: out = a;
+        1'b1: out = b;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg a, b, sel;
+    wire out;
+    
+    mux2to1 dut(
+        .a(a),
+        .b(b),
+        .sel(sel),
+        .out(out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        // Test all input combinations
+        a = 0; b = 0; sel = 0; #10;
+        a = 0; b = 0; sel = 1; #10;
+        a = 0; b = 1; sel = 0; #10;
+        a = 0; b = 1; sel = 1; #10;
+        a = 1; b = 0; sel = 0; #10;
+        a = 1; b = 0; sel = 1; #10;
+        a = 1; b = 1; sel = 0; #10;
+        a = 1; b = 1; sel = 1; #10;
+        
+        $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b sel=%b out=%b"",
+                 $time, a, b, sel, out);
+    end
+endmodule",True,51,True,True,True,False,0.4,False,8.007207155227661,8.637338876724243,"Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    A[Input a] --> MUX{2:1 MUX}
+    B[Input b] --> MUX
+    SEL[Select] --> MUX
+    MUX --> OUT[Output out]
+    subgraph TestBench
+        TB_A[[a=0,1]] --> TB_TEST((Test All<br>Combinations))
+        TB_B[[b=0,1]] --> TB_TEST
+        TB_SEL[[sel=0,1]] --> TB_TEST
+        TB_TEST --> TB_OUT[[Expected:<br>sel=0: out=a<br>sel=1: out=b]]
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module mux2to1(
+    input wire a,
+    input wire b,
+    input wire sel,
+    output reg out
+);
+
+always @(*) begin
+    case(sel)
+        1'b0: out = a;
+        1'b1: out = b;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg a, b, sel;
+    wire out;
+
+    mux2to1 dut(
+        .a(a),
+        .b(b),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        // Test all combinations
+        a = 0; b = 0; sel = 0; #10;
+        a = 0; b = 0; sel = 1; #10;
+        a = 0; b = 1; sel = 0; #10;
+        a = 0; b = 1; sel = 1; #10;
+        a = 1; b = 0; sel = 0; #10;
+        a = 1; b = 0; sel = 1; #10;
+        a = 1; b = 1; sel = 0; #10;
+        a = 1; b = 1; sel = 1; #10;
+        
+        $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b sel=%b out=%b"",
+                 $time, a, b, sel, out);
+    end
+endmodule",True,51,True,True,True,False,0.4,False,4.749082565307617,7.071906328201294,,,0,-3.258124589920044,tie
+2-to-1 MUX,Combinational,simple,"Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.",gpt-4o,"graph LR
+    A[a] --> MUX{2-to-1 MUX}
+    B[b] --> MUX
+    SEL[sel] --> MUX
+    MUX --> OUT[out]
+    
+    subgraph Testbench
+        A_TB[a Test] --> MUX_TB{MUX Test}
+        B_TB[b Test] --> MUX_TB
+        SEL_TB[sel Test] --> MUX_TB
+        MUX_TB --> OUT_TB[out Test]
+    end","`timescale 1ns/1ps
+
+module mux_2to1(
+    input wire a,
+    input wire b,
+    input wire sel,
+    output wire out
+);
+
+assign out = sel ? b : a;
+
+endmodule
+
+module testbench;
+    reg a, b, sel;
+    wire out;
+    
+    mux_2to1 dut (
+        .a(a),
+        .b(b),
+        .sel(sel),
+        .out(out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        a = 1'b0; b = 1'b0; sel = 1'b0;
+        #10 sel = 1'b1;
+        #10 b = 1'b1;
+        #10 sel = 1'b0;
+        #10 a = 1'b1;
+        #10 sel = 1'b1;
+        #10 $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b sel=%b out=%b"", 
+                 $time, a, b, sel, out);
+    end
+endmodule",True,42,True,True,True,False,0.4,False,6.153250455856323,7.352023363113403,"Design a 2-to-1 multiplexer with inputs a, b, select sel, and output out. Include testbench testing all combinations.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    A[a] --> MUX{2-to-1 MUX}
+    B[b] --> MUX
+    SEL[sel] --> MUX
+    MUX --> OUT[out]
+    
+    subgraph Testbench
+        A_TB[a Test] --> MUX_TB{MUX Test}
+        B_TB[b Test] --> MUX_TB
+        SEL_TB[sel Test] --> MUX_TB
+        MUX_TB --> OUT_TB[out Test]
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module mux_2to1(
+    input wire a,
+    input wire b,
+    input wire sel,
+    output reg out
+);
+
+always @(*) begin
+    if (sel)
+        out = b;
+    else
+        out = a;
+end
+
+endmodule
+
+module testbench;
+    reg a_TB, b_TB, sel_TB;
+    wire out_TB;
+    
+    mux_2to1 MUX_TB (
+        .a(a_TB),
+        .b(b_TB),
+        .sel(sel_TB),
+        .out(out_TB)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        // Test all input combinations
+        a_TB = 0; b_TB = 0; sel_TB = 0;
+        #10 a_TB = 0; b_TB = 0; sel_TB = 1;
+        #10 a_TB = 0; b_TB = 1; sel_TB = 0;
+        #10 a_TB = 0; b_TB = 1; sel_TB = 1;
+        #10 a_TB = 1; b_TB = 0; sel_TB = 0;
+        #10 a_TB = 1; b_TB = 0; sel_TB = 1;
+        #10 a_TB = 1; b_TB = 1; sel_TB = 0;
+        #10 a_TB = 1; b_TB = 1; sel_TB = 1;
+        #10 $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b sel=%b out=%b"", 
+                 $time, a_TB, b_TB, sel_TB, out_TB);
+    end
+endmodule",True,50,True,True,True,False,0.4,False,3.916811466217041,9.426989078521729,,,8,-2.2364389896392822,standard
+D Flip-Flop,Sequential,simple,"Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.",claude,"graph TD
+    CLK[Clock Input] --> DFF[[D Flip-Flop]]
+    RST[Reset] --> DFF
+    D[Data Input] --> DFF
+    DFF --> Q[Output Q]
+    
+    TB1[Testbench] --> CLK_TB[Clock Generator]
+    TB1 --> RST_TB[Reset Stimulus]
+    TB1 --> D_TB[Data Stimulus]
+    
+    CLK_TB --> TV{Timing Verification}
+    RST_TB --> TV
+    D_TB --> TV
+    Q --> TV
+    
+    TV --> SETUP[Setup Time Check]
+    TV --> HOLD[Hold Time Check]
+    TV --> CLK2Q[Clock-to-Q Delay]
+    
+    SETUP --> RESULT[Pass/Fail]
+    HOLD --> RESULT
+    CLK2Q --> RESULT","`timescale 1ns/1ps
+
+module dff(
+    input wire clk,
+    input wire rst,
+    input wire d,
+    output reg q
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        q <= 1'b0;
+    else
+        q <= d;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, d;
+    wire q;
+    time clk2q_delay;
+    
+    dff dut (
+        .clk(clk),
+        .rst(rst),
+        .d(d),
+        .q(q)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst = 1;
+        d = 0;
+        
+        #20 rst = 0;
+        
+        // Test setup/hold timing
+        #10 d = 1;
+        #10 d = 0;
+        #10 d = 1;
+        
+        // Measure clock-to-q delay
+        @(posedge clk);
+        #1 clk2q_delay = $time;
+        @(posedge q);
+        clk2q_delay = $time - clk2q_delay;
+        
+        #100 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    // Timing checks
+    specify
+        specparam tsetup = 2;
+        specparam thold = 1;
+        specparam tclk2q = 3;
+        
+        $setup(d, posedge clk, tsetup);
+        $hold(posedge clk, d, thold);
+    endspecify
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b d=%b q=%b clk2q_delay=%0t"", 
+                 $time, clk, rst, d, q, clk2q_delay);
+    end
+endmodule",True,71,True,False,False,,0.0,,10.361449956893921,61.912134647369385,"Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock Input] --> DFF[[D Flip-Flop]]
+    RST[Reset] --> DFF
+    D[Data Input] --> DFF
+    DFF --> Q[Output Q]
+    
+    TB1[Testbench] --> CLK_TB[Clock Generator]
+    TB1 --> RST_TB[Reset Stimulus]
+    TB1 --> D_TB[Data Stimulus]
+    
+    CLK_TB --> TV{Timing Verification}
+    RST_TB --> TV
+    D_TB --> TV
+    Q --> TV
+    
+    TV --> SETUP[Setup Time Check]
+    TV --> HOLD[Hold Time Check]
+    TV --> CLK2Q[Clock-to-Q Delay]
+    
+    SETUP --> RESULT[Pass/Fail]
+    HOLD --> RESULT
+    CLK2Q --> RESULT
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module dff (
+    input wire clk,
+    input wire rst,
+    input wire d,
+    output reg q
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        q <= 1'b0;
+    else
+        q <= d;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, d;
+    wire q;
+    
+    // Timing parameters
+    parameter SETUP_TIME = 2;
+    parameter HOLD_TIME = 1;
+    parameter CLK2Q_TIME = 3;
+    
+    reg setup_pass, hold_pass, clk2q_pass;
+    time last_d_change, last_clk_edge;
+    
+    dff dut (
+        .clk(clk),
+        .rst(rst),
+        .d(d),
+        .q(q)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst = 1;
+        d = 0;
+        setup_pass = 1;
+        hold_pass = 1;
+        clk2q_pass = 1;
+        
+        #10 rst = 0;
+        
+        // Test sequence
+        repeat(10) begin
+            #5 d = ~d;
+        end
+        
+        #10 rst = 1;
+        #10 rst = 0;
+        #20 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    // Timing checks
+    always @(d) begin
+        last_d_change = $time;
+        if ((last_d_change - last_clk_edge) < HOLD_TIME)
+            hold_pass = 0;
+    end
+    
+    always @(posedge clk) begin
+        last_clk_edge = $time;
+        if ((last_clk_edge - last_d_change) < SETUP_TIME)
+            setup_pass = 0;
+    end
+    
+    always @(q) begin
+        if (($time - last_clk_edge) > CLK2Q_TIME)
+            clk2q_pass = 0;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b d=%b q=%b setup_pass=%b hold_pass=%b clk2q_pass=%b"",
+                 $time, clk, rst, d, q, setup_pass, hold_pass, clk2q_pass);
+    end
+
+endmodule",True,86,True,True,True,True,0.7,True,8.38173246383667,7.586326360702515,,True,15,-1.979717493057251,tie
+D Flip-Flop,Sequential,simple,"Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.",gpt-4o,"graph LR
+    CLK[Clock] --> DFF(D Flip-Flop)
+    RST[Reset] --> DFF
+    D[Input D] --> DFF
+    DFF --> Q[Output Q]
+    subgraph Testbench
+        CLK --> TB[Timing Verification]
+        RST --> TB
+        D --> TB
+        Q --> TB
+    end","`timescale 1ns/1ps
+
+module d_flip_flop (
+    input wire clk,
+    input wire rst,
+    input wire d,
+    output reg q
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        q <= 1'b0;
+    else
+        q <= d;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, d;
+    wire q;
+    
+    d_flip_flop dut (
+        .clk(clk),
+        .rst(rst),
+        .d(d),
+        .q(q)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b0;
+        d = 1'b0;
+        
+        #15 rst = 1'b1; // Assert reset
+        #10 rst = 1'b0; // Deassert reset
+        #10 d = 1'b1;   // Set input d
+        #20 d = 1'b0;   // Clear input d
+        #30 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b d=%b q=%b"", 
+                 $time, clk, rst, d, q);
+    end
+endmodule",True,51,True,True,True,False,0.3,False,5.893601655960083,6.899988651275635,"Create a D flip-flop with clock, reset, input d, and output q. Include testbench with timing verification.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> DFF(D Flip-Flop)
+    RST[Reset] --> DFF
+    D[Input D] --> DFF
+    DFF --> Q[Output Q]
+    subgraph Testbench
+        CLK --> TB[Timing Verification]
+        RST --> TB
+        D --> TB
+        Q --> TB
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module d_flip_flop(
+    input wire clk,
+    input wire rst,
+    input wire d,
+    output reg q
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        q <= 1'b0;
+    else
+        q <= d;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, d;
+    wire q;
+
+    d_flip_flop dut (
+        .clk(clk),
+        .rst(rst),
+        .d(d),
+        .q(q)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        d = 1'b0;
+
+        #10 rst = 1'b0;
+        #10 d = 1'b1;
+        #20 d = 1'b0;
+        #20 d = 1'b1;
+        #10 rst = 1'b1;
+        #10 rst = 1'b0;
+        #50 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b d=%b q=%b"", 
+                 $time, clk, rst, d, q);
+    end
+endmodule",True,53,True,True,True,True,0.7,True,2.677936553955078,7.7211198806762695,False,,2,-3.215665102005005,standard
+4-bit Counter,Sequential,simple,"Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.",claude,"graph LR
+    CLK[Clock] --> CNT((Counter_Logic))
+    RST[Reset] --> CNT
+    EN[Enable] --> CNT
+    CNT --> REG[[Count_Register]]
+    CLK --> REG
+    RST --> REG
+    REG --> OUT[count[3:0]]
+    CNT --> TEST{Testbench}
+    OUT --> TEST
+    CLK --> TEST
+    RST --> TEST
+    EN --> TEST
+    TEST --> CHECK((Verify_Outputs))
+    CHECK --> RESULT[Test_Results]","`timescale 1ns/1ps
+
+module counter(
+    input wire clk,
+    input wire rst_n,
+    input wire enable,
+    output reg [3:0] count
+);
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        count <= 4'b0000;
+    else if (enable)
+        count <= count + 1'b1;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst_n, enable;
+    wire [3:0] count;
+    
+    counter dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable),
+        .count(count)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst_n = 1'b0;
+        enable = 1'b0;
+        
+        #20 rst_n = 1'b1;
+        #10 enable = 1'b1;
+        #100 enable = 1'b0;
+        #20 rst_n = 1'b0;
+        #20 rst_n = 1'b1;
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst_n=%b enable=%b count=%d"", 
+                 $time, clk, rst_n, enable, count);
+    end
+endmodule",True,52,True,True,True,False,0.3,False,7.419693231582642,8.296238899230957,"Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> CNT((Counter_Logic))
+    RST[Reset] --> CNT
+    EN[Enable] --> CNT
+    CNT --> REG[[Count_Register]]
+    CLK --> REG
+    RST --> REG
+    REG --> OUT[count[3:0]]
+    CNT --> TEST{Testbench}
+    OUT --> TEST
+    CLK --> TEST
+    RST --> TEST
+    EN --> TEST
+    TEST --> CHECK((Verify_Outputs))
+    CHECK --> RESULT[Test_Results]
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module counter(
+    input wire clk,
+    input wire rst_n,
+    input wire enable,
+    output reg [3:0] count
+);
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        count <= 4'b0000;
+    else if (enable)
+        count <= count + 1'b1;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst_n, enable;
+    wire [3:0] count;
+
+    counter dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable),
+        .count(count)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst_n = 0;
+        enable = 0;
+
+        #20 rst_n = 1;
+        #10 enable = 1;
+        
+        // Test counter increment
+        #160 enable = 0;
+        
+        // Test reset
+        #20 rst_n = 0;
+        #20 rst_n = 1;
+        
+        // Test enable after reset
+        #20 enable = 1;
+        #80 enable = 0;
+        
+        #40 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst_n=%b enable=%b count=%b"", 
+                 $time, rst_n, enable, count);
+    end
+endmodule",True,61,True,True,True,False,0.4,False,4.809148073196411,7.5224950313568115,,,9,-2.6105451583862305,standard
+4-bit Counter,Sequential,simple,"Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.",gpt-4o,"graph TD
+    CLK[Clock] --> CNT(4-bit Counter)
+    RST[Reset] --> CNT
+    EN[Enable] --> CNT
+    CNT --> COUNT[[Count[3:0]]]
+    
+    subgraph Testbench
+        TB[TB: Clock Generator] --> CLK
+        TB_RST[TB: Reset Generator] --> RST
+        TB_EN[TB: Enable Control] --> EN
+    end","`timescale 1ns/1ps
+
+module counter(
+    input wire clk,
+    input wire rst,
+    input wire enable,
+    output reg [3:0] count
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        count <= 4'b0000;
+    else if (enable)
+        count <= count + 1'b1;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, enable;
+    wire [3:0] count;
+    
+    counter dut (
+        .clk(clk),
+        .rst(rst),
+        .enable(enable),
+        .count(count)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b0;
+        enable = 1'b0;
+        
+        #20 rst = 1'b1;
+        #10 rst = 1'b0;
+        #10 enable = 1'b1;
+        #100 enable = 1'b0;
+        #20 rst = 1'b1;
+        #20 rst = 1'b0;
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b enable=%b count=%d"", 
+                 $time, clk, rst, enable, count);
+    end
+endmodule",True,53,True,True,True,False,0.3,False,7.075985908508301,8.637865781784058,"Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> CNT(4-bit Counter)
+    RST[Reset] --> CNT
+    EN[Enable] --> CNT
+    CNT --> COUNT[[Count[3:0]]]
+    
+    subgraph Testbench
+        TB[TB: Clock Generator] --> CLK
+        TB_RST[TB: Reset Generator] --> RST
+        TB_EN[TB: Enable Control] --> EN
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module counter(
+    input wire clk,
+    input wire rst_n,
+    input wire enable,
+    output reg [3:0] count
+);
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        count <= 4'b0000;
+    else if (enable)
+        count <= count + 1'b1;
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst_n, enable;
+    wire [3:0] count;
+    
+    counter dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .enable(enable),
+        .count(count)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst_n = 1'b0;
+        enable = 1'b0;
+        
+        #20 rst_n = 1'b1;
+        #10 enable = 1'b1;
+        #100 enable = 1'b0;
+        #20 rst_n = 1'b0;
+        #20 rst_n = 1'b1;
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst_n=%b enable=%b count=%d"", 
+                 $time, clk, rst_n, enable, count);
+    end
+endmodule",True,52,True,True,True,False,0.3,False,2.7355763912200928,6.488581895828247,,,-1,-4.340409517288208,multimodal
+Full Adder,Combinational,simple,"Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.",claude,"graph LR
+    A[Input A] --> FA((Full Adder))
+    B[Input B] --> FA
+    Cin[Carry In] --> FA
+    FA --> Sum[Sum Output]
+    FA --> Cout[Carry Out]
+    
+    TB[Test Cases] --> Cases{
+        A=0 B=0 Cin=0 → S=0 C=0
+        A=0 B=0 Cin=1 → S=1 C=0
+        A=0 B=1 Cin=0 → S=1 C=0
+        A=0 B=1 Cin=1 → S=0 C=1
+        A=1 B=0 Cin=0 → S=1 C=0
+        A=1 B=0 Cin=1 → S=0 C=1
+        A=1 B=1 Cin=0 → S=0 C=1
+        A=1 B=1 Cin=1 → S=1 C=1
+    }","`timescale 1ns/1ps
+
+module full_adder(
+    input wire a,
+    input wire b,
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+
+assign sum = a ^ b ^ cin;
+assign cout = (a & b) | (b & cin) | (a & cin);
+
+endmodule
+
+module testbench;
+    reg a, b, cin;
+    wire sum, cout;
+    
+    full_adder dut(
+        .a(a),
+        .b(b),
+        .cin(cin),
+        .sum(sum),
+        .cout(cout)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        // Test Case 1: 0 0 0
+        a = 0; b = 0; cin = 0;
+        #10;
+        
+        // Test Case 2: 0 0 1
+        a = 0; b = 0; cin = 1;
+        #10;
+        
+        // Test Case 3: 0 1 0
+        a = 0; b = 1; cin = 0;
+        #10;
+        
+        // Test Case 4: 0 1 1
+        a = 0; b = 1; cin = 1;
+        #10;
+        
+        // Test Case 5: 1 0 0
+        a = 1; b = 0; cin = 0;
+        #10;
+        
+        // Test Case 6: 1 0 1
+        a = 1; b = 0; cin = 1;
+        #10;
+        
+        // Test Case 7: 1 1 0
+        a = 1; b = 1; cin = 0;
+        #10;
+        
+        // Test Case 8: 1 1 1
+        a = 1; b = 1; cin = 1;
+        #10;
+        
+        $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b cin=%b sum=%b cout=%b"",
+                 $time, a, b, cin, sum, cout);
+    end
+endmodule",True,71,True,True,True,False,0.4,False,9.70960283279419,7.399163484573364,"Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    A[Input A] --> FA((Full Adder))
+    B[Input B] --> FA
+    Cin[Carry In] --> FA
+    FA --> Sum[Sum Output]
+    FA --> Cout[Carry Out]
+    
+    TB[Test Cases] --> Cases{
+        A=0 B=0 Cin=0 → S=0 C=0
+        A=0 B=0 Cin=1 → S=1 C=0
+        A=0 B=1 Cin=0 → S=1 C=0
+        A=0 B=1 Cin=1 → S=0 C=1
+        A=1 B=0 Cin=0 → S=1 C=0
+        A=1 B=0 Cin=1 → S=0 C=1
+        A=1 B=1 Cin=0 → S=0 C=1
+        A=1 B=1 Cin=1 → S=1 C=1
+    }
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module full_adder(
+    input wire a,
+    input wire b,
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+
+assign sum = a ^ b ^ cin;
+assign cout = (a & b) | (b & cin) | (a & cin);
+
+endmodule
+
+module testbench;
+    reg a, b, cin;
+    wire sum, cout;
+    
+    full_adder dut(
+        .a(a),
+        .b(b),
+        .cin(cin),
+        .sum(sum),
+        .cout(cout)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        // Test case 1: A=0 B=0 Cin=0
+        a = 0; b = 0; cin = 0;
+        #10;
+        
+        // Test case 2: A=0 B=0 Cin=1
+        a = 0; b = 0; cin = 1;
+        #10;
+        
+        // Test case 3: A=0 B=1 Cin=0
+        a = 0; b = 1; cin = 0;
+        #10;
+        
+        // Test case 4: A=0 B=1 Cin=1
+        a = 0; b = 1; cin = 1;
+        #10;
+        
+        // Test case 5: A=1 B=0 Cin=0
+        a = 1; b = 0; cin = 0;
+        #10;
+        
+        // Test case 6: A=1 B=0 Cin=1
+        a = 1; b = 0; cin = 1;
+        #10;
+        
+        // Test case 7: A=1 B=1 Cin=0
+        a = 1; b = 1; cin = 0;
+        #10;
+        
+        // Test case 8: A=1 B=1 Cin=1
+        a = 1; b = 1; cin = 1;
+        #10;
+        
+        $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b cin=%b sum=%b cout=%b"",
+                 $time, a, b, cin, sum, cout);
+    end
+endmodule",True,71,True,True,True,False,0.4,False,6.646990060806274,6.586549520492554,,,0,-3.062612771987915,tie
+Full Adder,Combinational,simple,"Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.",gpt-4o,"graph TD
+    A[a] --> XOR1((XOR))
+    B[b] --> XOR1
+    CIN[cin] --> XOR2((XOR))
+    XOR1 --> XOR2
+    XOR2 --> SUM[sum]
+    
+    A --> AND1((AND))
+    B --> AND1
+    CIN --> AND2((AND))
+    XOR1 --> AND2
+    AND1 --> OR1((OR))
+    AND2 --> OR1
+    OR1 --> COUT[cout]
+
+    subgraph TESTBENCH
+        direction LR
+        TB_A[TB a] --> A
+        TB_B[TB b] --> B
+        TB_CIN[TB cin] --> CIN
+        SUM --> TB_SUM[TB sum]
+        COUT --> TB_COUT[TB cout]
+
+        TB_CLK[Clock] --> TB_A
+        TB_CLK --> TB_B
+        TB_CLK --> TB_CIN
+    end","`timescale 1ns/1ps
+
+module full_adder(
+    input wire a,
+    input wire b,
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+    
+    wire xor1_out, and1_out, and2_out;
+    
+    assign xor1_out = a ^ b;
+    assign sum = xor1_out ^ cin;
+    assign and1_out = a & b;
+    assign and2_out = xor1_out & cin;
+    assign cout = and1_out | and2_out;
+
+endmodule
+
+module testbench;
+    reg tb_a, tb_b, tb_cin;
+    wire tb_sum, tb_cout;
+    
+    full_adder dut (
+        .a(tb_a),
+        .b(tb_b),
+        .cin(tb_cin),
+        .sum(tb_sum),
+        .cout(tb_cout)
+    );
+    
+    reg tb_clk;
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        tb_clk = 1'b0;
+        
+        #5 tb_a = 0; tb_b = 0; tb_cin = 0;
+        #10 tb_a = 0; tb_b = 0; tb_cin = 1;
+        #10 tb_a = 0; tb_b = 1; tb_cin = 0;
+        #10 tb_a = 0; tb_b = 1; tb_cin = 1;
+        #10 tb_a = 1; tb_b = 0; tb_cin = 0;
+        #10 tb_a = 1; tb_b = 0; tb_cin = 1;
+        #10 tb_a = 1; tb_b = 1; tb_cin = 0;
+        #10 tb_a = 1; tb_b = 1; tb_cin = 1;
+        #10 $finish;
+    end
+    
+    always #5 tb_clk = ~tb_clk;
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b cin=%b sum=%b cout=%b"", 
+                 $time, tb_a, tb_b, tb_cin, tb_sum, tb_cout);
+    end
+endmodule",True,58,True,True,True,False,0.4,False,7.799846410751343,7.682056427001953,"Create a full adder with inputs a, b, cin and outputs sum, cout. Include testbench with all 8 cases.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    A[a] --> XOR1((XOR))
+    B[b] --> XOR1
+    CIN[cin] --> XOR2((XOR))
+    XOR1 --> XOR2
+    XOR2 --> SUM[sum]
+    
+    A --> AND1((AND))
+    B --> AND1
+    CIN --> AND2((AND))
+    XOR1 --> AND2
+    AND1 --> OR1((OR))
+    AND2 --> OR1
+    OR1 --> COUT[cout]
+
+    subgraph TESTBENCH
+        direction LR
+        TB_A[TB a] --> A
+        TB_B[TB b] --> B
+        TB_CIN[TB cin] --> CIN
+        SUM --> TB_SUM[TB sum]
+        COUT --> TB_COUT[TB cout]
+
+        TB_CLK[Clock] --> TB_A
+        TB_CLK --> TB_B
+        TB_CLK --> TB_CIN
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module full_adder(
+    input wire a,
+    input wire b,
+    input wire cin,
+    output wire sum,
+    output wire cout
+);
+    wire xor1_out, and1_out, and2_out;
+
+    assign xor1_out = a ^ b;
+    assign sum = xor1_out ^ cin;
+    assign and1_out = a & b;
+    assign and2_out = xor1_out & cin;
+    assign cout = and1_out | and2_out;
+endmodule
+
+module testbench;
+    reg tb_a, tb_b, tb_cin;
+    wire tb_sum, tb_cout;
+
+    full_adder dut (
+        .a(tb_a),
+        .b(tb_b),
+        .cin(tb_cin),
+        .sum(tb_sum),
+        .cout(tb_cout)
+    );
+
+    reg tb_clk;
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        tb_clk = 1'b0;
+        tb_a = 1'b0;
+        tb_b = 1'b0;
+        tb_cin = 1'b0;
+
+        #5 tb_cin = 1'b1;
+        #5 tb_b = 1'b1; tb_cin = 1'b0;
+        #5 tb_cin = 1'b1;
+        #5 tb_a = 1'b1; tb_b = 1'b0; tb_cin = 1'b0;
+        #5 tb_cin = 1'b1;
+        #5 tb_b = 1'b1; tb_cin = 1'b0;
+        #5 tb_cin = 1'b1;
+        #5 $finish;
+    end
+
+    always #2.5 tb_clk = ~tb_clk;
+
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b cin=%b sum=%b cout=%b"", 
+                 $time, tb_a, tb_b, tb_cin, tb_sum, tb_cout);
+    end
+endmodule",True,57,True,True,True,False,0.4,False,4.034211874008179,6.572746276855469,,,-1,-3.765634536743164,multimodal
+2-bit Comparator,Combinational,simple,"Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.",claude,"graph TD
+    A0[a[0]] --> COMP((2-bit<br>Comparator<br>Logic))
+    A1[a[1]] --> COMP
+    B0[b[0]] --> COMP
+    B1[b[1]] --> COMP
+    COMP --> EQ[eq]
+    COMP --> GT[gt]
+    COMP --> LT[lt]
+    TB[Testbench] -.-> |test vectors| COMP
+    TB -.-> |verify| RES{Results<br>Verification}
+    EQ -.-> RES
+    GT -.-> RES
+    LT -.-> RES
+    RES -.-> |pass/fail| OUT[Test Output]","`timescale 1ns/1ps
+
+module comparator_2bit(
+    input wire [1:0] a,
+    input wire [1:0] b,
+    output reg eq,
+    output reg gt,
+    output reg lt
+);
+
+always @(*) begin
+    eq = (a == b);
+    gt = (a > b);
+    lt = (a < b);
+end
+
+endmodule
+
+module testbench;
+    reg [1:0] a, b;
+    wire eq, gt, lt;
+
+    comparator_2bit dut (
+        .a(a),
+        .b(b),
+        .eq(eq),
+        .gt(gt),
+        .lt(lt)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        // Test all possible combinations
+        a = 2'b00; b = 2'b00; #10;
+        a = 2'b00; b = 2'b01; #10;
+        a = 2'b00; b = 2'b10; #10;
+        a = 2'b00; b = 2'b11; #10;
+        a = 2'b01; b = 2'b00; #10;
+        a = 2'b01; b = 2'b01; #10;
+        a = 2'b01; b = 2'b10; #10;
+        a = 2'b01; b = 2'b11; #10;
+        a = 2'b10; b = 2'b00; #10;
+        a = 2'b10; b = 2'b01; #10;
+        a = 2'b10; b = 2'b10; #10;
+        a = 2'b10; b = 2'b11; #10;
+        a = 2'b11; b = 2'b00; #10;
+        a = 2'b11; b = 2'b01; #10;
+        a = 2'b11; b = 2'b10; #10;
+        a = 2'b11; b = 2'b11; #10;
+
+        $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b eq=%b gt=%b lt=%b"",
+                 $time, a, b, eq, gt, lt);
+    end
+endmodule",True,60,True,True,True,False,0.4,False,9.963933944702148,8.602877616882324,"Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    A0[a[0]] --> COMP((2-bit<br>Comparator<br>Logic))
+    A1[a[1]] --> COMP
+    B0[b[0]] --> COMP
+    B1[b[1]] --> COMP
+    COMP --> EQ[eq]
+    COMP --> GT[gt]
+    COMP --> LT[lt]
+    TB[Testbench] -.-> |test vectors| COMP
+    TB -.-> |verify| RES{Results<br>Verification}
+    EQ -.-> RES
+    GT -.-> RES
+    LT -.-> RES
+    RES -.-> |pass/fail| OUT[Test Output]
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module comparator_2bit(
+    input wire [1:0] a,
+    input wire [1:0] b,
+    output reg eq,
+    output reg gt,
+    output reg lt
+);
+
+always @(*) begin
+    eq = (a == b);
+    gt = (a > b);
+    lt = (a < b);
+end
+
+endmodule
+
+module testbench;
+    reg [1:0] a;
+    reg [1:0] b;
+    wire eq, gt, lt;
+    
+    comparator_2bit dut (
+        .a(a),
+        .b(b),
+        .eq(eq),
+        .gt(gt),
+        .lt(lt)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        // Test all possible input combinations
+        #10 a = 2'b00; b = 2'b00;
+        #10 a = 2'b00; b = 2'b01;
+        #10 a = 2'b00; b = 2'b10;
+        #10 a = 2'b00; b = 2'b11;
+        #10 a = 2'b01; b = 2'b00;
+        #10 a = 2'b01; b = 2'b01;
+        #10 a = 2'b01; b = 2'b10;
+        #10 a = 2'b01; b = 2'b11;
+        #10 a = 2'b10; b = 2'b00;
+        #10 a = 2'b10; b = 2'b01;
+        #10 a = 2'b10; b = 2'b10;
+        #10 a = 2'b10; b = 2'b11;
+        #10 a = 2'b11; b = 2'b00;
+        #10 a = 2'b11; b = 2'b01;
+        #10 a = 2'b11; b = 2'b10;
+        #10 a = 2'b11; b = 2'b11;
+        #10 $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b eq=%b gt=%b lt=%b"",
+                 $time, a, b, eq, gt, lt);
+    end
+endmodule",True,60,True,True,True,False,0.4,False,7.0672383308410645,7.34804892539978,,,0,-2.896695613861084,tie
+2-bit Comparator,Combinational,simple,"Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.",gpt-4o,"graph TD
+    A1[[a[1]]] --> COMP1((Comparator))
+    A0[[a[0]]] --> COMP1
+    B1[[b[1]]] --> COMP1
+    B0[[b[0]]] --> COMP1
+    COMP1 --> EQ[eq]
+    COMP1 --> GT[gt]
+    COMP1 --> LT[lt]
+    
+    TB[Testbench]
+    TB --> A1
+    TB --> A0
+    TB --> B1
+    TB --> B0","`timescale 1ns/1ps
+
+module comparator_2bit(
+    input wire [1:0] a,
+    input wire [1:0] b,
+    output reg eq,
+    output reg gt,
+    output reg lt
+);
+
+always @(*) begin
+    if (a > b) begin
+        eq = 1'b0;
+        gt = 1'b1;
+        lt = 1'b0;
+    end else if (a < b) begin
+        eq = 1'b0;
+        gt = 1'b0;
+        lt = 1'b1;
+    end else begin
+        eq = 1'b1;
+        gt = 1'b0;
+        lt = 1'b0;
+    end
+end
+
+endmodule
+
+module testbench;
+    reg [1:0] a;
+    reg [1:0] b;
+    wire eq;
+    wire gt;
+    wire lt;
+    
+    comparator_2bit dut (
+        .a(a),
+        .b(b),
+        .eq(eq),
+        .gt(gt),
+        .lt(lt)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        a = 2'b00; b = 2'b00;
+        #10 a = 2'b01; b = 2'b00;
+        #10 a = 2'b00; b = 2'b01;
+        #10 a = 2'b11; b = 2'b10;
+        #10 a = 2'b10; b = 2'b11;
+        #10 a = 2'b01; b = 2'b01;
+        #10 $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b | eq=%b gt=%b lt=%b"", 
+                 $time, a, b, eq, gt, lt);
+    end
+endmodule",True,61,True,True,True,False,0.4,False,5.360795259475708,4.937780380249023,"Design a 2-bit comparator with inputs a[1:0], b[1:0] and outputs eq, gt, lt. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    A1[[a[1]]] --> COMP1((Comparator))
+    A0[[a[0]]] --> COMP1
+    B1[[b[1]]] --> COMP1
+    B0[[b[0]]] --> COMP1
+    COMP1 --> EQ[eq]
+    COMP1 --> GT[gt]
+    COMP1 --> LT[lt]
+    
+    TB[Testbench]
+    TB --> A1
+    TB --> A0
+    TB --> B1
+    TB --> B0
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module comparator (
+    input wire [1:0] a,
+    input wire [1:0] b,
+    output reg eq,
+    output reg gt,
+    output reg lt
+);
+
+always @(*) begin
+    if (a == b) begin
+        eq = 1'b1;
+        gt = 1'b0;
+        lt = 1'b0;
+    end else if (a > b) begin
+        eq = 1'b0;
+        gt = 1'b1;
+        lt = 1'b0;
+    end else begin
+        eq = 1'b0;
+        gt = 1'b0;
+        lt = 1'b1;
+    end
+end
+
+endmodule
+
+module testbench;
+    reg [1:0] a;
+    reg [1:0] b;
+    wire eq;
+    wire gt;
+    wire lt;
+
+    comparator dut (
+        .a(a),
+        .b(b),
+        .eq(eq),
+        .gt(gt),
+        .lt(lt)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        a = 2'b00; b = 2'b00;
+        #10 a = 2'b01; b = 2'b00;
+        #10 a = 2'b10; b = 2'b01;
+        #10 a = 2'b11; b = 2'b10;
+        #10 a = 2'b00; b = 2'b01;
+        #10 a = 2'b01; b = 2'b10;
+        #10 a = 2'b10; b = 2'b11;
+        #10 a = 2'b01; b = 2'b01;
+        #10 $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b eq=%b gt=%b lt=%b"", 
+                 $time, a, b, eq, gt, lt);
+    end
+endmodule",True,63,True,True,True,False,0.4,False,4.701286554336548,7.426760196685791,,,2,-0.6595087051391602,standard
+4-bit ALU,Arithmetic,medium,"Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.",claude,"graph LR
+    A[a[3:0]] --> ALU((ALU Core))
+    B[b[3:0]] --> ALU
+    OP[op[1:0]] --> ALU
+    CLK[Clock] --> TB[[Testbench]]
+    RST[Reset] --> TB
+    ALU --> RES[result[3:0]]
+    ALU --> Z[zero]
+    
+    subgraph ALU_INTERNAL
+        A2((ADD)) --> MUX{Operation Select}
+        S2((SUB)) --> MUX
+        AN((AND)) --> MUX
+        OR((OR)) --> MUX
+    end
+    
+    subgraph TESTBENCH
+        TB --> STIM[[Stimulus Generator]]
+        TB --> CHK[[Result Checker]]
+        STIM --> A
+        STIM --> B
+        STIM --> OP
+        RES --> CHK
+        Z --> CHK
+    end","`timescale 1ns/1ps
+
+module alu(
+    input wire [3:0] a,
+    input wire [3:0] b,
+    input wire [1:0] op,
+    output reg [3:0] result,
+    output wire zero
+);
+
+always @(*) begin
+    case(op)
+        2'b00: result = a + b;    // ADD
+        2'b01: result = a - b;    // SUB
+        2'b10: result = a & b;    // AND
+        2'b11: result = a | b;    // OR
+        default: result = 4'b0000;
+    endcase
+end
+
+assign zero = (result == 4'b0000);
+
+endmodule
+
+module testbench;
+    reg [3:0] a, b;
+    reg [1:0] op;
+    reg clk, rst_n;
+    wire [3:0] result;
+    wire zero;
+    
+    alu dut (
+        .a(a),
+        .b(b),
+        .op(op),
+        .result(result),
+        .zero(zero)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst_n = 0;
+        a = 0;
+        b = 0;
+        op = 0;
+        
+        #10 rst_n = 1;
+        
+        // Test ADD
+        #10 a = 4'b0011; b = 4'b0010; op = 2'b00;
+        
+        // Test SUB
+        #10 a = 4'b0111; b = 4'b0011; op = 2'b01;
+        
+        // Test AND
+        #10 a = 4'b1100; b = 4'b1010; op = 2'b10;
+        
+        // Test OR
+        #10 a = 4'b1100; b = 4'b0011; op = 2'b11;
+        
+        // Test zero flag
+        #10 a = 4'b0000; b = 4'b0000; op = 2'b00;
+        
+        #10 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b op=%b result=%b zero=%b"",
+                 $time, a, b, op, result, zero);
+    end
+endmodule",True,76,True,True,True,False,0.4,False,11.457930326461792,6.762126445770264,"Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    A[a[3:0]] --> ALU((ALU Core))
+    B[b[3:0]] --> ALU
+    OP[op[1:0]] --> ALU
+    CLK[Clock] --> TB[[Testbench]]
+    RST[Reset] --> TB
+    ALU --> RES[result[3:0]]
+    ALU --> Z[zero]
+    
+    subgraph ALU_INTERNAL
+        A2((ADD)) --> MUX{Operation Select}
+        S2((SUB)) --> MUX
+        AN((AND)) --> MUX
+        OR((OR)) --> MUX
+    end
+    
+    subgraph TESTBENCH
+        TB --> STIM[[Stimulus Generator]]
+        TB --> CHK[[Result Checker]]
+        STIM --> A
+        STIM --> B
+        STIM --> OP
+        RES --> CHK
+        Z --> CHK
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module alu(
+    input wire [3:0] a,
+    input wire [3:0] b,
+    input wire [1:0] op,
+    output reg [3:0] result,
+    output wire zero
+);
+
+reg [3:0] add_result;
+reg [3:0] sub_result;
+reg [3:0] and_result;
+reg [3:0] or_result;
+
+assign zero = (result == 4'b0000);
+
+always @(*) begin
+    add_result = a + b;
+    sub_result = a - b;
+    and_result = a & b;
+    or_result = a | b;
+    
+    case(op)
+        2'b00: result = add_result;
+        2'b01: result = sub_result;
+        2'b10: result = and_result;
+        2'b11: result = or_result;
+        default: result = 4'b0000;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst_n;
+    reg [3:0] a;
+    reg [3:0] b;
+    reg [1:0] op;
+    wire [3:0] result;
+    wire zero;
+    
+    alu dut(
+        .a(a),
+        .b(b),
+        .op(op),
+        .result(result),
+        .zero(zero)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst_n = 0;
+        a = 0;
+        b = 0;
+        op = 0;
+        
+        #10 rst_n = 1;
+        
+        // Test ADD
+        #10 a = 4'h3; b = 4'h4; op = 2'b00;
+        #10 a = 4'h7; b = 4'h2; op = 2'b00;
+        
+        // Test SUB
+        #10 a = 4'h5; b = 4'h3; op = 2'b01;
+        #10 a = 4'h3; b = 4'h3; op = 2'b01;
+        
+        // Test AND
+        #10 a = 4'hF; b = 4'h3; op = 2'b10;
+        #10 a = 4'h5; b = 4'h6; op = 2'b10;
+        
+        // Test OR
+        #10 a = 4'h5; b = 4'hA; op = 2'b11;
+        #10 a = 4'h0; b = 4'h0; op = 2'b11;
+        
+        #10 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t rst_n=%b a=%h b=%h op=%b result=%h zero=%b"",
+                 $time, rst_n, a, b, op, result, zero);
+    end
+endmodule",True,89,True,True,True,False,0.4,False,9.539615869522095,7.269033908843994,,,13,-1.9183144569396973,standard
+4-bit ALU,Arithmetic,medium,"Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.",gpt-4o,"graph LR
+    a[a[3:0]] --> ALU
+    b[b[3:0]] --> ALU
+    op[op[1:0]] --> ALU
+    ALU((ALU))
+    ALU --> result[result[3:0]]
+    ALU --> zero[zero]
+    TB[Testbench]
+    TB --> a
+    TB --> b
+    TB --> op
+    result --> TB
+    zero --> TB","`timescale 1ns/1ps
+
+module alu(
+    input wire [3:0] a,
+    input wire [3:0] b,
+    input wire [1:0] op,
+    output reg [3:0] result,
+    output reg zero
+);
+
+always @(*) begin
+    case (op)
+        2'b00: result = a + b; // ADD
+        2'b01: result = a - b; // SUB
+        2'b10: result = a & b; // AND
+        2'b11: result = a | b; // OR
+        default: result = 4'b0000;
+    endcase
+
+    zero = (result == 4'b0000);
+end
+
+endmodule
+
+module testbench;
+    reg [3:0] a;
+    reg [3:0] b;
+    reg [1:0] op;
+    wire [3:0] result;
+    wire zero;
+    
+    alu dut (
+        .a(a),
+        .b(b),
+        .op(op),
+        .result(result),
+        .zero(zero)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        a = 4'b0000;
+        b = 4'b0000;
+        op = 2'b00;
+
+        #10 a = 4'b0101; b = 4'b0011; op = 2'b00; // ADD
+        #10 a = 4'b0101; b = 4'b0011; op = 2'b01; // SUB
+        #10 a = 4'b1100; b = 4'b1010; op = 2'b10; // AND
+        #10 a = 4'b1100; b = 4'b1010; op = 2'b11; // OR
+        #10 $finish;
+    end
+    
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b op=%b result=%b zero=%b"", 
+                 $time, a, b, op, result, zero);
+    end
+endmodule",True,59,True,True,True,False,0.4,False,6.639646291732788,12.494418859481812,"Design a 4-bit ALU supporting ADD, SUB, AND, OR operations. Inputs: a[3:0], b[3:0], op[1:0]. Outputs: result[3:0], zero. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    a[a[3:0]] --> ALU
+    b[b[3:0]] --> ALU
+    op[op[1:0]] --> ALU
+    ALU((ALU))
+    ALU --> result[result[3:0]]
+    ALU --> zero[zero]
+    TB[Testbench]
+    TB --> a
+    TB --> b
+    TB --> op
+    result --> TB
+    zero --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module ALU(
+    input wire [3:0] a,
+    input wire [3:0] b,
+    input wire [1:0] op,
+    output reg [3:0] result,
+    output wire zero
+);
+
+always @(*) begin
+    case (op)
+        2'b00: result = a + b;    // ADD
+        2'b01: result = a - b;    // SUB
+        2'b10: result = a & b;    // AND
+        2'b11: result = a | b;    // OR
+        default: result = 4'b0000;
+    endcase
+end
+
+assign zero = (result == 4'b0000);
+
+endmodule
+
+module testbench;
+    reg [3:0] a, b;
+    reg [1:0] op;
+    wire [3:0] result;
+    wire zero;
+
+    ALU dut (
+        .a(a),
+        .b(b),
+        .op(op),
+        .result(result),
+        .zero(zero)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        a = 4'b0000; b = 4'b0000; op = 2'b00;
+        #10 a = 4'b0011; b = 4'b0001; op = 2'b00; // Test ADD
+        #10 a = 4'b0100; b = 4'b0001; op = 2'b01; // Test SUB
+        #10 a = 4'b1100; b = 4'b1010; op = 2'b10; // Test AND
+        #10 a = 4'b1100; b = 4'b1010; op = 2'b11; // Test OR
+        #10 a = 4'b0000; b = 4'b0000; op = 2'b00; // Test zero output
+        #10 $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t a=%b b=%b op=%b result=%b zero=%b"", 
+                 $time, a, b, op, result, zero);
+    end
+endmodule",True,56,True,True,True,False,0.4,False,4.375155687332153,6.520591497421265,,,-3,-2.2644906044006348,multimodal
+8:1 Multiplexer,Combinational,medium,"Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.",claude,"graph LR
+    D0[Data0] --> MUX{8:1 MUX}
+    D1[Data1] --> MUX
+    D2[Data2] --> MUX
+    D3[Data3] --> MUX
+    D4[Data4] --> MUX
+    D5[Data5] --> MUX
+    D6[Data6] --> MUX
+    D7[Data7] --> MUX
+    SEL[Sel[2:0]] --> MUX
+    MUX --> OUT[Output]
+    TB[[Testbench]]
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3
+    TB --> D4
+    TB --> D5
+    TB --> D6
+    TB --> D7
+    TB --> SEL
+    OUT --> TB","`timescale 1ns/1ps
+
+module mux8to1 (
+    input wire [7:0] data0,
+    input wire [7:0] data1,
+    input wire [7:0] data2,
+    input wire [7:0] data3,
+    input wire [7:0] data4,
+    input wire [7:0] data5,
+    input wire [7:0] data6,
+    input wire [7:0] data7,
+    input wire [2:0] sel,
+    output reg [7:0] out
+);
+
+always @(*) begin
+    case (sel)
+        3'b000: out = data0;
+        3'b001: out = data1;
+        3'b010: out = data2;
+        3'b011: out = data3;
+        3'b100: out = data4;
+        3'b101: out = data5;
+        3'b110: out = data6;
+        3'b111: out = data7;
+        default: out = 8'b0;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg [7:0] data0, data1, data2, data3, data4, data5, data6, data7;
+    reg [2:0] sel;
+    wire [7:0] out;
+
+    mux8to1 dut (
+        .data0(data0),
+        .data1(data1),
+        .data2(data2),
+        .data3(data3),
+        .data4(data4),
+        .data5(data5),
+        .data6(data6),
+        .data7(data7),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        data0 = 8'h11;
+        data1 = 8'h22;
+        data2 = 8'h33;
+        data3 = 8'h44;
+        data4 = 8'h55;
+        data5 = 8'h66;
+        data6 = 8'h77;
+        data7 = 8'h88;
+        sel = 3'b000;
+
+        #10;
+        sel = 3'b001;
+        #10;
+        sel = 3'b010;
+        #10;
+        sel = 3'b011;
+        #10;
+        sel = 3'b100;
+        #10;
+        sel = 3'b101;
+        #10;
+        sel = 3'b110;
+        #10;
+        sel = 3'b111;
+        #10;
+        $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t sel=%b out=%h"", $time, sel, out);
+    end
+endmodule",True,85,True,True,True,False,0.4,False,11.196543455123901,5.981353998184204,"Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    D0[Data0] --> MUX{8:1 MUX}
+    D1[Data1] --> MUX
+    D2[Data2] --> MUX
+    D3[Data3] --> MUX
+    D4[Data4] --> MUX
+    D5[Data5] --> MUX
+    D6[Data6] --> MUX
+    D7[Data7] --> MUX
+    SEL[Sel[2:0]] --> MUX
+    MUX --> OUT[Output]
+    TB[[Testbench]]
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3
+    TB --> D4
+    TB --> D5
+    TB --> D6
+    TB --> D7
+    TB --> SEL
+    OUT --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module mux8to1(
+    input wire [7:0] data_in,
+    input wire [2:0] sel,
+    output reg out
+);
+
+always @(*) begin
+    case(sel)
+        3'b000: out = data_in[0];
+        3'b001: out = data_in[1];
+        3'b010: out = data_in[2];
+        3'b011: out = data_in[3];
+        3'b100: out = data_in[4];
+        3'b101: out = data_in[5];
+        3'b110: out = data_in[6];
+        3'b111: out = data_in[7];
+        default: out = 1'b0;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg [7:0] data_in;
+    reg [2:0] sel;
+    wire out;
+
+    mux8to1 dut(
+        .data_in(data_in),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        data_in = 8'b10101010;
+        
+        sel = 3'b000; #10;
+        sel = 3'b001; #10;
+        sel = 3'b010; #10;
+        sel = 3'b011; #10;
+        sel = 3'b100; #10;
+        sel = 3'b101; #10;
+        sel = 3'b110; #10;
+        sel = 3'b111; #10;
+
+        data_in = 8'b11110000;
+        
+        sel = 3'b000; #10;
+        sel = 3'b001; #10;
+        sel = 3'b010; #10;
+        sel = 3'b011; #10;
+        sel = 3'b100; #10;
+        sel = 3'b101; #10;
+        sel = 3'b110; #10;
+        sel = 3'b111; #10;
+
+        $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t data_in=%b sel=%b out=%b"", 
+                 $time, data_in, sel, out);
+    end
+endmodule",True,69,True,True,True,False,0.4,False,6.923340320587158,6.6434876918792725,,,-16,-4.273203134536743,multimodal
+8:1 Multiplexer,Combinational,medium,"Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.",gpt-4o,"graph LR
+    D0[data[0]] --> MUX{8:1 MUX}
+    D1[data[1]] --> MUX
+    D2[data[2]] --> MUX
+    D3[data[3]] --> MUX
+    D4[data[4]] --> MUX
+    D5[data[5]] --> MUX
+    D6[data[6]] --> MUX
+    D7[data[7]] --> MUX
+    SEL[sel[2:0]] --> MUX
+    MUX --> OUT[out]
+    CLK[Clock] --> TB[Testbench]
+    RST[Reset] --> TB
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3
+    TB --> D4
+    TB --> D5
+    TB --> D6
+    TB --> D7
+    TB --> SEL
+    OUT --> TB","`timescale 1ns/1ps
+
+module mux_8to1(
+    input wire [7:0] data,
+    input wire [2:0] sel,
+    output reg out
+);
+
+always @(*) begin
+    case (sel)
+        3'b000: out = data[0];
+        3'b001: out = data[1];
+        3'b010: out = data[2];
+        3'b011: out = data[3];
+        3'b100: out = data[4];
+        3'b101: out = data[5];
+        3'b110: out = data[6];
+        3'b111: out = data[7];
+        default: out = 1'b0;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg [7:0] data;
+    reg [2:0] sel;
+    wire out;
+    reg clk, rst;
+    
+    mux_8to1 dut (
+        .data(data),
+        .sel(sel),
+        .out(out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        data = 8'b00000000;
+        sel = 3'b000;
+        clk = 1'b0;
+        rst = 1'b0;
+        
+        #10 rst = 1'b1;
+        
+        #10 data = 8'b10101010; sel = 3'b000;
+        #10 sel = 3'b001;
+        #10 sel = 3'b010;
+        #10 sel = 3'b011;
+        #10 sel = 3'b100;
+        #10 sel = 3'b101;
+        #10 sel = 3'b110;
+        #10 sel = 3'b111;
+        
+        #10 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t data=%b sel=%b out=%b"", 
+                 $time, data, sel, out);
+    end
+endmodule",True,66,True,True,True,False,0.4,False,6.19686484336853,4.9073731899261475,"Create an 8:1 multiplexer with input data[7:0], select sel[2:0], and output out. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    D0[data[0]] --> MUX{8:1 MUX}
+    D1[data[1]] --> MUX
+    D2[data[2]] --> MUX
+    D3[data[3]] --> MUX
+    D4[data[4]] --> MUX
+    D5[data[5]] --> MUX
+    D6[data[6]] --> MUX
+    D7[data[7]] --> MUX
+    SEL[sel[2:0]] --> MUX
+    MUX --> OUT[out]
+    CLK[Clock] --> TB[Testbench]
+    RST[Reset] --> TB
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3
+    TB --> D4
+    TB --> D5
+    TB --> D6
+    TB --> D7
+    TB --> SEL
+    OUT --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module mux_8_to_1(
+    input wire [7:0] data,
+    input wire [2:0] sel,
+    output reg out
+);
+
+always @(*) begin
+    case (sel)
+        3'b000: out = data[0];
+        3'b001: out = data[1];
+        3'b010: out = data[2];
+        3'b011: out = data[3];
+        3'b100: out = data[4];
+        3'b101: out = data[5];
+        3'b110: out = data[6];
+        3'b111: out = data[7];
+        default: out = 1'b0;
+    endcase
+end
+
+endmodule
+
+module testbench;
+    reg [7:0] data;
+    reg [2:0] sel;
+    wire out;
+    reg clk, rst;
+
+    mux_8_to_1 dut (
+        .data(data),
+        .sel(sel),
+        .out(out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b0;
+        data = 8'b00000000;
+        sel = 3'b000;
+        
+        #20 rst = 1'b1;
+        #10 data = 8'b10101010; sel = 3'b000;
+        #10 sel = 3'b001;
+        #10 sel = 3'b010;
+        #10 sel = 3'b011;
+        #10 sel = 3'b100;
+        #10 sel = 3'b101;
+        #10 sel = 3'b110;
+        #10 sel = 3'b111;
+        #50 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b data=%b sel=%b out=%b"",
+                 $time, clk, rst, data, sel, out);
+    end
+endmodule",True,64,True,True,True,False,0.4,False,5.206001281738281,8.41010069847107,,,-2,-0.990863561630249,multimodal
+Sequence Detector,State Machine,medium,Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.,claude,"graph LR
+    CLK[Clock] --> FSM
+    RST[Reset] --> FSM
+    DIN[Serial Input] --> FSM
+    FSM[FSM Pattern Detector] --> DOUT[Pattern Found]
+
+    TB[[Testbench Generator]]
+    TB --> |10110111011| DIN
+    CLK --> TB
+    RST --> TB
+
+    FSM_STATES[[State Machine]]
+    FSM_STATES --> |S0: Idle| FSM
+    FSM_STATES --> |S1: Got1| FSM
+    FSM_STATES --> |S2: Got10| FSM
+    FSM_STATES --> |S3: Got101| FSM
+    FSM_STATES --> |S4: Got1011| FSM
+
+    CTRL{Control Logic}
+    FSM --> CTRL
+    CTRL --> |Next State| FSM
+    CTRL --> |Pattern Detect| DOUT","`timescale 1ns/1ps
+
+module pattern_detector (
+    input wire clk,
+    input wire rst,
+    input wire din,
+    output reg dout
+);
+
+parameter S0 = 3'b000;  // Idle
+parameter S1 = 3'b001;  // Got1
+parameter S2 = 3'b010;  // Got10
+parameter S3 = 3'b011;  // Got101
+parameter S4 = 3'b100;  // Got1011
+
+reg [2:0] state, next_state;
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        state <= S0;
+    else
+        state <= next_state;
+end
+
+always @(*) begin
+    next_state = state;
+    case (state)
+        S0: next_state = (din) ? S1 : S0;
+        S1: next_state = (din) ? S1 : S2;
+        S2: next_state = (din) ? S3 : S0;
+        S3: next_state = (din) ? S4 : S2;
+        S4: next_state = (din) ? S1 : S2;
+        default: next_state = S0;
+    endcase
+end
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        dout <= 1'b0;
+    else
+        dout <= (state == S3 && din == 1'b1);
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst;
+    reg din;
+    wire dout;
+
+    pattern_detector dut (
+        .clk(clk),
+        .rst(rst),
+        .din(din),
+        .dout(dout)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst = 1;
+        din = 0;
+
+        #10 rst = 0;
+
+        // Test sequence: 10110111011
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+
+        #20 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst=%b din=%b dout=%b"", 
+                 $time, rst, din, dout);
+    end
+endmodule",True,91,True,True,True,False,0.3,False,12.064255475997925,7.232380390167236,"Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> FSM
+    RST[Reset] --> FSM
+    DIN[Serial Input] --> FSM
+    FSM[FSM Pattern Detector] --> DOUT[Pattern Found]
+
+    TB[[Testbench Generator]]
+    TB --> |10110111011| DIN
+    CLK --> TB
+    RST --> TB
+
+    FSM_STATES[[State Machine]]
+    FSM_STATES --> |S0: Idle| FSM
+    FSM_STATES --> |S1: Got1| FSM
+    FSM_STATES --> |S2: Got10| FSM
+    FSM_STATES --> |S3: Got101| FSM
+    FSM_STATES --> |S4: Got1011| FSM
+
+    CTRL{Control Logic}
+    FSM --> CTRL
+    CTRL --> |Next State| FSM
+    CTRL --> |Pattern Detect| DOUT
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module pattern_detector (
+    input wire clk,
+    input wire rst,
+    input wire din,
+    output reg dout
+);
+
+localparam S0 = 3'd0,  // Idle
+           S1 = 3'd1,  // Got1
+           S2 = 3'd2,  // Got10
+           S3 = 3'd3,  // Got101
+           S4 = 3'd4;  // Got1011
+
+reg [2:0] state, next_state;
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        state <= S0;
+    else
+        state <= next_state;
+end
+
+always @(*) begin
+    next_state = state;
+    case (state)
+        S0: if (din) next_state = S1;
+        S1: next_state = din ? S1 : S2;
+        S2: next_state = din ? S3 : S0;
+        S3: next_state = din ? S4 : S2;
+        S4: next_state = din ? S1 : S2;
+        default: next_state = S0;
+    endcase
+end
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        dout <= 1'b0;
+    else
+        dout <= (state == S3 && din);
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst;
+    reg din;
+    wire dout;
+
+    pattern_detector dut (
+        .clk(clk),
+        .rst(rst),
+        .din(din),
+        .dout(dout)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst = 1;
+        din = 0;
+
+        #10 rst = 0;
+
+        // Test sequence: 10110111011
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 1;
+        #10 din = 0;
+        #10 din = 1;
+        #10 din = 1;
+
+        #20 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst=%b din=%b dout=%b state=%d"", 
+                 $time, rst, din, dout, dut.state);
+    end
+
+endmodule",True,92,True,True,True,False,0.4,False,8.372586727142334,7.6846840381622314,,,1,-3.691668748855591,standard
+Sequence Detector,State Machine,medium,Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.,gpt-4o,"graph LR
+    CLK[Clock] --> FSM1((FSM))
+    RST[Reset] --> FSM1
+    INP[Serial Input] --> FSM1
+    FSM1 --> DETECTED{Pattern Detected?}
+    DETECTED -->|Yes| OUT[Output: Pattern Found]
+    DETECTED -->|No| FSM1
+    TB[Testbench Sequence: 10110111011] --> INP
+    CLK --> TB
+    RST --> TB","`timescale 1ns/1ps
+
+module fsm_detector(
+    input wire clk,
+    input wire rst,
+    input wire serial_in,
+    output reg pattern_found
+);
+
+    reg [2:0] state, next_state;
+
+    localparam S0 = 3'b000,
+               S1 = 3'b001,
+               S2 = 3'b010,
+               S3 = 3'b011,
+               S4 = 3'b100;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            state <= S0;
+        else
+            state <= next_state;
+    end
+
+    always @(*) begin
+        case (state)
+            S0: if (serial_in) next_state = S1; else next_state = S0;
+            S1: if (serial_in) next_state = S1; else next_state = S2;
+            S2: if (serial_in) next_state = S3; else next_state = S0;
+            S3: if (serial_in) next_state = S4; else next_state = S2;
+            S4: if (serial_in) next_state = S1; else next_state = S2;
+            default: next_state = S0;
+        endcase
+    end
+
+    always @(*) begin
+        pattern_found = (state == S4);
+    end
+
+endmodule
+
+module testbench;
+    reg clk, rst, serial_in;
+    wire pattern_found;
+
+    fsm_detector dut (
+        .clk(clk),
+        .rst(rst),
+        .serial_in(serial_in),
+        .pattern_found(pattern_found)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        serial_in = 1'b0;
+
+        #10 rst = 1'b0;
+        
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b0;  // 0
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b0;  // 0
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b0;  // 0
+        #10 serial_in = 1'b1;  // 1
+        #10 serial_in = 1'b1;  // 1
+
+        #50 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b serial_in=%b pattern_found=%b"", 
+                 $time, clk, rst, serial_in, pattern_found);
+    end
+endmodule",True,84,True,True,True,True,0.7,True,8.089116334915161,7.546728610992432,"Design an FSM detecting pattern 1011 in serial input with overlapping detection. Include testbench with sequence: 10110111011.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> FSM1((FSM))
+    RST[Reset] --> FSM1
+    INP[Serial Input] --> FSM1
+    FSM1 --> DETECTED{Pattern Detected?}
+    DETECTED -->|Yes| OUT[Output: Pattern Found]
+    DETECTED -->|No| FSM1
+    TB[Testbench Sequence: 10110111011] --> INP
+    CLK --> TB
+    RST --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module fsm_pattern_detector(
+    input wire clk,
+    input wire rst,
+    input wire serial_in,
+    output reg pattern_found
+);
+
+    reg [2:0] state, next_state;
+
+    localparam S0 = 3'b000,
+               S1 = 3'b001,
+               S2 = 3'b010,
+               S3 = 3'b011,
+               S4 = 3'b100;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            state <= S0;
+        else
+            state <= next_state;
+    end
+
+    always @(*) begin
+        case (state)
+            S0: if (serial_in) next_state = S1; else next_state = S0;
+            S1: if (serial_in) next_state = S1; else next_state = S2;
+            S2: if (serial_in) next_state = S3; else next_state = S0;
+            S3: if (serial_in) next_state = S4; else next_state = S2;
+            S4: if (serial_in) next_state = S1; else next_state = S2;
+            default: next_state = S0;
+        endcase
+    end
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            pattern_found <= 1'b0;
+        else if (state == S4 && serial_in == 1'b1)
+            pattern_found <= 1'b1;
+        else
+            pattern_found <= 1'b0;
+    end
+
+endmodule
+
+module testbench;
+    reg clk, rst, serial_in;
+    wire pattern_found;
+    reg [10:0] test_sequence = 11'b10110111011;
+    integer i;
+
+    fsm_pattern_detector dut (
+        .clk(clk),
+        .rst(rst),
+        .serial_in(serial_in),
+        .pattern_found(pattern_found)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        serial_in = 1'b0;
+
+        #10 rst = 1'b0;
+        
+        for (i = 0; i < 11; i = i + 1) begin
+            #10 serial_in = test_sequence[10 - i];
+        end
+
+        #50 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b serial_in=%b pattern_found=%b"",
+                 $time, clk, rst, serial_in, pattern_found);
+    end
+
+endmodule",True,84,True,True,True,True,0.7,True,8.802086114883423,6.093848466873169,,,0,0.7129697799682617,tie
+4-bit Shift Register,Sequential,medium,"Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.",claude,"graph TD
+    CLK[Clock] --> FF0[[FF0]]
+    CLK[Clock] --> FF1[[FF1]]
+    CLK[Clock] --> FF2[[FF2]]
+    CLK[Clock] --> FF3[[FF3]]
+    RST[Reset] --> FF0
+    RST --> FF1
+    RST --> FF2
+    RST --> FF3
+    LOAD[Load] --> MUX0{MUX0}
+    LOAD --> MUX1{MUX1}
+    LOAD --> MUX2{MUX2}
+    LOAD --> MUX3{MUX3}
+    D0[P_IN0] --> MUX0
+    D1[P_IN1] --> MUX1
+    D2[P_IN2] --> MUX2
+    D3[P_IN3] --> MUX3
+    FF0 --> MUX1
+    FF1 --> MUX2
+    FF2 --> MUX3
+    MUX0 --> FF0
+    MUX1 --> FF1
+    MUX2 --> FF2
+    MUX3 --> FF3
+    FF0 --> SO[Serial Out]
+    TB[Testbench] --> CLK
+    TB --> RST
+    TB --> LOAD
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3","`timescale 1ns/1ps
+
+module piso_register(
+    input wire clk,
+    input wire rst,
+    input wire load,
+    input wire [3:0] p_in,
+    output wire s_out
+);
+
+reg [3:0] shift_reg;
+
+assign s_out = shift_reg[0];
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        shift_reg <= 4'b0000;
+    else if (load)
+        shift_reg <= p_in;
+    else
+        shift_reg <= {1'b0, shift_reg[3:1]};
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, load;
+    reg [3:0] p_in;
+    wire s_out;
+    
+    piso_register dut (
+        .clk(clk),
+        .rst(rst),
+        .load(load),
+        .p_in(p_in),
+        .s_out(s_out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst = 1;
+        load = 0;
+        p_in = 4'b0000;
+        
+        #10 rst = 0;
+        
+        #10 load = 1;
+        p_in = 4'b1010;
+        #10 load = 0;
+        
+        #40 load = 1;
+        p_in = 4'b1111;
+        #10 load = 0;
+        
+        #40 rst = 1;
+        #10 rst = 0;
+        
+        #20 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t rst=%b load=%b p_in=%b s_out=%b shift_reg=%b"",
+                 $time, rst, load, p_in, s_out, dut.shift_reg);
+    end
+endmodule",True,70,True,True,True,False,0.4,False,11.083662509918213,7.811798572540283,"Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> FF0[[FF0]]
+    CLK[Clock] --> FF1[[FF1]]
+    CLK[Clock] --> FF2[[FF2]]
+    CLK[Clock] --> FF3[[FF3]]
+    RST[Reset] --> FF0
+    RST --> FF1
+    RST --> FF2
+    RST --> FF3
+    LOAD[Load] --> MUX0{MUX0}
+    LOAD --> MUX1{MUX1}
+    LOAD --> MUX2{MUX2}
+    LOAD --> MUX3{MUX3}
+    D0[P_IN0] --> MUX0
+    D1[P_IN1] --> MUX1
+    D2[P_IN2] --> MUX2
+    D3[P_IN3] --> MUX3
+    FF0 --> MUX1
+    FF1 --> MUX2
+    FF2 --> MUX3
+    MUX0 --> FF0
+    MUX1 --> FF1
+    MUX2 --> FF2
+    MUX3 --> FF3
+    FF0 --> SO[Serial Out]
+    TB[Testbench] --> CLK
+    TB --> RST
+    TB --> LOAD
+    TB --> D0
+    TB --> D1
+    TB --> D2
+    TB --> D3
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module piso_shiftreg(
+    input wire clk,
+    input wire rst,
+    input wire load,
+    input wire [3:0] p_in,
+    output wire s_out
+);
+
+reg [3:0] ff_out;
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        ff_out <= 4'b0000;
+    else if (load)
+        ff_out <= p_in;
+    else
+        ff_out <= {ff_out[2:0], 1'b0};
+end
+
+assign s_out = ff_out[3];
+
+endmodule
+
+module testbench;
+    reg clk, rst, load;
+    reg [3:0] p_in;
+    wire s_out;
+    
+    piso_shiftreg dut (
+        .clk(clk),
+        .rst(rst),
+        .load(load),
+        .p_in(p_in),
+        .s_out(s_out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 0;
+        rst = 1;
+        load = 0;
+        p_in = 4'b0000;
+        
+        #10 rst = 0;
+        
+        #10 load = 1;
+        p_in = 4'b1010;
+        
+        #10 load = 0;
+        
+        #40 load = 1;
+        p_in = 4'b1111;
+        
+        #10 load = 0;
+        
+        #40 rst = 1;
+        #10 rst = 0;
+        
+        #20 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t rst=%b load=%b p_in=%b s_out=%b ff_out=%b"", 
+                 $time, rst, load, p_in, s_out, dut.ff_out);
+    end
+endmodule",True,72,True,True,True,False,0.4,False,6.3548078536987305,7.031044960021973,,,2,-4.728854656219482,standard
+4-bit Shift Register,Sequential,medium,"Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.",gpt-4o,"graph LR
+    CLK[Clock] --> PISO[[4-bit PISO Shift Register]]
+    RST[Reset] --> PISO
+    LOAD[Load] --> PISO
+    PI[Parallel Input [3:0]] --> PISO
+    PISO --> SO[Serial Output]
+    subgraph Testbench
+        TBCLK[Clock] --> PISO
+        TBRST[Reset] --> PISO
+        TBLOAD[Load] --> PISO
+        TBPI[Parallel Input [3:0]] --> PISO
+        PISO --> TBSO[Serial Output]
+    end","`timescale 1ns/1ps
+
+module piso_shift_register(
+    input wire clk,
+    input wire rst,
+    input wire load,
+    input wire [3:0] parallel_in,
+    output reg serial_out
+);
+
+reg [3:0] shift_reg;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        shift_reg <= 4'b0000;
+        serial_out <= 1'b0;
+    end else if (load) begin
+        shift_reg <= parallel_in;
+    end else begin
+        serial_out <= shift_reg[0];
+        shift_reg <= {1'b0, shift_reg[3:1]};
+    end
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, load;
+    reg [3:0] parallel_in;
+    wire serial_out;
+
+    piso_shift_register dut (
+        .clk(clk),
+        .rst(rst),
+        .load(load),
+        .parallel_in(parallel_in),
+        .serial_out(serial_out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        load = 1'b0;
+        parallel_in = 4'b0000;
+
+        #10 rst = 1'b0;
+        #10 load = 1'b1;
+        parallel_in = 4'b1010;
+        #10 load = 1'b0;
+
+        #100 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b load=%b parallel_in=%b serial_out=%b"", 
+                 $time, clk, rst, load, parallel_in, serial_out);
+    end
+endmodule",True,63,True,True,True,True,0.7,True,4.837142705917358,8.957595348358154,"Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> PISO[[4-bit PISO Shift Register]]
+    RST[Reset] --> PISO
+    LOAD[Load] --> PISO
+    PI[Parallel Input [3:0]] --> PISO
+    PISO --> SO[Serial Output]
+    subgraph Testbench
+        TBCLK[Clock] --> PISO
+        TBRST[Reset] --> PISO
+        TBLOAD[Load] --> PISO
+        TBPI[Parallel Input [3:0]] --> PISO
+        PISO --> TBSO[Serial Output]
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module piso_shift_register(
+    input wire clk,
+    input wire rst,
+    input wire load,
+    input wire [3:0] parallel_in,
+    output reg serial_out
+);
+
+    reg [3:0] shift_reg;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            shift_reg <= 4'b0000;
+        else if (load)
+            shift_reg <= parallel_in;
+        else
+            shift_reg <= {shift_reg[2:0], 1'b0};
+    end
+
+    always @(shift_reg) begin
+        serial_out = shift_reg[3];
+    end
+
+endmodule
+
+module testbench;
+    reg clk, rst, load;
+    reg [3:0] parallel_in;
+    wire serial_out;
+
+    piso_shift_register dut (
+        .clk(clk),
+        .rst(rst),
+        .load(load),
+        .parallel_in(parallel_in),
+        .serial_out(serial_out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        load = 1'b0;
+        parallel_in = 4'b0000;
+
+        #10 rst = 1'b0;
+        #10 load = 1'b1; parallel_in = 4'b1010;
+        #10 load = 1'b0;
+        #80 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b load=%b parallel_in=%b serial_out=%b"", 
+                 $time, clk, rst, load, parallel_in, serial_out);
+    end
+endmodule",True,62,True,True,True,True,0.7,True,2.856294631958008,10.347503185272217,,,-1,-1.9808480739593506,tie
+Priority Encoder,Combinational,medium,"Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.",claude,"graph TD
+    IN0[in[0]] --> PE(Priority Encoder Logic)
+    IN1[in[1]] --> PE
+    IN2[in[2]] --> PE
+    IN3[in[3]] --> PE
+    PE --> OUT[out[1:0]]
+    PE --> VALID[valid]
+    TB[Testbench] --> |test vectors| IN0
+    TB --> |test vectors| IN1
+    TB --> |test vectors| IN2
+    TB --> |test vectors| IN3
+    TB --> |expected results| COMP{Comparator}
+    OUT --> COMP
+    VALID --> COMP
+    COMP --> RESULT[Test Results]
+    style PE fill:#f9f,stroke:#333
+    style COMP fill:#ccf,stroke:#333
+    style TB fill:#cfc,stroke:#333","`timescale 1ns/1ps
+
+module priority_encoder(
+    input wire [3:0] in,
+    output reg [1:0] out,
+    output reg valid
+);
+
+always @(*) begin
+    if (in[3]) begin
+        out = 2'b11;
+        valid = 1'b1;
+    end
+    else if (in[2]) begin
+        out = 2'b10;
+        valid = 1'b1;
+    end
+    else if (in[1]) begin
+        out = 2'b01;
+        valid = 1'b1;
+    end
+    else if (in[0]) begin
+        out = 2'b00;
+        valid = 1'b1;
+    end
+    else begin
+        out = 2'b00;
+        valid = 1'b0;
+    end
+end
+
+endmodule
+
+module testbench;
+    reg [3:0] in;
+    wire [1:0] out;
+    wire valid;
+    reg [2:0] expected;
+    integer i, errors;
+
+    priority_encoder dut(
+        .in(in),
+        .out(out),
+        .valid(valid)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        errors = 0;
+        
+        for(i = 0; i < 16; i = i + 1) begin
+            in = i;
+            #10;
+            
+            if (in[3]) begin
+                if (!(out == 2'b11 && valid == 1'b1)) errors = errors + 1;
+            end
+            else if (in[2]) begin
+                if (!(out == 2'b10 && valid == 1'b1)) errors = errors + 1;
+            end
+            else if (in[1]) begin
+                if (!(out == 2'b01 && valid == 1'b1)) errors = errors + 1;
+            end
+            else if (in[0]) begin
+                if (!(out == 2'b00 && valid == 1'b1)) errors = errors + 1;
+            end
+            else begin
+                if (!(out == 2'b00 && valid == 1'b0)) errors = errors + 1;
+            end
+        end
+
+        $display(""Test completed with %0d errors"", errors);
+        $finish;
+    end
+
+    initial begin
+        $monitor(""Time=%0t in=%b out=%b valid=%b"", $time, in, out, valid);
+    end
+
+endmodule",True,82,True,True,True,False,0.4,False,10.919062614440918,9.657821655273438,"Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    IN0[in[0]] --> PE(Priority Encoder Logic)
+    IN1[in[1]] --> PE
+    IN2[in[2]] --> PE
+    IN3[in[3]] --> PE
+    PE --> OUT[out[1:0]]
+    PE --> VALID[valid]
+    TB[Testbench] --> |test vectors| IN0
+    TB --> |test vectors| IN1
+    TB --> |test vectors| IN2
+    TB --> |test vectors| IN3
+    TB --> |expected results| COMP{Comparator}
+    OUT --> COMP
+    VALID --> COMP
+    COMP --> RESULT[Test Results]
+    style PE fill:#f9f,stroke:#333
+    style COMP fill:#ccf,stroke:#333
+    style TB fill:#cfc,stroke:#333
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module priority_encoder(
+    input wire [3:0] in,
+    output reg [1:0] out,
+    output reg valid
+);
+
+always @(*) begin
+    valid = |in;
+    if (in[3])
+        out = 2'd3;
+    else if (in[2])
+        out = 2'd2;
+    else if (in[1])
+        out = 2'd1;
+    else if (in[0])
+        out = 2'd0;
+    else
+        out = 2'd0;
+end
+
+endmodule
+
+module testbench;
+    reg [3:0] in;
+    wire [1:0] out;
+    wire valid;
+    
+    reg [2:0] expected;
+    reg error;
+
+    priority_encoder dut (
+        .in(in),
+        .out(out),
+        .valid(valid)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        error = 0;
+        
+        // Test all input combinations
+        in = 4'b0000; expected = {1'b0, 2'b00}; #10;
+        check_output();
+        
+        in = 4'b0001; expected = {1'b1, 2'b00}; #10;
+        check_output();
+        
+        in = 4'b0010; expected = {1'b1, 2'b01}; #10;
+        check_output();
+        
+        in = 4'b0100; expected = {1'b1, 2'b10}; #10;
+        check_output();
+        
+        in = 4'b1000; expected = {1'b1, 2'b11}; #10;
+        check_output();
+        
+        in = 4'b1111; expected = {1'b1, 2'b11}; #10;
+        check_output();
+
+        if (!error)
+            $display(""All tests passed!"");
+        else
+            $display(""Some tests failed!"");
+            
+        $finish;
+    end
+    
+    task check_output;
+        begin
+            if ({valid, out} !== expected) begin
+                $display(""Error: input=%b, got valid=%b out=%b, expected=%b"",
+                         in, valid, out, expected);
+                error = 1;
+            end
+        end
+    endtask
+
+    initial begin
+        $monitor(""Time=%0t in=%b out=%b valid=%b"", 
+                 $time, in, out, valid);
+    end
+
+endmodule",True,87,True,True,True,False,0.4,False,8.268196105957031,7.038474798202515,,,5,-2.6508665084838867,standard
+Priority Encoder,Combinational,medium,"Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.",gpt-4o,"graph TD
+    CLK[Clock] --> ENC(4-to-2 Priority Encoder)
+    RST[Reset] --> ENC
+    in[3:0][Input in[3:0]] --> ENC
+    ENC --> out[1:0][Output out[1:0]]
+    ENC --> V[Valid Bit]
+    
+    % Testbench
+    TB[Testbench] --> in[3:0]
+    TB --> CLK
+    TB --> RST
+    out[1:0] --> TB
+    V --> TB","`timescale 1ns/1ps
+
+module priority_encoder_4to2(
+    input wire clk,
+    input wire rst,
+    input wire [3:0] in,
+    output reg [1:0] out,
+    output reg valid
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        out <= 2'b00;
+        valid <= 1'b0;
+    end else begin
+        case (1'b1)
+            in[3]: begin
+                out <= 2'b11;
+                valid <= 1'b1;
+            end
+            in[2]: begin
+                out <= 2'b10;
+                valid <= 1'b1;
+            end
+            in[1]: begin
+                out <= 2'b01;
+                valid <= 1'b1;
+            end
+            in[0]: begin
+                out <= 2'b00;
+                valid <= 1'b1;
+            end
+            default: begin
+                out <= 2'b00;
+                valid <= 1'b0;
+            end
+        endcase
+    end
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst;
+    reg [3:0] in;
+    wire [1:0] out;
+    wire valid;
+    
+    priority_encoder_4to2 dut (
+        .clk(clk),
+        .rst(rst),
+        .in(in),
+        .out(out),
+        .valid(valid)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        in = 4'b0000;
+        
+        #20 rst = 1'b0;
+        #10 in = 4'b1000; // Test highest priority
+        #10 in = 4'b0100; // Test second highest priority
+        #10 in = 4'b0010; // Test third highest priority
+        #10 in = 4'b0001; // Test lowest priority
+        #10 in = 4'b0000; // Test no valid input
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b in=%b out=%b valid=%b"", 
+                 $time, clk, rst, in, out, valid);
+    end
+endmodule",True,80,True,True,True,True,0.7,True,7.575217247009277,7.420360565185547,"Design a 4-to-2 priority encoder with input in[3:0], output out[1:0], and valid bit. Highest bit has priority. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> ENC(4-to-2 Priority Encoder)
+    RST[Reset] --> ENC
+    in[3:0][Input in[3:0]] --> ENC
+    ENC --> out[1:0][Output out[1:0]]
+    ENC --> V[Valid Bit]
+    
+    % Testbench
+    TB[Testbench] --> in[3:0]
+    TB --> CLK
+    TB --> RST
+    out[1:0] --> TB
+    V --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module priority_encoder_4to2 (
+    input wire clk,
+    input wire rst,
+    input wire [3:0] in,
+    output reg [1:0] out,
+    output reg valid
+);
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        out <= 2'b00;
+        valid <= 1'b0;
+    end else begin
+        casez (in)
+            4'b1???: begin
+                out <= 2'b11;
+                valid <= 1'b1;
+            end
+            4'b01??: begin
+                out <= 2'b10;
+                valid <= 1'b1;
+            end
+            4'b001?: begin
+                out <= 2'b01;
+                valid <= 1'b1;
+            end
+            4'b0001: begin
+                out <= 2'b00;
+                valid <= 1'b1;
+            end
+            default: begin
+                out <= 2'b00;
+                valid <= 1'b0;
+            end
+        endcase
+    end
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst;
+    reg [3:0] in;
+    wire [1:0] out;
+    wire valid;
+    
+    priority_encoder_4to2 dut (
+        .clk(clk),
+        .rst(rst),
+        .in(in),
+        .out(out),
+        .valid(valid)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        in = 4'b0000;
+        
+        #20 rst = 1'b0;
+        #10 in = 4'b1000;
+        #10 in = 4'b0100;
+        #10 in = 4'b0010;
+        #10 in = 4'b0001;
+        #10 in = 4'b0000;
+        #10 in = 4'b1010;
+        #10 in = 4'b1100;
+        #10 in = 4'b0110;
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b in=%b out=%b valid=%b"", 
+                 $time, clk, rst, in, out, valid);
+    end
+endmodule",True,83,True,True,True,True,0.7,True,4.842486619949341,8.058050155639648,,,3,-2.7327306270599365,tie
+Traffic Light Controller,State Machine,complex,"Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.",claude,"graph LR
+    CLK[Clock] --> FSM((FSM Controller))
+    RST[Reset] --> FSM
+    EMERG[Emergency] --> FSM
+    FSM --> TIMER[[Timer Counter<br>GREEN=8<br>YELLOW=2]]
+    TIMER --> FSM
+    FSM --> DECODE((State Decoder))
+    DECODE --> NS[NS_Light[1:0]]
+    DECODE --> EW[EW_Light[1:0]]
+    FSM --> TB[[Testbench<br>- Verify timing<br>- Test emergency<br>- Check transitions]]
+    subgraph States
+        S1[NS_GREEN]
+        S2[NS_YELLOW]
+        S3[EW_GREEN]
+        S4[EW_YELLOW]
+    end
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S1
+    EMERG --> |Emergency Mode|{RED_STATE}
+    {RED_STATE} --> NS
+    {RED_STATE} --> EW","`timescale 1ns/1ps
+
+module traffic_controller (
+    input wire clk,
+    input wire rst,
+    input wire emergency,
+    output reg [1:0] ns_light,
+    output reg [1:0] ew_light
+);
+
+parameter [1:0] GREEN = 2'b00;
+parameter [1:0] YELLOW = 2'b01;
+parameter [1:0] RED = 2'b10;
+
+parameter [1:0] NS_GREEN_STATE = 2'b00;
+parameter [1:0] NS_YELLOW_STATE = 2'b01;
+parameter [1:0] EW_GREEN_STATE = 2'b10;
+parameter [1:0] EW_YELLOW_STATE = 2'b11;
+
+reg [1:0] state, next_state;
+reg [3:0] timer;
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        state <= NS_GREEN_STATE;
+    else
+        state <= next_state;
+end
+
+always @(posedge clk or posedge rst) begin
+    if (rst)
+        timer <= 4'd0;
+    else if (emergency)
+        timer <= 4'd0;
+    else if ((state == NS_GREEN_STATE || state == EW_GREEN_STATE) && timer < 4'd8)
+        timer <= timer + 1'b1;
+    else if ((state == NS_YELLOW_STATE || state == EW_YELLOW_STATE) && timer < 4'd2)
+        timer <= timer + 1'b1;
+    else
+        timer <= 4'd0;
+end
+
+always @(*) begin
+    if (emergency) begin
+        next_state = state;
+    end else begin
+        case (state)
+            NS_GREEN_STATE: next_state = (timer == 4'd8) ? NS_YELLOW_STATE : NS_GREEN_STATE;
+            NS_YELLOW_STATE: next_state = (timer == 4'd2) ? EW_GREEN_STATE : NS_YELLOW_STATE;
+            EW_GREEN_STATE: next_state = (timer == 4'd8) ? EW_YELLOW_STATE : EW_GREEN_STATE;
+            EW_YELLOW_STATE: next_state = (timer == 4'd2) ? NS_GREEN_STATE : EW_YELLOW_STATE;
+            default: next_state = NS_GREEN_STATE;
+        endcase
+    end
+end
+
+always @(*) begin
+    if (emergency) begin
+        ns_light = RED;
+        ew_light = RED;
+    end else begin
+        case (state)
+            NS_GREEN_STATE: begin
+                ns_light = GREEN;
+                ew_light = RED;
+            end
+            NS_YELLOW_STATE: begin
+                ns_light = YELLOW;
+                ew_light = RED;
+            end
+            EW_GREEN_STATE: begin
+                ns_light = RED;
+                ew_light = GREEN;
+            end
+            EW_YELLOW_STATE: begin
+                ns_light = RED;
+                ew_light = YELLOW;
+            end
+            default: begin
+                ns_light = RED;
+                ew_light = RED;
+            end
+        endcase
+    end
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, emergency;
+    wire [1:0] ns_light, ew_light;
+    
+    traffic_controller dut (
+        .clk(clk),
+        .rst(rst),
+        .emergency(emergency),
+        .ns_light(ns_light),
+        .ew_light(ew_light)
+    );
+    
+    initial begin
+        $dumpfile(""traffic.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        emergency = 1'b0;
+        
+        #20 rst = 1'b0;
+        
+        // Normal operation
+        #200;
+        
+        // Test emergency
+        emergency = 1'b1;
+        #50;
+        emergency = 1'b0;
+        
+        // More normal operation
+        #200;
+        
+        $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t state=%b ns_light=%b ew_light=%b emergency=%b"",
+                 $time, dut.state, ns_light, ew_light, emergency);
+    end
+endmodule",True,131,True,True,True,,0.0,,17.065902709960938,0.11950802803039551,"Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> FSM((FSM Controller))
+    RST[Reset] --> FSM
+    EMERG[Emergency] --> FSM
+    FSM --> TIMER[[Timer Counter<br>GREEN=8<br>YELLOW=2]]
+    TIMER --> FSM
+    FSM --> DECODE((State Decoder))
+    DECODE --> NS[NS_Light[1:0]]
+    DECODE --> EW[EW_Light[1:0]]
+    FSM --> TB[[Testbench<br>- Verify timing<br>- Test emergency<br>- Check transitions]]
+    subgraph States
+        S1[NS_GREEN]
+        S2[NS_YELLOW]
+        S3[EW_GREEN]
+        S4[EW_YELLOW]
+    end
+    S1 --> S2
+    S2 --> S3
+    S3 --> S4
+    S4 --> S1
+    EMERG --> |Emergency Mode|{RED_STATE}
+    {RED_STATE} --> NS
+    {RED_STATE} --> EW
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module traffic_controller(
+    input wire clk,
+    input wire rst,
+    input wire emergency,
+    output reg [1:0] ns_light,
+    output reg [1:0] ew_light
+);
+
+// State definitions
+parameter [1:0] NS_GREEN = 2'b00;
+parameter [1:0] NS_YELLOW = 2'b01;
+parameter [1:0] EW_GREEN = 2'b10;
+parameter [1:0] EW_YELLOW = 2'b11;
+
+// Light color definitions
+parameter [1:0] RED = 2'b00;
+parameter [1:0] YELLOW = 2'b01;
+parameter [1:0] GREEN = 2'b10;
+
+reg [1:0] current_state, next_state;
+reg [3:0] timer;
+
+// State and timer logic
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        current_state <= NS_GREEN;
+        timer <= 4'd8;
+    end else begin
+        if (timer == 0) begin
+            current_state <= next_state;
+            timer <= (next_state == NS_YELLOW || next_state == EW_YELLOW) ? 4'd2 : 4'd8;
+        end else begin
+            timer <= timer - 1'b1;
+        end
+    end
+end
+
+// Next state logic
+always @(*) begin
+    if (emergency) begin
+        next_state = current_state;
+    end else begin
+        case (current_state)
+            NS_GREEN: next_state = NS_YELLOW;
+            NS_YELLOW: next_state = EW_GREEN;
+            EW_GREEN: next_state = EW_YELLOW;
+            EW_YELLOW: next_state = NS_GREEN;
+            default: next_state = NS_GREEN;
+        endcase
+    end
+end
+
+// Output decoder
+always @(*) begin
+    if (emergency) begin
+        ns_light = RED;
+        ew_light = RED;
+    end else begin
+        case (current_state)
+            NS_GREEN: begin
+                ns_light = GREEN;
+                ew_light = RED;
+            end
+            NS_YELLOW: begin
+                ns_light = YELLOW;
+                ew_light = RED;
+            end
+            EW_GREEN: begin
+                ns_light = RED;
+                ew_light = GREEN;
+            end
+            EW_YELLOW: begin
+                ns_light = RED;
+                ew_light = YELLOW;
+            end
+            default: begin
+                ns_light = RED;
+                ew_light = RED;
+            end
+        endcase
+    end
+end
+
+endmodule
+
+module testbench;
+    reg clk, rst, emergency;
+    wire [1:0] ns_light, ew_light;
+    
+    traffic_controller dut (
+        .clk(clk),
+        .rst(rst),
+        .emergency(emergency),
+        .ns_light(ns_light),
+        .ew_light(ew_light)
+    );
+    
+    initial begin
+        $dumpfile(""traffic.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        emergency = 1'b0;
+        
+        #10 rst = 1'b0;
+        
+        // Normal operation
+        #100;
+        
+        // Test emergency
+        emergency = 1'b1;
+        #30;
+        emergency = 1'b0;
+        
+        // Continue normal operation
+        #100;
+        
+        $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t rst=%b emergency=%b ns_light=%b ew_light=%b"", 
+                 $time, rst, emergency, ns_light, ew_light);
+    end
+endmodule",True,130,True,True,True,,0.0,,11.340320110321045,0.0319974422454834,,,-1,-5.725582599639893,tie
+Traffic Light Controller,State Machine,complex,"Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.",gpt-4o,"graph TD
+    CLK[clk] --> FSM
+    RST[rst] --> FSM
+    EMERGENCY[emergency] --> FSM
+    
+    FSM((Traffic Light FSM))
+    
+    FSM --> NS_GREEN_STATE[NS_GREEN]
+    FSM --> NS_YELLOW_STATE[NS_YELLOW]
+    FSM --> EW_GREEN_STATE[EW_GREEN]
+    FSM --> EW_YELLOW_STATE[EW_YELLOW]
+    
+    NS_GREEN_STATE -->|8 cycles| NS_YELLOW_STATE
+    NS_YELLOW_STATE -->|2 cycles| EW_GREEN_STATE
+    EW_GREEN_STATE -->|8 cycles| EW_YELLOW_STATE
+    EW_YELLOW_STATE -->|2 cycles| NS_GREEN_STATE
+    
+    FSM --> NS_LIGHT[[ns_light[1:0]]]
+    FSM --> EW_LIGHT[[ew_light[1:0]]]
+    
+    NS_LIGHT --> OUTPUT_NS[NS Light Output]
+    EW_LIGHT --> OUTPUT_EW[EW Light Output]
+    
+    EMERGENCY -- Emergency Active --> {Emergency?}
+    {Emergency?} -->|Yes| EMERGENCY_STATE[All RED]
+    {Emergency?} -->|No| FSM","`timescale 1ns/1ps
+
+module traffic_light_fsm(
+    input wire clk,
+    input wire rst,
+    input wire emergency,
+    output reg [1:0] ns_light,
+    output reg [1:0] ew_light
+);
+
+    typedef enum reg [1:0] {
+        NS_GREEN = 2'b00,
+        NS_YELLOW = 2'b01,
+        EW_GREEN = 2'b10,
+        EW_YELLOW = 2'b11,
+        EMERGENCY_STATE = 2'b100
+    } state_type;
+
+    state_type current_state, next_state;
+    reg [3:0] cycle_count;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            current_state <= NS_GREEN;
+            cycle_count <= 4'b0000;
+        end else begin
+            current_state <= next_state;
+            if (current_state == next_state)
+                cycle_count <= cycle_count + 1'b1;
+            else
+                cycle_count <= 4'b0000;
+        end
+    end
+
+    always @(current_state or cycle_count or emergency) begin
+        if (emergency)
+            next_state = EMERGENCY_STATE;
+        else begin
+            case (current_state)
+                NS_GREEN: 
+                    if (cycle_count == 4'b1000)
+                        next_state = NS_YELLOW;
+                    else
+                        next_state = NS_GREEN;
+                NS_YELLOW:
+                    if (cycle_count == 4'b0010)
+                        next_state = EW_GREEN;
+                    else
+                        next_state = NS_YELLOW;
+                EW_GREEN:
+                    if (cycle_count == 4'b1000)
+                        next_state = EW_YELLOW;
+                    else
+                        next_state = EW_GREEN;
+                EW_YELLOW:
+                    if (cycle_count == 4'b0010)
+                        next_state = NS_GREEN;
+                    else
+                        next_state = EW_YELLOW;
+                EMERGENCY_STATE:
+                    next_state = EMERGENCY_STATE;
+                default:
+                    next_state = NS_GREEN;
+            endcase
+        end
+    end
+
+    always @(current_state) begin
+        case (current_state)
+            NS_GREEN: begin
+                ns_light = 2'b01; // Green
+                ew_light = 2'b10; // Red
+            end
+            NS_YELLOW: begin
+                ns_light = 2'b10; // Yellow
+                ew_light = 2'b10; // Red
+            end
+            EW_GREEN: begin
+                ns_light = 2'b10; // Red
+                ew_light = 2'b01; // Green
+            end
+            EW_YELLOW: begin
+                ns_light = 2'b10; // Red
+                ew_light = 2'b10; // Yellow
+            end
+            EMERGENCY_STATE: begin
+                ns_light = 2'b10; // Red
+                ew_light = 2'b10; // Red
+            end
+            default: begin
+                ns_light = 2'b10; // Red
+                ew_light = 2'b10; // Red
+            end
+        endcase
+    end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst;
+    reg emergency;
+    wire [1:0] ns_light;
+    wire [1:0] ew_light;
+
+    traffic_light_fsm dut (
+        .clk(clk),
+        .rst(rst),
+        .emergency(emergency),
+        .ns_light(ns_light),
+        .ew_light(ew_light)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        emergency = 1'b0;
+        
+        #20 rst = 1'b0;
+        #100 emergency = 1'b1;
+        #50 emergency = 1'b0;
+        #200 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b emergency=%b ns_light=%b ew_light=%b"", 
+                 $time, clk, rst, emergency, ns_light, ew_light);
+    end
+endmodule",True,134,True,False,False,,0.0,,11.657721281051636,0.6487607955932617,"Design a traffic light FSM with 4 states: NS_GREEN, NS_YELLOW, EW_GREEN, EW_YELLOW. Inputs: clk, rst, emergency. Outputs: ns_light[1:0], ew_light[1:0]. Timing: GREEN=8 cycles, YELLOW=2 cycles. Emergency makes both RED. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[clk] --> FSM
+    RST[rst] --> FSM
+    EMERGENCY[emergency] --> FSM
+    
+    FSM((Traffic Light FSM))
+    
+    FSM --> NS_GREEN_STATE[NS_GREEN]
+    FSM --> NS_YELLOW_STATE[NS_YELLOW]
+    FSM --> EW_GREEN_STATE[EW_GREEN]
+    FSM --> EW_YELLOW_STATE[EW_YELLOW]
+    
+    NS_GREEN_STATE -->|8 cycles| NS_YELLOW_STATE
+    NS_YELLOW_STATE -->|2 cycles| EW_GREEN_STATE
+    EW_GREEN_STATE -->|8 cycles| EW_YELLOW_STATE
+    EW_YELLOW_STATE -->|2 cycles| NS_GREEN_STATE
+    
+    FSM --> NS_LIGHT[[ns_light[1:0]]]
+    FSM --> EW_LIGHT[[ew_light[1:0]]]
+    
+    NS_LIGHT --> OUTPUT_NS[NS Light Output]
+    EW_LIGHT --> OUTPUT_EW[EW Light Output]
+    
+    EMERGENCY -- Emergency Active --> {Emergency?}
+    {Emergency?} -->|Yes| EMERGENCY_STATE[All RED]
+    {Emergency?} -->|No| FSM
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module traffic_light_fsm(
+    input wire clk,
+    input wire rst,
+    input wire emergency,
+    output reg [1:0] ns_light,
+    output reg [1:0] ew_light
+);
+    
+    // State encoding
+    localparam [2:0] NS_GREEN  = 3'b000,
+                     NS_YELLOW = 3'b001,
+                     EW_GREEN  = 3'b010,
+                     EW_YELLOW = 3'b011,
+                     EMERGENCY_STATE = 3'b100;
+    
+    // Light encoding
+    localparam [1:0] RED    = 2'b00,
+                     GREEN  = 2'b01,
+                     YELLOW = 2'b10;
+
+    reg [2:0] current_state, next_state;
+    reg [3:0] cycle_count;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            current_state <= NS_GREEN;
+            cycle_count <= 4'b0000;
+        end else begin
+            if (emergency) begin
+                current_state <= EMERGENCY_STATE;
+            end else begin
+                if (cycle_count == 4'b0000) begin
+                    current_state <= next_state;
+                end else begin
+                    cycle_count <= cycle_count - 1'b1;
+                end
+            end
+        end
+    end
+
+    always @(*) begin
+        case (current_state)
+            NS_GREEN: begin
+                ns_light = GREEN;
+                ew_light = RED;
+                if (cycle_count == 4'b0000) begin
+                    next_state = NS_YELLOW;
+                    cycle_count = 4'b1000; // 8 cycles
+                end
+            end
+            NS_YELLOW: begin
+                ns_light = YELLOW;
+                ew_light = RED;
+                if (cycle_count == 4'b0000) begin
+                    next_state = EW_GREEN;
+                    cycle_count = 4'b0010; // 2 cycles
+                end
+            end
+            EW_GREEN: begin
+                ns_light = RED;
+                ew_light = GREEN;
+                if (cycle_count == 4'b0000) begin
+                    next_state = EW_YELLOW;
+                    cycle_count = 4'b1000; // 8 cycles
+                end
+            end
+            EW_YELLOW: begin
+                ns_light = RED;
+                ew_light = YELLOW;
+                if (cycle_count == 4'b0000) begin
+                    next_state = NS_GREEN;
+                    cycle_count = 4'b0010; // 2 cycles
+                end
+            end
+            EMERGENCY_STATE: begin
+                ns_light = RED;
+                ew_light = RED;
+                next_state = EMERGENCY_STATE;
+                cycle_count = 4'b0000;
+            end
+            default: begin
+                ns_light = RED;
+                ew_light = RED;
+                next_state = NS_GREEN;
+                cycle_count = 4'b0000;
+            end
+        endcase
+    end
+endmodule
+
+module testbench;
+    reg clk, rst, emergency;
+    wire [1:0] ns_light, ew_light;
+    
+    traffic_light_fsm dut (
+        .clk(clk),
+        .rst(rst),
+        .emergency(emergency),
+        .ns_light(ns_light),
+        .ew_light(ew_light)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        emergency = 1'b0;
+        
+        #10 rst = 1'b0;
+        #100 emergency = 1'b1;
+        #20 emergency = 1'b0;
+        #300 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b emergency=%b NS_Light=%b EW_Light=%b"",
+                 $time, clk, rst, emergency, ns_light, ew_light);
+    end
+endmodule",True,125,True,True,True,True,0.9,True,10.01035475730896,10.384098529815674,,True,-9,-1.6473665237426758,tie
+UART Transmitter,State Machine,complex,"Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.",claude,"graph TD
+    CLK[Clock] --> BAUD(Baud Rate Generator)
+    CLK --> FSM(State Machine)
+    RST[Reset] --> FSM
+    CLK --> TX_REG[[TX Shift Register]]
+    
+    DATA_IN[TX Data Input] --> TX_REG
+    START_TX[TX Start] --> FSM
+    
+    BAUD --> FSM
+    FSM --> TX_REG
+    
+    FSM --> MUX{Bit Selector}
+    TX_REG --> MUX
+    
+    MUX --> TX[UART TX Pin]
+    
+    TB_CLK[TB Clock] -.-> TB[Testbench]
+    TB_RST[TB Reset] -.-> TB
+    TB -.-> DATA_IN
+    TB -.-> START_TX
+    TB -.-> VERIFY[[Verify Output]]
+    TX -.-> VERIFY
+
+    STATES[[States:
+    IDLE
+    START
+    DATA
+    STOP]]
+    
+    COUNTER[[Bit Counter
+    0 to 7]]
+
+    FSM --> COUNTER
+    COUNTER --> FSM","`timescale 1ns/1ps
+
+// Baud Rate Generator
+module baud_gen #(parameter DIVIDER = 16)(
+    input wire clk,
+    input wire rst_n,
+    output reg baud_tick
+);
+
+reg [$clog2(DIVIDER)-1:0] counter;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        counter <= 4'b0000;
+        baud_tick <= 4'b0000;
+    end else begin
+        if (counter == DIVIDER-1) begin
+            counter <= 4'b0000;
+            baud_tick <= 1;
+        end else begin
+            counter <= counter + 1'b1;
+            baud_tick <= 4'b0000;
+        end
+    end
+end
+endmodule
+
+// UART Transmitter
+module uart_tx(
+    input wire clk,
+    input wire rst_n,
+    input wire start_tx,
+    input wire [7:0] data_in,
+    input wire baud_tick,
+    output reg tx
+);
+
+reg [7:0] tx_reg;
+reg [2:0] bit_counter;
+reg [1:0] state;
+
+localparam IDLE  = 2'b00;
+localparam START = 2'b01;
+localparam DATA  = 2'b10;
+localparam STOP  = 2'b11;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        state <= IDLE;
+        tx_reg <= 8'h00;
+        bit_counter <= 4'b0000;
+        tx <= 1;
+    end else if (baud_tick) begin
+        case (state)
+            IDLE: begin
+                if (start_tx) begin
+                    state <= START;
+                    tx_reg <= data_in;
+                    tx <= 4'b0000;
+                end else
+                    tx <= 1;
+            end
+            
+            START: begin
+                state <= DATA;
+                tx <= tx_reg[0];
+                tx_reg <= {1'b0, tx_reg[7:1]};
+                bit_counter <= 4'b0000;
+            end
+            
+            DATA: begin
+                if (bit_counter == 7) begin
+                    state <= STOP;
+                    tx <= 1;
+                end else begin
+                    tx <= tx_reg[0];
+                    tx_reg <= {1'b0, tx_reg[7:1]};
+                    bit_counter <= bit_counter + 1'b1;
+                end
+            end
+            
+            STOP: begin
+                state <= IDLE;
+                tx <= 1;
+            end
+        endcase
+    end
+end
+endmodule
+
+// Complete UART TX System
+module uart_tx_system(
+    input wire clk,
+    input wire rst_n,
+    input wire start_tx,
+    input wire [7:0] data_in,
+    output wire tx
+);
+
+wire baud_tick;
+
+baud_gen #(16) baud_generator(
+    .clk(clk),
+    .rst_n(rst_n),
+    .baud_tick(baud_tick)
+);
+
+uart_tx transmitter(
+    .clk(clk),
+    .rst_n(rst_n),
+    .start_tx(start_tx),
+    .data_in(data_in),
+    .baud_tick(baud_tick),
+    .tx(tx)
+);
+
+endmodule
+
+// Testbench
+module testbench;
+    reg clk;
+    reg rst_n;
+    reg start_tx;
+    reg [7:0] data_in;
+    wire tx;
+    
+    uart_tx_system dut(
+        .clk(clk),
+        .rst_n(rst_n),
+        .start_tx(start_tx),
+        .data_in(data_in),
+        .tx(tx)
+    );
+    
+    initial begin
+        $dumpfile(""uart_tx.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst_n = 1'b0;
+        start_tx = 1'b0;
+        data_in = 1'b0;
+        
+        #20 rst_n = 1'b1;
+        
+        // Test case 1: Send 0xA5
+        #20;
+        data_in = 8'hA5;
+        start_tx = 1'b1;
+        #20 start_tx = 1'b0;
+        
+        // Wait for transmission
+        #1000;
+        
+        // Test case 2: Send 0x55
+        data_in = 8'h55;
+        start_tx = 1'b1;
+        #20 start_tx = 1'b0;
+        
+        // Wait for transmission
+        #1000;
+        
+        $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t rst_n=%b start_tx=%b data_in=%h tx=%b"",
+                 $time, rst_n, start_tx, data_in, tx);
+    end
+endmodule",True,172,True,True,True,,0.0,,19.667211771011353,0.027860641479492188,"Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> BAUD(Baud Rate Generator)
+    CLK --> FSM(State Machine)
+    RST[Reset] --> FSM
+    CLK --> TX_REG[[TX Shift Register]]
+    
+    DATA_IN[TX Data Input] --> TX_REG
+    START_TX[TX Start] --> FSM
+    
+    BAUD --> FSM
+    FSM --> TX_REG
+    
+    FSM --> MUX{Bit Selector}
+    TX_REG --> MUX
+    
+    MUX --> TX[UART TX Pin]
+    
+    TB_CLK[TB Clock] -.-> TB[Testbench]
+    TB_RST[TB Reset] -.-> TB
+    TB -.-> DATA_IN
+    TB -.-> START_TX
+    TB -.-> VERIFY[[Verify Output]]
+    TX -.-> VERIFY
+
+    STATES[[States:
+    IDLE
+    START
+    DATA
+    STOP]]
+    
+    COUNTER[[Bit Counter
+    0 to 7]]
+
+    FSM --> COUNTER
+    COUNTER --> FSM
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+// UART Transmitter with Baud Generator
+module uart_tx(
+    input wire clk,
+    input wire rst,
+    input wire start_tx,
+    input wire [7:0] data_in,
+    output reg tx
+);
+
+parameter IDLE = 2'b00;
+parameter START = 2'b01;
+parameter DATA = 2'b10;
+parameter STOP = 2'b11;
+
+reg [1:0] state;
+reg [2:0] bit_counter;
+reg [7:0] tx_reg;
+reg baud_tick;
+reg [15:0] baud_counter;
+
+// Baud rate generator (9600 baud assuming 50MHz clock)
+parameter BAUD_DIVIDER = 16'd5208;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        baud_counter <= 16'd0;
+        baud_tick <= 1'b0;
+    end else begin
+        if (baud_counter == BAUD_DIVIDER-1) begin
+            baud_counter <= 16'd0;
+            baud_tick <= 1'b1;
+        end else begin
+            baud_counter <= baud_counter + 1'b1;
+            baud_tick <= 1'b0;
+        end
+    end
+end
+
+// State machine and bit counter
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        state <= IDLE;
+        bit_counter <= 3'b000;
+        tx_reg <= 8'h00;
+        tx <= 1'b1;
+    end else begin
+        if (baud_tick) begin
+            case (state)
+                IDLE: begin
+                    tx <= 1'b1;
+                    if (start_tx) begin
+                        state <= START;
+                        tx_reg <= data_in;
+                    end
+                end
+                
+                START: begin
+                    tx <= 1'b0;
+                    state <= DATA;
+                    bit_counter <= 3'b000;
+                end
+                
+                DATA: begin
+                    tx <= tx_reg[bit_counter];
+                    if (bit_counter == 3'b111) begin
+                        state <= STOP;
+                    end else begin
+                        bit_counter <= bit_counter + 1'b1;
+                    end
+                end
+                
+                STOP: begin
+                    tx <= 1'b1;
+                    state <= IDLE;
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+end
+
+endmodule
+
+// Testbench
+module uart_tx_tb;
+    reg clk;
+    reg rst;
+    reg start_tx;
+    reg [7:0] data_in;
+    wire tx;
+
+    uart_tx dut (
+        .clk(clk),
+        .rst(rst),
+        .start_tx(start_tx),
+        .data_in(data_in),
+        .tx(tx)
+    );
+
+    initial begin
+        $dumpfile(""uart_tx.vcd"");
+        $dumpvars(0, uart_tx_tb);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        start_tx = 1'b0;
+        data_in = 8'h00;
+        
+        #100 rst = 1'b0;
+        
+        // Test pattern
+        #100;
+        data_in = 8'h55;
+        start_tx = 1'b1;
+        #100 start_tx = 1'b0;
+        
+        // Wait for transmission to complete
+        #200000;
+        
+        data_in = 8'hAA;
+        start_tx = 1'b1;
+        #100 start_tx = 1'b0;
+        
+        #200000;
+        $finish;
+    end
+
+    always #10 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst=%b start_tx=%b data_in=%h tx=%b"",
+                 $time, rst, start_tx, data_in, tx);
+    end
+endmodule",True,137,True,True,True,,0.0,,12.068572521209717,0.11410331726074219,,,-35,-7.598639249801636,tie
+UART Transmitter,State Machine,complex,"Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.",gpt-4o,"graph LR
+    CLK[Clock] --> UART_Tx(Processing: UART Transmitter)
+    RST[Reset] --> UART_Tx
+    DATA_IN[Data Input] --> UART_Tx
+    BAUD_DIV[Baud Rate Divider] --> UART_Tx
+    
+    UART_Tx --> IDLE_STATE{State: IDLE}
+    UART_Tx --> START_STATE{State: START}
+    UART_Tx --> DATA_STATE{State: DATA}
+    UART_Tx --> STOP_STATE{State: STOP}
+    
+    IDLE_STATE --> |Idle| UART_Tx
+    START_STATE --> |Start Bit (0)| UART_Tx
+    DATA_STATE --> |8 Data Bits LSB-First| UART_Tx
+    STOP_STATE --> |Stop Bit (1)| UART_Tx
+    
+    UART_Tx --> TX_OUT[Transmitted Output]
+    
+    TESTBENCH[[Testbench]]
+    CLK --> TESTBENCH
+    RST --> TESTBENCH
+    DATA_IN --> TESTBENCH
+    TX_OUT --> TESTBENCH","`timescale 1ns/1ps
+
+module uart_tx(
+    input wire clk,
+    input wire rst,
+    input wire [7:0] data_in,
+    input wire [15:0] baud_div,
+    output reg tx_out
+);
+
+    reg [3:0] state;
+    reg [7:0] data_reg;
+    reg [3:0] bit_count;
+    reg [15:0] baud_count;
+
+    localparam IDLE  = 4'd0;
+    localparam START = 4'd1;
+    localparam DATA  = 4'd2;
+    localparam STOP  = 4'd3;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            state <= IDLE;
+            tx_out <= 1'b1;
+            bit_count <= 4'd0;
+            baud_count <= 16'd0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    tx_out <= 1'b1;
+                    if (baud_count == 16'd0) begin
+                        if (data_in != 8'd0) begin
+                            data_reg <= data_in;
+                            state <= START;
+                        end
+                    end else begin
+                        baud_count <= baud_count - 1'b1;
+                    end
+                end
+
+                START: begin
+                    tx_out <= 1'b0;
+                    if (baud_count == 16'd0) begin
+                        baud_count <= baud_div;
+                        state <= DATA;
+                        bit_count <= 4'd0;
+                    end else begin
+                        baud_count <= baud_count - 1'b1;
+                    end
+                end
+
+                DATA: begin
+                    tx_out <= data_reg[bit_count];
+                    if (baud_count == 16'd0) begin
+                        baud_count <= baud_div;
+                        if (bit_count == 4'd7) begin
+                            state <= STOP;
+                        end else begin
+                            bit_count <= bit_count + 1'b1;
+                        end
+                    end else begin
+                        baud_count <= baud_count - 1'b1;
+                    end
+                end
+
+                STOP: begin
+                    tx_out <= 1'b1;
+                    if (baud_count == 16'd0) begin
+                        baud_count <= baud_div;
+                        state <= IDLE;
+                    end else begin
+                        baud_count <= baud_count - 1'b1;
+                    end
+                end
+
+                default: state <= IDLE;
+            endcase
+        end
+    end
+endmodule
+
+module testbench;
+    reg clk, rst;
+    reg [7:0] data_in;
+    reg [15:0] baud_div;
+    wire tx_out;
+    
+    uart_tx dut (
+        .clk(clk),
+        .rst(rst),
+        .data_in(data_in),
+        .baud_div(baud_div),
+        .tx_out(tx_out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        data_in = 8'b0;
+        baud_div = 16'd1;
+        
+        #20 rst = 1'b0;
+        #20 data_in = 8'b10101010;
+        #2000 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b data_in=%b tx_out=%b"", 
+                 $time, clk, rst, data_in, tx_out);
+    end
+endmodule",True,116,True,True,True,True,0.7,True,14.403260707855225,9.18781065940857,"Design UART transmitter with states: IDLE, START, DATA, STOP. Protocol: START(0), 8 data bits LSB-first, STOP(1). Baud rate divider. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock] --> UART_Tx(Processing: UART Transmitter)
+    RST[Reset] --> UART_Tx
+    DATA_IN[Data Input] --> UART_Tx
+    BAUD_DIV[Baud Rate Divider] --> UART_Tx
+    
+    UART_Tx --> IDLE_STATE{State: IDLE}
+    UART_Tx --> START_STATE{State: START}
+    UART_Tx --> DATA_STATE{State: DATA}
+    UART_Tx --> STOP_STATE{State: STOP}
+    
+    IDLE_STATE --> |Idle| UART_Tx
+    START_STATE --> |Start Bit (0)| UART_Tx
+    DATA_STATE --> |8 Data Bits LSB-First| UART_Tx
+    STOP_STATE --> |Stop Bit (1)| UART_Tx
+    
+    UART_Tx --> TX_OUT[Transmitted Output]
+    
+    TESTBENCH[[Testbench]]
+    CLK --> TESTBENCH
+    RST --> TESTBENCH
+    DATA_IN --> TESTBENCH
+    TX_OUT --> TESTBENCH
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module uart_tx(
+    input wire clk,
+    input wire rst_n,
+    input wire [7:0] data_in,
+    input wire [15:0] baud_div,
+    output reg tx_out
+);
+
+    reg [3:0] state;
+    reg [3:0] bit_count;
+    reg [15:0] baud_counter;
+    reg [7:0] data_reg;
+    
+    localparam IDLE  = 4'd0;
+    localparam START = 4'd1;
+    localparam DATA  = 4'd2;
+    localparam STOP  = 4'd3;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            state <= IDLE;
+            tx_out <= 1'b1;
+            baud_counter <= 16'd0;
+            bit_count <= 4'd0;
+            data_reg <= 8'd0;
+        end else begin
+            case (state)
+                IDLE: begin
+                    tx_out <= 1'b1;
+                    if (baud_counter >= baud_div) begin
+                        baud_counter <= 16'd0;
+                        state <= START;
+                        data_reg <= data_in;
+                        bit_count <= 4'd0;
+                    end else begin
+                        baud_counter <= baud_counter + 1'b1;
+                    end
+                end
+                
+                START: begin
+                    tx_out <= 1'b0;
+                    if (baud_counter >= baud_div) begin
+                        baud_counter <= 16'd0;
+                        state <= DATA;
+                    end else begin
+                        baud_counter <= baud_counter + 1'b1;
+                    end
+                end
+                
+                DATA: begin
+                    tx_out <= data_reg[bit_count];
+                    if (baud_counter >= baud_div) begin
+                        baud_counter <= 16'd0;
+                        if (bit_count == 4'd7) begin
+                            state <= STOP;
+                        end else begin
+                            bit_count <= bit_count + 1'b1;
+                        end
+                    end else begin
+                        baud_counter <= baud_counter + 1'b1;
+                    end
+                end
+                
+                STOP: begin
+                    tx_out <= 1'b1;
+                    if (baud_counter >= baud_div) begin
+                        baud_counter <= 16'd0;
+                        state <= IDLE;
+                    end else begin
+                        baud_counter <= baud_counter + 1'b1;
+                    end
+                end
+                
+                default: state <= IDLE;
+            endcase
+        end
+    end
+endmodule
+
+module testbench;
+    reg clk, rst_n;
+    reg [7:0] data_in;
+    reg [15:0] baud_div;
+    wire tx_out;
+    
+    uart_tx dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .data_in(data_in),
+        .baud_div(baud_div),
+        .tx_out(tx_out)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst_n = 1'b0;
+        data_in = 8'b10101010;
+        baud_div = 16'd10416; // Example baud rate divider for 9600 baud at 100MHz
+        
+        #20 rst_n = 1'b1;
+        #2000 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst_n=%b data_in=%b tx_out=%b"", 
+                 $time, clk, rst_n, data_in, tx_out);
+    end
+endmodule",True,115,True,True,True,True,0.9,True,9.095170497894287,15.602683782577515,,,-1,-5.3080902099609375,tie
+8-bit Register File,CPU Component,complex,Create 8-register × 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.,claude,"graph LR
+    CLK[Clock Input] --> RF[[8x8 Register File]]
+    RST[Reset] --> RF
+    WD[Write Data<8>] --> RF
+    WA[Write Addr<3>] --> RF
+    WE[Write Enable] --> RF
+    RA1[Read Addr1<3>] --> RF
+    RA2[Read Addr2<3>] --> RF
+    
+    RF --> RD1[Read Data1<8>]
+    RF --> RD2[Read Data2<8>]
+    
+    TB[Testbench]--> WD
+    TB --> WA
+    TB --> WE
+    TB --> RA1
+    TB --> RA2
+    
+    CLK --> TB
+    RST --> TB
+    
+    RD1 --> TB
+    RD2 --> TB","`timescale 1ns/1ps
+
+module register_file(
+    input wire clk,
+    input wire rst,
+    input wire [7:0] write_data,
+    input wire [2:0] write_addr,
+    input wire write_enable,
+    input wire [2:0] read_addr1,
+    input wire [2:0] read_addr2,
+    output reg [7:0] read_data1,
+    output reg [7:0] read_data2
+);
+
+reg [7:0] registers [0:7];
+integer i;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        for (i = 0; i < 8; i = i + 1)
+            registers[i] <= 8'b0;
+    end
+    else if (write_enable)
+        registers[write_addr] <= write_data;
+end
+
+always @(*) begin
+    read_data1 = registers[read_addr1];
+    read_data2 = registers[read_addr2];
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst;
+    reg [7:0] write_data;
+    reg [2:0] write_addr;
+    reg write_enable;
+    reg [2:0] read_addr1;
+    reg [2:0] read_addr2;
+    wire [7:0] read_data1;
+    wire [7:0] read_data2;
+
+    register_file dut (
+        .clk(clk),
+        .rst(rst),
+        .write_data(write_data),
+        .write_addr(write_addr),
+        .write_enable(write_enable),
+        .read_addr1(read_addr1),
+        .read_addr2(read_addr2),
+        .read_data1(read_data1),
+        .read_data2(read_data2)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst = 1;
+        write_enable = 0;
+        write_data = 0;
+        write_addr = 0;
+        read_addr1 = 0;
+        read_addr2 = 0;
+
+        #10 rst = 0;
+
+        // Write test pattern
+        #10 write_enable = 1;
+        write_addr = 3'd0; write_data = 8'hA1;
+        #10 write_addr = 3'd1; write_data = 8'hB2;
+        #10 write_addr = 3'd2; write_data = 8'hC3;
+        #10 write_addr = 3'd3; write_data = 8'hD4;
+
+        // Read test
+        #10 write_enable = 0;
+        read_addr1 = 3'd0; read_addr2 = 3'd1;
+        #10 read_addr1 = 3'd2; read_addr2 = 3'd3;
+
+        // Simultaneous read/write
+        #10 write_enable = 1;
+        write_addr = 3'd4; write_data = 8'hE5;
+        read_addr1 = 3'd1; read_addr2 = 3'd2;
+
+        #10 rst = 1;
+        #10 rst = 0;
+        #10 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst=%b we=%b wa=%h wd=%h ra1=%h rd1=%h ra2=%h rd2=%h"",
+                 $time, rst, write_enable, write_addr, write_data,
+                 read_addr1, read_data1, read_addr2, read_data2);
+    end
+endmodule",True,100,True,True,True,False,0.4,False,15.25755000114441,7.9595606327056885,"Create 8-register × 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock Input] --> RF[[8x8 Register File]]
+    RST[Reset] --> RF
+    WD[Write Data<8>] --> RF
+    WA[Write Addr<3>] --> RF
+    WE[Write Enable] --> RF
+    RA1[Read Addr1<3>] --> RF
+    RA2[Read Addr2<3>] --> RF
+    
+    RF --> RD1[Read Data1<8>]
+    RF --> RD2[Read Data2<8>]
+    
+    TB[Testbench]--> WD
+    TB --> WA
+    TB --> WE
+    TB --> RA1
+    TB --> RA2
+    
+    CLK --> TB
+    RST --> TB
+    
+    RD1 --> TB
+    RD2 --> TB
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module regfile(
+    input wire clk,
+    input wire rst,
+    input wire [7:0] wr_data,
+    input wire [2:0] wr_addr,
+    input wire wr_en,
+    input wire [2:0] rd_addr1,
+    input wire [2:0] rd_addr2,
+    output wire [7:0] rd_data1,
+    output wire [7:0] rd_data2
+);
+
+reg [7:0] registers[0:7];
+integer i;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        for (i = 0; i < 8; i = i + 1)
+            registers[i] <= 8'b0;
+    end
+    else if (wr_en) begin
+        registers[wr_addr] <= wr_data;
+    end
+end
+
+assign rd_data1 = registers[rd_addr1];
+assign rd_data2 = registers[rd_addr2];
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst;
+    reg [7:0] wr_data;
+    reg [2:0] wr_addr;
+    reg wr_en;
+    reg [2:0] rd_addr1;
+    reg [2:0] rd_addr2;
+    wire [7:0] rd_data1;
+    wire [7:0] rd_data2;
+
+    regfile dut (
+        .clk(clk),
+        .rst(rst),
+        .wr_data(wr_data),
+        .wr_addr(wr_addr),
+        .wr_en(wr_en),
+        .rd_addr1(rd_addr1),
+        .rd_addr2(rd_addr2),
+        .rd_data1(rd_data1),
+        .rd_data2(rd_data2)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst = 1;
+        wr_en = 0;
+        wr_data = 0;
+        wr_addr = 0;
+        rd_addr1 = 0;
+        rd_addr2 = 0;
+
+        #10 rst = 0;
+
+        // Write test pattern
+        #10 wr_en = 1;
+        #10 wr_addr = 3'd0; wr_data = 8'h11;
+        #10 wr_addr = 3'd1; wr_data = 8'h22;
+        #10 wr_addr = 3'd2; wr_data = 8'h33;
+        #10 wr_addr = 3'd3; wr_data = 8'h44;
+
+        // Read test
+        #10 wr_en = 0;
+        #10 rd_addr1 = 3'd0; rd_addr2 = 3'd1;
+        #10 rd_addr1 = 3'd2; rd_addr2 = 3'd3;
+
+        // Simultaneous read/write test
+        #10 wr_en = 1; wr_addr = 3'd4; wr_data = 8'h55;
+        rd_addr1 = 3'd4; rd_addr2 = 3'd0;
+
+        #20 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst=%b we=%b wa=%h wd=%h ra1=%h ra2=%h rd1=%h rd2=%h"",
+                 $time, rst, wr_en, wr_addr, wr_data, rd_addr1, rd_addr2, rd_data1, rd_data2);
+    end
+endmodule",True,95,True,True,True,False,0.4,False,11.110952138900757,8.088913679122925,,,-5,-4.146597862243652,multimodal
+8-bit Register File,CPU Component,complex,Create 8-register × 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.,gpt-4o,"graph TD
+    CLK[Clock] --> REG_FILE[[8x8 Register File]]
+    RST[Reset] --> REG_FILE
+    
+    W_EN[Write Enable] --> REG_FILE
+    W_ADDR[3-bit Write Address] --> REG_FILE
+    W_DATA[8-bit Write Data] --> REG_FILE
+    
+    R1_ADDR[3-bit Read Address 1] --> REG_FILE
+    R2_ADDR[3-bit Read Address 2] --> REG_FILE
+    
+    REG_FILE --> R1_DATA[8-bit Read Data 1]
+    REG_FILE --> R2_DATA[8-bit Read Data 2]
+    
+    %% Testbench
+    TB[Testbench] --> W_EN
+    TB --> W_ADDR
+    TB --> W_DATA
+    TB --> R1_ADDR
+    TB --> R2_ADDR
+    TB --> CLK
+    TB --> RST","`timescale 1ns/1ps
+
+module register_file(
+    input wire clk,
+    input wire rst,
+    input wire w_en,
+    input wire [2:0] w_addr,
+    input wire [7:0] w_data,
+    input wire [2:0] r1_addr,
+    input wire [2:0] r2_addr,
+    output reg [7:0] r1_data,
+    output reg [7:0] r2_data
+);
+
+    reg [7:0] reg_file [7:0];
+    
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
+            reg_file[0] <= 8'b0;
+            reg_file[1] <= 8'b0;
+            reg_file[2] <= 8'b0;
+            reg_file[3] <= 8'b0;
+            reg_file[4] <= 8'b0;
+            reg_file[5] <= 8'b0;
+            reg_file[6] <= 8'b0;
+            reg_file[7] <= 8'b0;
+        end else if (w_en) begin
+            reg_file[w_addr] <= w_data;
+        end
+    end
+
+    always @(*) begin
+        r1_data = reg_file[r1_addr];
+        r2_data = reg_file[r2_addr];
+    end
+
+endmodule
+
+module testbench;
+    reg clk, rst, w_en;
+    reg [2:0] w_addr, r1_addr, r2_addr;
+    reg [7:0] w_data;
+    wire [7:0] r1_data, r2_data;
+
+    register_file dut (
+        .clk(clk),
+        .rst(rst),
+        .w_en(w_en),
+        .w_addr(w_addr),
+        .w_data(w_data),
+        .r1_addr(r1_addr),
+        .r2_addr(r2_addr),
+        .r1_data(r1_data),
+        .r2_data(r2_data)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        w_en = 1'b0;
+        w_addr = 3'b000;
+        w_data = 8'b0;
+        r1_addr = 3'b000;
+        r2_addr = 3'b000;
+        
+        #15 rst = 1'b0;
+        #10 w_en = 1'b1; w_addr = 3'b001; w_data = 8'hAA;
+        #10 w_en = 1'b0; r1_addr = 3'b001;
+        #10 r2_addr = 3'b001;
+        #20 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b w_en=%b w_addr=%b w_data=%h r1_addr=%b r1_data=%h r2_addr=%b r2_data=%h"", 
+                 $time, clk, rst, w_en, w_addr, w_data, r1_addr, r1_data, r2_addr, r2_data);
+    end
+endmodule",True,82,True,True,True,True,0.7,True,6.2365686893463135,7.69381308555603,"Create 8-register × 8-bit register file with dual read ports and single write port. Include testbench with simultaneous operations.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> REG_FILE[[8x8 Register File]]
+    RST[Reset] --> REG_FILE
+    
+    W_EN[Write Enable] --> REG_FILE
+    W_ADDR[3-bit Write Address] --> REG_FILE
+    W_DATA[8-bit Write Data] --> REG_FILE
+    
+    R1_ADDR[3-bit Read Address 1] --> REG_FILE
+    R2_ADDR[3-bit Read Address 2] --> REG_FILE
+    
+    REG_FILE --> R1_DATA[8-bit Read Data 1]
+    REG_FILE --> R2_DATA[8-bit Read Data 2]
+    
+    %% Testbench
+    TB[Testbench] --> W_EN
+    TB --> W_ADDR
+    TB --> W_DATA
+    TB --> R1_ADDR
+    TB --> R2_ADDR
+    TB --> CLK
+    TB --> RST
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module register_file(
+    input wire clk,
+    input wire rst,
+    input wire w_en,
+    input wire [2:0] w_addr,
+    input wire [7:0] w_data,
+    input wire [2:0] r1_addr,
+    input wire [2:0] r2_addr,
+    output wire [7:0] r1_data,
+    output wire [7:0] r2_data
+);
+
+reg [7:0] reg_file [7:0]; // 8x8 register file
+
+// Write operation
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        reg_file[0] <= 8'd0;
+        reg_file[1] <= 8'd0;
+        reg_file[2] <= 8'd0;
+        reg_file[3] <= 8'd0;
+        reg_file[4] <= 8'd0;
+        reg_file[5] <= 8'd0;
+        reg_file[6] <= 8'd0;
+        reg_file[7] <= 8'd0;
+    end else if (w_en) begin
+        reg_file[w_addr] <= w_data;
+    end
+end
+
+// Read operation
+assign r1_data = reg_file[r1_addr];
+assign r2_data = reg_file[r2_addr];
+
+endmodule
+
+module testbench;
+    reg clk, rst, w_en;
+    reg [2:0] w_addr, r1_addr, r2_addr;
+    reg [7:0] w_data;
+    wire [7:0] r1_data, r2_data;
+    
+    register_file dut (
+        .clk(clk),
+        .rst(rst),
+        .w_en(w_en),
+        .w_addr(w_addr),
+        .w_data(w_data),
+        .r1_addr(r1_addr),
+        .r2_addr(r2_addr),
+        .r1_data(r1_data),
+        .r2_data(r2_data)
+    );
+    
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+        
+        clk = 1'b0;
+        rst = 1'b1;
+        w_en = 1'b0;
+        w_addr = 3'b000;
+        w_data = 8'b00000000;
+        r1_addr = 3'b000;
+        r2_addr = 3'b000;
+        
+        #10 rst = 1'b0;
+        #10 w_en = 1'b1; w_addr = 3'b001; w_data = 8'b10101010;
+        #10 w_en = 1'b1; w_addr = 3'b010; w_data = 8'b11001100;
+        #10 w_en = 1'b0; r1_addr = 3'b001; r2_addr = 3'b010;
+        #10 r1_addr = 3'b000; r2_addr = 3'b011;
+        #50 $finish;
+    end
+    
+    always #5 clk = ~clk;
+    
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b w_en=%b w_addr=%b w_data=%b r1_addr=%b r2_addr=%b r1_data=%b r2_data=%b"", 
+                 $time, clk, rst, w_en, w_addr, w_data, r1_addr, r2_addr, r1_data, r2_data);
+    end
+endmodule",True,83,True,True,True,False,0.4,False,4.800708293914795,4.921010255813599,True,,1,-1.4358603954315186,multimodal
+PWM Generator,Advanced Sequential,complex,"Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.",claude,"graph LR
+    CLK[Clock Input] --> CTR((8-bit Counter))
+    RST[Reset] --> CTR
+    DC[[Duty Cycle Register]] --> COMP
+    CTR --> COMP((Comparator))
+    COMP --> PWM[PWM Output]
+    
+    TB1[Test 0% DC] -.-> DC
+    TB2[Test 25% DC] -.-> DC
+    TB3[Test 50% DC] -.-> DC
+    TB4[Test 75% DC] -.-> DC
+    TB5[Test 100% DC] -.-> DC
+    
+    subgraph Counter_Logic
+    CTR --> |0-255|COMP
+    end
+    
+    subgraph PWM_Generation
+    COMP --> |High/Low|PWM
+    end
+    
+    subgraph Control_Signals
+    CLK --> |Clock|CTR
+    RST --> |Active Low|CTR
+    end","`timescale 1ns/1ps
+
+module pwm_gen (
+    input wire clk,
+    input wire rst_n,
+    input wire [7:0] duty_cycle,
+    output reg pwm_out
+);
+
+reg [7:0] counter;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        counter <= 8'b0;
+    else
+        counter <= counter + 1'b1;
+end
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        pwm_out <= 1'b0;
+    else
+        pwm_out <= (counter < duty_cycle);
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst_n;
+    reg [7:0] duty_cycle;
+    wire pwm_out;
+
+    pwm_gen dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .duty_cycle(duty_cycle),
+        .pwm_out(pwm_out)
+    );
+
+    initial begin
+        $dumpfile(""pwm.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst_n = 0;
+        duty_cycle = 8'd0;
+
+        #20 rst_n = 1;
+
+        // Test 0% duty cycle
+        #100 duty_cycle = 8'd0;
+
+        // Test 25% duty cycle
+        #512 duty_cycle = 8'd64;
+
+        // Test 50% duty cycle
+        #512 duty_cycle = 8'd128;
+
+        // Test 75% duty cycle
+        #512 duty_cycle = 8'd192;
+
+        // Test 100% duty cycle
+        #512 duty_cycle = 8'd255;
+
+        #512 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst_n=%b duty_cycle=%d pwm_out=%b"", 
+                 $time, rst_n, duty_cycle, pwm_out);
+    end
+endmodule",True,75,True,True,True,,0.0,,10.638697385787964,0.049254655838012695,"Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[Clock Input] --> CTR((8-bit Counter))
+    RST[Reset] --> CTR
+    DC[[Duty Cycle Register]] --> COMP
+    CTR --> COMP((Comparator))
+    COMP --> PWM[PWM Output]
+    
+    TB1[Test 0% DC] -.-> DC
+    TB2[Test 25% DC] -.-> DC
+    TB3[Test 50% DC] -.-> DC
+    TB4[Test 75% DC] -.-> DC
+    TB5[Test 100% DC] -.-> DC
+    
+    subgraph Counter_Logic
+    CTR --> |0-255|COMP
+    end
+    
+    subgraph PWM_Generation
+    COMP --> |High/Low|PWM
+    end
+    
+    subgraph Control_Signals
+    CLK --> |Clock|CTR
+    RST --> |Active Low|CTR
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module pwm_gen (
+    input wire clk,
+    input wire rst_n,
+    input wire [7:0] duty_cycle,
+    output reg pwm_out
+);
+
+reg [7:0] counter;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        counter <= 8'b0;
+    else
+        counter <= counter + 1'b1;
+end
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n)
+        pwm_out <= 1'b0;
+    else
+        pwm_out <= (counter < duty_cycle);
+end
+
+endmodule
+
+module testbench;
+    reg clk;
+    reg rst_n;
+    reg [7:0] duty_cycle;
+    wire pwm_out;
+
+    pwm_gen dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .duty_cycle(duty_cycle),
+        .pwm_out(pwm_out)
+    );
+
+    initial begin
+        $dumpfile(""pwm.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 0;
+        rst_n = 0;
+        duty_cycle = 8'd0;
+
+        #20 rst_n = 1;
+
+        // Test 0% duty cycle
+        #100 duty_cycle = 8'd0;
+
+        // Test 25% duty cycle
+        #512 duty_cycle = 8'd64;
+
+        // Test 50% duty cycle
+        #512 duty_cycle = 8'd128;
+
+        // Test 75% duty cycle
+        #512 duty_cycle = 8'd192;
+
+        // Test 100% duty cycle
+        #512 duty_cycle = 8'd255;
+
+        #512 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst_n=%b duty_cycle=%d pwm_out=%b"", 
+                 $time, rst_n, duty_cycle, pwm_out);
+    end
+endmodule",True,75,True,True,True,,0.0,,6.282460689544678,0.0208892822265625,,,0,-4.356236696243286,tie
+PWM Generator,Advanced Sequential,complex,"Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.",gpt-4o,"graph TD
+    CLK[Clock] --> PWM_GEN(PWM Generator)
+    RST[Reset] --> PWM_GEN
+    DUTY[Duty Cycle Input] --> PWM_GEN
+    PWM_GEN --> PWM_OUT[PWM Output]
+
+    subgraph Testbench
+        TB_CLK[Clock] --> TB_PWM_GEN
+        TB_RST[Reset] --> TB_PWM_GEN
+        TB_DUTY_0[Duty Cycle 0%] --> TB_PWM_GEN
+        TB_DUTY_25[Duty Cycle 25%] --> TB_PWM_GEN
+        TB_DUTY_50[Duty Cycle 50%] --> TB_PWM_GEN
+        TB_DUTY_75[Duty Cycle 75%] --> TB_PWM_GEN
+        TB_DUTY_100[Duty Cycle 100%] --> TB_PWM_GEN
+        TB_PWM_GEN(PWM Generator) --> TB_PWM_OUT[PWM Output]
+    end","`timescale 1ns/1ps
+
+module pwm_generator(
+    input wire clk,
+    input wire rst_n,
+    input wire [7:0] duty_cycle,
+    output reg pwm_out
+);
+    reg [7:0] counter;
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            counter <= 8'b0;
+        else
+            counter <= counter + 1'b1;
+    end
+
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            pwm_out <= 1'b0;
+        else
+            pwm_out <= (counter < duty_cycle);
+    end
+endmodule
+
+module testbench;
+    reg clk, rst_n;
+    reg [7:0] duty_cycle;
+    wire pwm_out;
+
+    pwm_generator dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .duty_cycle(duty_cycle),
+        .pwm_out(pwm_out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst_n = 1'b0;
+        duty_cycle = 8'd0;
+
+        #20 rst_n = 1'b1;
+        #10 duty_cycle = 8'd0;  // 0%
+        #100 duty_cycle = 8'd64; // 25%
+        #100 duty_cycle = 8'd128; // 50%
+        #100 duty_cycle = 8'd192; // 75%
+        #100 duty_cycle = 8'd255; // 100%
+        #100 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst_n=%b duty_cycle=%d pwm_out=%b"", 
+                 $time, clk, rst_n, duty_cycle, pwm_out);
+    end
+endmodule",True,61,True,True,True,False,0.3,False,5.641841650009155,6.790046691894531,"Design 8-bit resolution PWM generator with configurable duty cycle. Include testbench with duty cycles: 0%, 25%, 50%, 75%, 100%.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> PWM_GEN(PWM Generator)
+    RST[Reset] --> PWM_GEN
+    DUTY[Duty Cycle Input] --> PWM_GEN
+    PWM_GEN --> PWM_OUT[PWM Output]
+
+    subgraph Testbench
+        TB_CLK[Clock] --> TB_PWM_GEN
+        TB_RST[Reset] --> TB_PWM_GEN
+        TB_DUTY_0[Duty Cycle 0%] --> TB_PWM_GEN
+        TB_DUTY_25[Duty Cycle 25%] --> TB_PWM_GEN
+        TB_DUTY_50[Duty Cycle 50%] --> TB_PWM_GEN
+        TB_DUTY_75[Duty Cycle 75%] --> TB_PWM_GEN
+        TB_DUTY_100[Duty Cycle 100%] --> TB_PWM_GEN
+        TB_PWM_GEN(PWM Generator) --> TB_PWM_OUT[PWM Output]
+    end
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module pwm_generator(
+    input wire clk,
+    input wire rst,
+    input wire [7:0] duty_cycle,
+    output reg pwm_out
+);
+
+reg [7:0] counter;
+
+always @(posedge clk or posedge rst) begin
+    if (rst) begin
+        counter <= 8'b0;
+        pwm_out <= 1'b0;
+    end else begin
+        if (counter < duty_cycle)
+            pwm_out <= 1'b1;
+        else
+            pwm_out <= 1'b0;
+        
+        counter <= counter + 1'b1;
+    end
+end
+
+endmodule
+
+module testbench;
+    reg tb_clk;
+    reg tb_rst;
+    reg [7:0] tb_duty_cycle;
+    wire tb_pwm_out;
+
+    pwm_generator tb_pwm_gen (
+        .clk(tb_clk),
+        .rst(tb_rst),
+        .duty_cycle(tb_duty_cycle),
+        .pwm_out(tb_pwm_out)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        tb_clk = 1'b0;
+        tb_rst = 1'b1;
+        tb_duty_cycle = 8'd0;
+
+        #10 tb_rst = 1'b0;
+        
+        // Test 0% Duty Cycle
+        #20 tb_duty_cycle = 8'd0;
+        #100;
+        
+        // Test 25% Duty Cycle
+        #20 tb_duty_cycle = 8'd64;
+        #100;
+
+        // Test 50% Duty Cycle
+        #20 tb_duty_cycle = 8'd128;
+        #100;
+
+        // Test 75% Duty Cycle
+        #20 tb_duty_cycle = 8'd192;
+        #100;
+
+        // Test 100% Duty Cycle
+        #20 tb_duty_cycle = 8'd255;
+        #100;
+
+        #50 $finish;
+    end
+
+    always #5 tb_clk = ~tb_clk;
+
+    initial begin
+        $monitor(""Time=%0t tb_clk=%b tb_rst=%b tb_duty_cycle=%d tb_pwm_out=%b"", 
+                 $time, tb_clk, tb_rst, tb_duty_cycle, tb_pwm_out);
+    end
+endmodule",True,80,True,True,True,False,0.3,False,5.383008241653442,7.850009202957153,,,19,-0.2588334083557129,standard
+SPI Master,Protocol,complex,"Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.",claude,"graph LR
+    CLK[System Clock] --> CLKGEN(Clock Generator)
+    RST[Reset] --> CLKGEN
+    CLKGEN --> SCLK[SPI Clock Out]
+    
+    CTRL[Control Logic] --> |Start|CLKGEN
+    CTRL --> |Busy|STATUS[Status Register]
+    
+    TXDATA[[TX Data Register]] --> TXSR(TX Shift Register)
+    CLKGEN --> TXSR
+    TXSR --> MOSI[MOSI Out]
+    
+    MISO[MISO In] --> RXSR(RX Shift Register)
+    CLKGEN --> RXSR
+    RXSR --> RXDATA[[RX Data Register]]
+    
+    CFG[Config Register] --> |Bit Width|CTRL
+    CFG --> |CS Control|CS[Chip Select]
+    
+    TB_CLK[TB Clock] -.-> |Test|CLKGEN
+    TB_DATA[TB Data] -.-> |Test|TXDATA
+    TB_MISO[TB MISO] -.-> |Test|MISO
+    MOSI -.-> |Verify|TB_MOSI[TB MOSI Monitor]
+    SCLK -.-> |Verify|TB_SCLK[TB SCLK Monitor]","`timescale 1ns/1ps
+
+module spi_master (
+    input wire clk,
+    input wire rst_n,
+    input wire start,
+    input wire miso,
+    input wire [7:0] tx_data,
+    input wire [2:0] bit_width,
+    output reg mosi,
+    output reg sclk,
+    output reg cs_n,
+    output reg busy,
+    output reg [7:0] rx_data
+);
+
+reg [7:0] tx_shift;
+reg [7:0] rx_shift;
+reg [2:0] bit_count;
+reg spi_clk_en;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        spi_clk_en <= 1'b0;
+        sclk <= 1'b0;
+    end
+    else if (start && !busy) begin
+        spi_clk_en <= 1'b1;
+    end
+    else if (bit_count == bit_width && busy) begin
+        spi_clk_en <= 1'b0;
+    end
+    else if (spi_clk_en) begin
+        sclk <= ~sclk;
+    end
+end
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        busy <= 1'b0;
+        cs_n <= 1'b1;
+        bit_count <= 3'b000;
+        tx_shift <= 8'h00;
+        rx_shift <= 8'h00;
+        mosi <= 1'b0;
+        rx_data <= 8'h00;
+    end
+    else if (start && !busy) begin
+        busy <= 1'b1;
+        cs_n <= 1'b0;
+        tx_shift <= tx_data;
+        bit_count <= 3'b000;
+        mosi <= tx_data[7];
+    end
+    else if (busy && !sclk && spi_clk_en) begin
+        tx_shift <= {tx_shift[6:0], 1'b0};
+        mosi <= tx_shift[6];
+        bit_count <= bit_count + 1'b1;
+    end
+    else if (busy && sclk) begin
+        rx_shift <= {rx_shift[6:0], miso};
+    end
+    else if (bit_count == bit_width && busy) begin
+        busy <= 1'b0;
+        cs_n <= 1'b1;
+        rx_data <= rx_shift;
+    end
+end
+
+endmodule
+
+module spi_master_tb;
+    reg clk, rst_n, start, tb_miso;
+    reg [7:0] tx_data;
+    reg [2:0] bit_width;
+    wire mosi, sclk, cs_n, busy;
+    wire [7:0] rx_data;
+
+    spi_master dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .start(start),
+        .miso(tb_miso),
+        .tx_data(tx_data),
+        .bit_width(bit_width),
+        .mosi(mosi),
+        .sclk(sclk),
+        .cs_n(cs_n),
+        .busy(busy),
+        .rx_data(rx_data)
+    );
+
+    initial begin
+        $dumpfile(""spi_master.vcd"");
+        $dumpvars(0, spi_master_tb);
+
+        clk = 0;
+        rst_n = 0;
+        start = 0;
+        tb_miso = 0;
+        tx_data = 0;
+        bit_width = 3'b111;
+
+        #20 rst_n = 1;
+        #10 tx_data = 8'hA5;
+        #10 start = 1;
+        #10 start = 0;
+        
+        #200 tx_data = 8'h5A;
+        #10 start = 1;
+        #10 start = 0;
+        
+        #200 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    always @(posedge sclk) begin
+        tb_miso <= $random;
+    end
+
+    initial begin
+        $monitor(""Time=%0t rst_n=%b start=%b busy=%b tx_data=%h rx_data=%h"",
+                 $time, rst_n, start, busy, tx_data, rx_data);
+    end
+endmodule",True,126,False,True,True,,0.0,,19.420491695404053,0.029753684997558594,"Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph LR
+    CLK[System Clock] --> CLKGEN(Clock Generator)
+    RST[Reset] --> CLKGEN
+    CLKGEN --> SCLK[SPI Clock Out]
+    
+    CTRL[Control Logic] --> |Start|CLKGEN
+    CTRL --> |Busy|STATUS[Status Register]
+    
+    TXDATA[[TX Data Register]] --> TXSR(TX Shift Register)
+    CLKGEN --> TXSR
+    TXSR --> MOSI[MOSI Out]
+    
+    MISO[MISO In] --> RXSR(RX Shift Register)
+    CLKGEN --> RXSR
+    RXSR --> RXDATA[[RX Data Register]]
+    
+    CFG[Config Register] --> |Bit Width|CTRL
+    CFG --> |CS Control|CS[Chip Select]
+    
+    TB_CLK[TB Clock] -.-> |Test|CLKGEN
+    TB_DATA[TB Data] -.-> |Test|TXDATA
+    TB_MISO[TB MISO] -.-> |Test|MISO
+    MOSI -.-> |Verify|TB_MOSI[TB MOSI Monitor]
+    SCLK -.-> |Verify|TB_SCLK[TB SCLK Monitor]
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module spi_master (
+    input wire clk,
+    input wire rst_n,
+    input wire miso,
+    input wire [7:0] tx_data,
+    input wire start,
+    input wire [3:0] bit_width,
+    input wire cs_ctrl,
+    output wire mosi,
+    output wire sclk,
+    output wire cs_n,
+    output reg busy,
+    output reg [7:0] rx_data
+);
+
+reg [7:0] tx_shift_reg;
+reg [7:0] rx_shift_reg;
+reg [3:0] bit_counter;
+reg spi_clk;
+reg mosi_reg;
+
+assign mosi = mosi_reg;
+assign sclk = spi_clk;
+assign cs_n = cs_ctrl;
+
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        spi_clk <= 1'b0;
+        tx_shift_reg <= 8'h00;
+        rx_shift_reg <= 8'h00;
+        bit_counter <= 4'h0;
+        busy <= 1'b0;
+        mosi_reg <= 1'b0;
+        rx_data <= 8'h00;
+    end
+    else begin
+        if (start && !busy) begin
+            busy <= 1'b1;
+            tx_shift_reg <= tx_data;
+            bit_counter <= bit_width;
+        end
+        else if (busy) begin
+            if (bit_counter == 0) begin
+                busy <= 1'b0;
+                rx_data <= rx_shift_reg;
+            end
+            else begin
+                spi_clk <= ~spi_clk;
+                if (!spi_clk) begin // Setup data on falling edge
+                    mosi_reg <= tx_shift_reg[7];
+                    tx_shift_reg <= {tx_shift_reg[6:0], 1'b0};
+                end
+                else begin // Sample data on rising edge
+                    rx_shift_reg <= {rx_shift_reg[6:0], miso};
+                    bit_counter <= bit_counter - 1'b1;
+                end
+            end
+        end
+    end
+end
+
+endmodule
+
+module spi_master_tb;
+    reg clk, rst_n, start, miso;
+    reg [7:0] tx_data;
+    reg [3:0] bit_width;
+    reg cs_ctrl;
+    wire mosi, sclk, cs_n, busy;
+    wire [7:0] rx_data;
+
+    spi_master dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .miso(miso),
+        .tx_data(tx_data),
+        .start(start),
+        .bit_width(bit_width),
+        .cs_ctrl(cs_ctrl),
+        .mosi(mosi),
+        .sclk(sclk),
+        .cs_n(cs_n),
+        .busy(busy),
+        .rx_data(rx_data)
+    );
+
+    initial begin
+        $dumpfile(""spi_master.vcd"");
+        $dumpvars(0, spi_master_tb);
+
+        clk = 0;
+        rst_n = 0;
+        start = 0;
+        miso = 0;
+        tx_data = 8'h00;
+        bit_width = 4'h8;
+        cs_ctrl = 1;
+
+        #20 rst_n = 1;
+        #10 cs_ctrl = 0;
+        
+        // Test transmission
+        tx_data = 8'hA5;
+        #10 start = 1;
+        #10 start = 0;
+        
+        // Generate test MISO data
+        repeat(16) begin
+            #10 miso = ~miso;
+        end
+
+        #200 cs_ctrl = 1;
+        #50 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t rst_n=%b start=%b busy=%b tx_data=%h rx_data=%h"",
+                 $time, rst_n, start, busy, tx_data, rx_data);
+    end
+endmodule",True,124,False,True,True,,0.0,,13.033414363861084,151.32012128829956,,,-2,-6.387077331542969,tie
+SPI Master,Protocol,complex,"Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.",gpt-4o,"graph TD
+    CLK[Clock] --> SCLK_GEN(SCLK Generation)
+    RST[Reset] --> SPI_MASTER(SPI Master)
+    
+    SPI_MASTER --> SCLK_GEN
+    SCLK_GEN --> SCLK[SCLK Output]
+
+    MOSI_INPUT[MOSI Input] --> SPI_MASTER
+    SPI_MASTER --> MOSI_OUTPUT[MOSI Output]
+
+    MISO_INPUT[MISO Input] --> SPI_MASTER
+    SPI_MASTER --> MISO_OUTPUT[MISO Output]
+
+    SPI_MASTER --> CONTROL[Control Logic]
+    CONTROL --> SCLK_GEN
+
+    TESTBENCH[Testbench] --> SPI_MASTER
+    TESTBENCH --> MOSI_INPUT
+    TESTBENCH --> MISO_INPUT
+    SCLK --> TESTBENCH
+    MOSI_OUTPUT --> TESTBENCH
+    MISO_OUTPUT --> TESTBENCH","`timescale 1ns/1ps
+
+module spi_master(
+    input wire clk,
+    input wire rst_n,
+    input wire mosi_input,
+    input wire miso_input,
+    output reg mosi_output,
+    output reg miso_output,
+    output reg sclk
+);
+
+    reg [7:0] shift_reg;
+    reg [2:0] bit_cnt;
+    reg sclk_reg;
+
+    // SCLK Generation
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            sclk_reg <= 1'b0;
+            sclk <= 1'b0;
+        end else begin
+            sclk_reg <= ~sclk_reg;
+            sclk <= sclk_reg & (bit_cnt != 3'd0);
+        end
+    end
+
+    // SPI Master Logic
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            shift_reg <= 8'b0;
+            mosi_output <= 1'b0;
+            miso_output <= 1'b0;
+            bit_cnt <= 3'd0;
+        end else begin
+            if (sclk_reg) begin
+                if (bit_cnt != 3'd0) begin
+                    shift_reg <= {shift_reg[6:0], mosi_input};
+                    mosi_output <= shift_reg[7];
+                    miso_output <= miso_input;
+                    bit_cnt <= bit_cnt - 1'b1;
+                end else begin
+                    bit_cnt <= 3'd7;
+                end
+            end
+        end
+    end
+endmodule
+
+module testbench;
+    reg clk, rst_n, mosi_input, miso_input;
+    wire mosi_output, miso_output, sclk;
+
+    spi_master dut (
+        .clk(clk),
+        .rst_n(rst_n),
+        .mosi_input(mosi_input),
+        .miso_input(miso_input),
+        .mosi_output(mosi_output),
+        .miso_output(miso_output),
+        .sclk(sclk)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst_n = 1'b0;
+        mosi_input = 1'b0;
+        miso_input = 1'b0;
+
+        #20 rst_n = 1'b1;
+        #100 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst_n=%b mosi_input=%b miso_input=%b mosi_output=%b miso_output=%b sclk=%b"", 
+                 $time, clk, rst_n, mosi_input, miso_input, mosi_output, miso_output, sclk);
+    end
+endmodule",True,83,True,True,True,True,0.9,True,9.097182035446167,7.725389242172241,"Design SPI master supporting mode 0 (CPOL=0, CPHA=0). Include SCLK generation, MOSI/MISO handling. Include testbench.
+
+Here is the Mermaid diagram specification for this circuit:
+
+```mermaid
+graph TD
+    CLK[Clock] --> SCLK_GEN(SCLK Generation)
+    RST[Reset] --> SPI_MASTER(SPI Master)
+    
+    SPI_MASTER --> SCLK_GEN
+    SCLK_GEN --> SCLK[SCLK Output]
+
+    MOSI_INPUT[MOSI Input] --> SPI_MASTER
+    SPI_MASTER --> MOSI_OUTPUT[MOSI Output]
+
+    MISO_INPUT[MISO Input] --> SPI_MASTER
+    SPI_MASTER --> MISO_OUTPUT[MISO Output]
+
+    SPI_MASTER --> CONTROL[Control Logic]
+    CONTROL --> SCLK_GEN
+
+    TESTBENCH[Testbench] --> SPI_MASTER
+    TESTBENCH --> MOSI_INPUT
+    TESTBENCH --> MISO_INPUT
+    SCLK --> TESTBENCH
+    MOSI_OUTPUT --> TESTBENCH
+    MISO_OUTPUT --> TESTBENCH
+```
+
+Generate Verilog code that implements this exact architecture shown in the Mermaid diagram.","`timescale 1ns/1ps
+
+module sclk_gen(
+    input wire clk,
+    input wire rst,
+    input wire control_signal,
+    output reg sclk
+);
+    reg [1:0] sclk_divider;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            sclk_divider <= 2'b00;
+        else if (control_signal)
+            sclk_divider <= sclk_divider + 1'b1;
+    end
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            sclk <= 1'b0;
+        else if (sclk_divider == 2'b10)
+            sclk <= ~sclk;
+    end
+endmodule
+
+module spi_master(
+    input wire clk,
+    input wire rst,
+    input wire mosi_input,
+    input wire miso_input,
+    output reg mosi_output,
+    output reg miso_output,
+    output wire control_signal
+);
+    reg [7:0] shift_reg;
+
+    assign control_signal = 1'b1;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst)
+            shift_reg <= 8'b00000000;
+        else begin
+            shift_reg <= {shift_reg[6:0], mosi_input};
+            mosi_output <= shift_reg[7];
+            miso_output <= miso_input;
+        end
+    end
+endmodule
+
+module control_logic(
+    input wire clk,
+    input wire rst,
+    output wire control_signal
+);
+    // For simplicity, this example just outputs a constant control signal.
+    assign control_signal = 1'b1;
+endmodule
+
+module testbench;
+    reg clk, rst;
+    reg mosi_input, miso_input;
+    wire sclk, mosi_output, miso_output;
+    wire control_signal;
+
+    spi_master spi_master_inst(
+        .clk(clk),
+        .rst(rst),
+        .mosi_input(mosi_input),
+        .miso_input(miso_input),
+        .mosi_output(mosi_output),
+        .miso_output(miso_output),
+        .control_signal(control_signal)
+    );
+
+    sclk_gen sclk_gen_inst(
+        .clk(clk),
+        .rst(rst),
+        .control_signal(control_signal),
+        .sclk(sclk)
+    );
+
+    initial begin
+        $dumpfile(""dump.vcd"");
+        $dumpvars(0, testbench);
+
+        clk = 1'b0;
+        rst = 1'b1;
+        mosi_input = 1'b0;
+        miso_input = 1'b0;
+
+        #10 rst = 1'b0;
+
+        #1000 $finish;
+    end
+
+    always #5 clk = ~clk;
+
+    initial begin
+        $monitor(""Time=%0t clk=%b rst=%b mosi_input=%b miso_input=%b mosi_output=%b miso_output=%b sclk=%b"", 
+                 $time, clk, rst, mosi_input, miso_input, mosi_output, miso_output, sclk);
+    end
+endmodule",True,102,True,True,True,True,0.7,True,9.522427558898926,6.193701505661011,,,19,0.4252455234527588,tie

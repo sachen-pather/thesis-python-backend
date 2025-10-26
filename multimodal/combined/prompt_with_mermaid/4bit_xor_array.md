@@ -1,0 +1,41 @@
+# 4-bit XOR Gate Array
+
+**Category**: Combinational  
+**Complexity**: simple
+
+## Original Prompt
+
+```
+Create a 4-bit XOR gate array with inputs a[3:0], b[3:0], and output result[3:0] where each bit is result[i] = a[i] XOR b[i]. Include testbench.
+```
+
+## Generated Mermaid Diagram
+
+```mermaid
+graph LR
+    A0[a[0]] --> XOR0((XOR))
+    B0[b[0]] --> XOR0
+    A1[a[1]] --> XOR1((XOR))
+    B1[b[1]] --> XOR1
+    A2[a[2]] --> XOR2((XOR))
+    B2[b[2]] --> XOR2
+    A3[a[3]] --> XOR3((XOR))
+    B3[b[3]] --> XOR3
+    XOR0 --> R0[result[0]]
+    XOR1 --> R1[result[1]]
+    XOR2 --> R2[result[2]]
+    XOR3 --> R3[result[3]]
+    TB[Testbench] --> A0
+    TB --> A1
+    TB --> A2
+    TB --> A3
+    TB --> B0
+    TB --> B1
+    TB --> B2
+    TB --> B3
+    R0 --> VER{Verify XOR}
+    R1 --> VER
+    R2 --> VER
+    R3 --> VER
+    VER --> PASS[Test Results]
+```

@@ -1,0 +1,236 @@
+{
+  "aggregation_date": "2025-10-26T13:12:35.761195",
+  "aggregated_statistics": {
+    "total_files": 5,
+    "total_circuits_tested": 150,
+    "models_tested": [
+      "claude"
+    ],
+    "test_dates": [
+      "2025-10-26T06:21:17.580674",
+      "2025-10-26T07:04:05.568419",
+      "2025-10-26T07:49:29.313208",
+      "2025-10-26T08:31:35.888000",
+      "2025-10-26T12:32:28.321017"
+    ],
+    "by_model": {
+      "claude": {
+        "total_circuits": 150,
+        "prompt_only": {
+          "correct": 107,
+          "total": 150,
+          "success_rate": 71.33333333333334
+        },
+        "mermaid_only": {
+          "correct": 91,
+          "total": 150,
+          "success_rate": 60.66666666666667
+        },
+        "combined": {
+          "correct": 94,
+          "total": 150,
+          "success_rate": 62.66666666666667
+        },
+        "test_count": 5
+      }
+    },
+    "overall": {
+      "prompt_only": {
+        "correct": 107,
+        "total": 150,
+        "success_rate": 71.33333333333334
+      },
+      "mermaid_only": {
+        "correct": 91,
+        "total": 150,
+        "success_rate": 60.66666666666667
+      },
+      "combined": {
+        "correct": 94,
+        "total": 150,
+        "success_rate": 62.66666666666667
+      }
+    },
+    "by_category": {
+      "Combinational": {
+        "prompt_only": {
+          "correct": 41,
+          "total": 50,
+          "success_rate": 82.0
+        },
+        "mermaid_only": {
+          "correct": 27,
+          "total": 50,
+          "success_rate": 54.0
+        },
+        "combined": {
+          "correct": 29,
+          "total": 50,
+          "success_rate": 57.99999999999999
+        }
+      },
+      "Sequential": {
+        "prompt_only": {
+          "correct": 26,
+          "total": 30,
+          "success_rate": 86.66666666666667
+        },
+        "mermaid_only": {
+          "correct": 24,
+          "total": 30,
+          "success_rate": 80.0
+        },
+        "combined": {
+          "correct": 24,
+          "total": 30,
+          "success_rate": 80.0
+        }
+      },
+      "Arithmetic": {
+        "prompt_only": {
+          "correct": 6,
+          "total": 10,
+          "success_rate": 60.0
+        },
+        "mermaid_only": {
+          "correct": 4,
+          "total": 10,
+          "success_rate": 40.0
+        },
+        "combined": {
+          "correct": 5,
+          "total": 10,
+          "success_rate": 50.0
+        }
+      },
+      "State Machine": {
+        "prompt_only": {
+          "correct": 19,
+          "total": 25,
+          "success_rate": 76.0
+        },
+        "mermaid_only": {
+          "correct": 19,
+          "total": 25,
+          "success_rate": 76.0
+        },
+        "combined": {
+          "correct": 19,
+          "total": 25,
+          "success_rate": 76.0
+        }
+      },
+      "CPU Component": {
+        "prompt_only": {
+          "correct": 4,
+          "total": 10,
+          "success_rate": 40.0
+        },
+        "mermaid_only": {
+          "correct": 2,
+          "total": 10,
+          "success_rate": 20.0
+        },
+        "combined": {
+          "correct": 4,
+          "total": 10,
+          "success_rate": 40.0
+        }
+      },
+      "Advanced Sequential": {
+        "prompt_only": {
+          "correct": 5,
+          "total": 10,
+          "success_rate": 50.0
+        },
+        "mermaid_only": {
+          "correct": 5,
+          "total": 10,
+          "success_rate": 50.0
+        },
+        "combined": {
+          "correct": 4,
+          "total": 10,
+          "success_rate": 40.0
+        }
+      },
+      "Protocol": {
+        "prompt_only": {
+          "correct": 6,
+          "total": 15,
+          "success_rate": 40.0
+        },
+        "mermaid_only": {
+          "correct": 10,
+          "total": 15,
+          "success_rate": 66.66666666666666
+        },
+        "combined": {
+          "correct": 9,
+          "total": 15,
+          "success_rate": 60.0
+        }
+      }
+    },
+    "by_complexity": {
+      "simple": {
+        "prompt_only": {
+          "correct": 41,
+          "total": 50,
+          "success_rate": 82.0
+        },
+        "mermaid_only": {
+          "correct": 33,
+          "total": 50,
+          "success_rate": 66.0
+        },
+        "combined": {
+          "correct": 30,
+          "total": 50,
+          "success_rate": 60.0
+        }
+      },
+      "medium": {
+        "prompt_only": {
+          "correct": 41,
+          "total": 50,
+          "success_rate": 82.0
+        },
+        "mermaid_only": {
+          "correct": 30,
+          "total": 50,
+          "success_rate": 60.0
+        },
+        "combined": {
+          "correct": 37,
+          "total": 50,
+          "success_rate": 74.0
+        }
+      },
+      "complex": {
+        "prompt_only": {
+          "correct": 25,
+          "total": 50,
+          "success_rate": 50.0
+        },
+        "mermaid_only": {
+          "correct": 28,
+          "total": 50,
+          "success_rate": 56.00000000000001
+        },
+        "combined": {
+          "correct": 27,
+          "total": 50,
+          "success_rate": 54.0
+        }
+      }
+    }
+  },
+  "source_files": [
+    "multimodal_claude_results_20251026_062117.json",
+    "multimodal_claude_results_20251026_070405.json",
+    "multimodal_claude_results_20251026_074929.json",
+    "multimodal_claude_results_20251026_083135.json",
+    "multimodal_claude_results_20251026_123228.json"
+  ]
+}

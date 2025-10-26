@@ -1,0 +1,94 @@
+================================================================================
+MULTIMODAL MERMAID TEST RESULTS ANALYSIS
+================================================================================
+
+--------------------------------------------------------------------------------
+INSIGHT 1: CIRCUIT COUNT AND DISTRIBUTION
+--------------------------------------------------------------------------------
+Total circuits tested: 240
+
+By Complexity:
+  Complex   :  80 circuits
+  Medium    :  80 circuits
+  Simple    :  80 circuits
+
+By Category:
+  Advanced Sequential:  16 circuits
+  Arithmetic     :  16 circuits
+  CPU Component  :  16 circuits
+  Combinational  :  80 circuits
+  Protocol       :  16 circuits
+  Sequential     :  48 circuits
+  State Machine  :  48 circuits
+
+By Model:
+  claude    : 120 circuits
+  gpt-4o    : 120 circuits
+
+--------------------------------------------------------------------------------
+INSIGHT 2: FUNCTIONAL CORRECTNESS BY MODEL AND COMPLEXITY
+--------------------------------------------------------------------------------
+Correctness = Compilation Success + Simulation Success + Not Anomalous
+
+
+CLAUDE:
+----------------------------------------
+
+  SIMPLE Circuits (40 total):
+    Prompt Only    : 28/40 correct (70.0%)
+    Mermaid Only   : 28/40 correct (70.0%)
+    Combined       : 31/40 correct (77.5%)
+
+  MEDIUM Circuits (40 total):
+    Prompt Only    : 25/40 correct (62.5%)
+    Mermaid Only   : 21/40 correct (52.5%)
+    Combined       : 29/40 correct (72.5%)
+
+  COMPLEX Circuits (40 total):
+    Prompt Only    : 23/40 correct (57.5%)
+    Mermaid Only   : 28/40 correct (70.0%)
+    Combined       : 30/40 correct (75.0%)
+
+GPT-4O:
+----------------------------------------
+
+  SIMPLE Circuits (40 total):
+    Prompt Only    : 28/40 correct (70.0%)
+    Mermaid Only   : 27/40 correct (67.5%)
+    Combined       : 35/40 correct (87.5%)
+
+  MEDIUM Circuits (40 total):
+    Prompt Only    : 21/40 correct (52.5%)
+    Mermaid Only   : 13/40 correct (32.5%)
+    Combined       : 33/40 correct (82.5%)
+
+  COMPLEX Circuits (40 total):
+    Prompt Only    : 12/40 correct (30.0%)
+    Mermaid Only   : 12/40 correct (30.0%)
+    Combined       : 33/40 correct (82.5%)
+
+
+--------------------------------------------------------------------------------
+INSIGHT 3: ACCURACY COMPARISON BY APPROACH
+--------------------------------------------------------------------------------
+
+OVERALL ACCURACY:
+----------------------------------------
+Prompt Only    : 137/240 circuits correct (57.1%)
+Mermaid Only   : 129/240 circuits correct (53.8%)
+Combined       : 191/240 circuits correct (79.6%)
+
+BY MODEL:
+----------------------------------------
+
+CLAUDE:
+  Prompt Only    : 76/120 circuits correct (63.3%)
+  Mermaid Only   : 77/120 circuits correct (64.2%)
+  Combined       : 90/120 circuits correct (75.0%)
+
+GPT-4O:
+  Prompt Only    : 61/120 circuits correct (50.8%)
+  Mermaid Only   : 52/120 circuits correct (43.3%)
+  Combined       : 101/120 circuits correct (84.2%)
+
+================================================================================

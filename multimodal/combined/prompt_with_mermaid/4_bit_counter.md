@@ -1,0 +1,31 @@
+# 4-bit Counter
+
+**Category**: Sequential  
+**Complexity**: simple
+
+## Original Prompt
+
+```
+Design a 4-bit synchronous counter with clock, reset, enable, and count[3:0]. Include testbench.
+```
+
+## Generated Mermaid Diagram
+
+```mermaid
+graph LR
+    CLK[Clock] --> CNT((Counter Logic))
+    RST[Reset] --> CNT
+    EN[Enable] --> CNT
+    CNT --> REG[[4-bit Register]]
+    CLK --> REG
+    RST --> REG
+    REG --> OUT["Count[3:0]"]
+    TCLK[TB Clock] --> TB((Testbench))
+    TRST[TB Reset] --> TB
+    TEN[TB Enable] --> TB
+    TB --> TMON{Monitor}
+    OUT --> TMON
+    TB --> EXP[[Expected Values]]
+    EXP --> TMON
+    TMON --> PASS[Test Pass/Fail]
+```

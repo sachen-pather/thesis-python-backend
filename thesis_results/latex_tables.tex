@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{multirow}
+
+\begin{document}
+
+% Performance Metrics Table
+\begin{table}[h]
+\centering
+\caption{VAE Verification Performance Metrics}
+\label{tab:vae_metrics}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Metric} & \textbf{Score} & \textbf{Percentage} \\
+\midrule
+Accuracy & 21/26 & 80.8\% \\
+Precision & 1.000 & 100.0\% \\
+Recall & 0.583 & 58.3\% \\
+F1-Score & 0.737 & 73.7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Category Breakdown Table
+\begin{table}[h]
+\centering
+\caption{Category-Wise VAE Performance}
+\label{tab:category_breakdown}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Category} & \textbf{Accuracy} & \textbf{Results} \\
+\midrule
+Arithmetic - Buggy & 50.0\% & 1/2 \\
+Arithmetic - Normal & 100.0\% & 2/2 \\
+Combinational - Buggy & 33.3\% & 2/6 \\
+Combinational - Normal & 100.0\% & 8/8 \\
+Sequential - Buggy & 100.0\% & 4/4 \\
+Sequential - Normal & 100.0\% & 4/4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Confusion Matrix Table
+\begin{table}[h]
+\centering
+\caption{Confusion Matrix for VAE Verification}
+\label{tab:confusion_matrix}
+\begin{tabular}{lcc}
+\toprule
+& \multicolumn{2}{c}{\textbf{Predicted}} \\
+\cmidrule(lr){2-3}
+\textbf{Actual} & Normal & Anomalous \\
+\midrule
+Normal & 14 & 0 \\
+Anomalous & 5 & 7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}

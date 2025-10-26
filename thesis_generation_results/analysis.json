@@ -1,0 +1,151 @@
+{
+  "metadata": {
+    "total_circuits": 22,
+    "test_suites": [
+      "simple",
+      "medium",
+      "complex"
+    ],
+    "test_date": "2025-10-17",
+    "winner": "Claude Sonnet 3.5"
+  },
+  "overall": {
+    "claude": {
+      "functional_correctness": 68.18181818181817,
+      "generation_success": 100.0,
+      "compilation_rate": 100.0,
+      "simulation_rate": 100.0,
+      "testbench_inclusion": 100.0,
+      "avg_loc": 73.63636363636364
+    },
+    "gpt4o": {
+      "functional_correctness": 45.45454545454545,
+      "generation_success": 100.0,
+      "compilation_rate": 100.0,
+      "simulation_rate": 100.0,
+      "testbench_inclusion": 100.0,
+      "avg_loc": 70.5909090909091
+    }
+  },
+  "by_complexity": {
+    "simple": {
+      "claude": {
+        "correctness": 100.0,
+        "count": 4,
+        "avg_loc": 52.5
+      },
+      "gpt4o": {
+        "correctness": 100.0,
+        "count": 4,
+        "avg_loc": 46.25
+      }
+    },
+    "medium": {
+      "claude": {
+        "correctness": 70.0,
+        "count": 10,
+        "avg_loc": 65.0
+      },
+      "gpt4o": {
+        "correctness": 50.0,
+        "count": 10,
+        "avg_loc": 62.0
+      }
+    },
+    "complex": {
+      "claude": {
+        "correctness": 100.0,
+        "count": 8,
+        "avg_loc": 95.0
+      },
+      "gpt4o": {
+        "correctness": 37.5,
+        "count": 8,
+        "avg_loc": 93.5
+      }
+    }
+  },
+  "by_category": {
+    "Combinational - Normal": {
+      "claude": {
+        "correctness": 75.0,
+        "count": 8
+      },
+      "gpt4o": {
+        "correctness": 75.0,
+        "count": 8
+      }
+    },
+    "Sequential - Normal": {
+      "claude": {
+        "correctness": 83.33333333333334,
+        "count": 6
+      },
+      "gpt4o": {
+        "correctness": 66.66666666666666,
+        "count": 6
+      }
+    },
+    "Arithmetic - Normal": {
+      "claude": {
+        "correctness": 100.0,
+        "count": 2
+      },
+      "gpt4o": {
+        "correctness": 50.0,
+        "count": 2
+      }
+    },
+    "State Machines - Normal": {
+      "claude": {
+        "correctness": 100.0,
+        "count": 4
+      },
+      "gpt4o": {
+        "correctness": 0.0,
+        "count": 4
+      }
+    },
+    "CPU Components - Normal": {
+      "claude": {
+        "correctness": 100.0,
+        "count": 2
+      },
+      "gpt4o": {
+        "correctness": 50.0,
+        "count": 2
+      }
+    }
+  },
+  "failures": {
+    "claude": [
+      "4-to-2 Priority Encoder",
+      "8-bit Parity Generator",
+      "4-bit UpDown Counter"
+    ],
+    "gpt4o": [
+      "4-to-2 Priority Encoder",
+      "8-bit Parity Generator",
+      "4-bit UpDown Counter",
+      "4-bit LFSR",
+      "Full Adder",
+      "Traffic Light Controller",
+      "Sequence Detector (1011)",
+      "Simple UART Transmitter",
+      "Vending Machine FSM",
+      "Simple ALU with Flags"
+    ]
+  },
+  "timing": {
+    "claude": {
+      "avg_generation": 10.22435905716636,
+      "avg_simulation": 5.705491531978954,
+      "avg_verification": 7.678164200349287
+    },
+    "gpt4o": {
+      "avg_generation": 9.537897922775961,
+      "avg_simulation": 8.327211260795593,
+      "avg_verification": 6.7565483179959385
+    }
+  }
+}

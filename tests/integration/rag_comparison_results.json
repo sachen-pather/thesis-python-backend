@@ -1,0 +1,139 @@
+[
+  {
+    "prompt": "Create a 4-bit loadable up counter",
+    "without_rag": {
+      "success": true,
+      "mermaid_generated": true,
+      "verilog_generated": true,
+      "compiled": true,
+      "simulated": true,
+      "validation_issues": [
+        "WARNING: Line 57: Consider using proper bit widths",
+        "WARNING: Line 58: Consider using proper bit widths",
+        "WARNING: Line 59: Consider using proper bit widths",
+        "WARNING: Line 60: Consider using proper bit widths",
+        "WARNING: Line 66: Consider using proper bit widths",
+        "WARNING: Line 67: Consider using proper bit widths",
+        "WARNING: Line 69: Consider using proper bit widths",
+        "WARNING: Line 70: Consider using proper bit widths",
+        "WARNING: Line 72: Consider using proper bit widths",
+        "WARNING: Line 73: Consider using proper bit widths",
+        "WARNING: Line 75: Consider using proper bit widths",
+        "WARNING: Line 76: Consider using proper bit widths"
+      ],
+      "generation_time": 15.141940593719482,
+      "compilation_time": 0.05947589874267578,
+      "verilog_lines": 86
+    },
+    "with_rag": {
+      "success": false,
+      "mermaid_generated": true,
+      "verilog_generated": true,
+      "compiled": true,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 10.696305990219116,
+      "compilation_time": 0.03395366668701172,
+      "verilog_lines": 24
+    },
+    "metrics": {
+      "compilation_improvement": null,
+      "validation_issues_delta": 12,
+      "generation_time_delta": 4.445634603500366,
+      "winner": "with_rag"
+    }
+  },
+  {
+    "prompt": "Design a 2-to-1 multiplexer",
+    "without_rag": {
+      "success": true,
+      "mermaid_generated": true,
+      "verilog_generated": true,
+      "compiled": true,
+      "simulated": true,
+      "validation_issues": [],
+      "generation_time": 7.48783016204834,
+      "compilation_time": 0.04402041435241699,
+      "verilog_lines": 50
+    },
+    "with_rag": {
+      "success": false,
+      "mermaid_generated": true,
+      "verilog_generated": false,
+      "compiled": false,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 2.9234232902526855,
+      "compilation_time": 0,
+      "verilog_lines": 0
+    },
+    "metrics": {
+      "compilation_improvement": null,
+      "validation_issues_delta": null,
+      "generation_time_delta": 4.564406871795654,
+      "winner": "without_rag"
+    }
+  },
+  {
+    "prompt": "Build an 8-bit shift register",
+    "without_rag": {
+      "success": false,
+      "mermaid_generated": true,
+      "verilog_generated": false,
+      "compiled": false,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 3.700813055038452,
+      "compilation_time": 0,
+      "verilog_lines": 0
+    },
+    "with_rag": {
+      "success": false,
+      "mermaid_generated": false,
+      "verilog_generated": false,
+      "compiled": false,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 0,
+      "compilation_time": 0,
+      "verilog_lines": 0
+    },
+    "metrics": {
+      "compilation_improvement": null,
+      "validation_issues_delta": null,
+      "generation_time_delta": 3.700813055038452,
+      "winner": "both_failed"
+    }
+  },
+  {
+    "prompt": "Make a simple FSM for traffic light controller",
+    "without_rag": {
+      "success": false,
+      "mermaid_generated": false,
+      "verilog_generated": false,
+      "compiled": false,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 0,
+      "compilation_time": 0,
+      "verilog_lines": 0
+    },
+    "with_rag": {
+      "success": false,
+      "mermaid_generated": false,
+      "verilog_generated": false,
+      "compiled": false,
+      "simulated": false,
+      "validation_issues": [],
+      "generation_time": 0,
+      "compilation_time": 0,
+      "verilog_lines": 0
+    },
+    "metrics": {
+      "compilation_improvement": null,
+      "validation_issues_delta": null,
+      "generation_time_delta": 0,
+      "winner": "both_failed"
+    }
+  }
+]

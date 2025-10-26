@@ -1,0 +1,35 @@
+name,category,expected_anomalous,predicted_anomalous,error,message,correct
+Simple Toggle FF,Sequential Logic,False,True,0.1986539214849472,"ANOMALOUS (error: 0.198654, threshold: 0.143573)",False
+4-bit Counter,Sequential Logic,False,False,,"NORMAL (error: nan, threshold: 0.143573)",True
+D Flip-Flop,Sequential Logic,False,False,0.11564456671476364,"NORMAL (error: 0.115645, threshold: 0.143573)",True
+2:1 Multiplexer,Combinational Logic,False,False,0.021800773218274117,"NORMAL (error: 0.021801, threshold: 0.143573)",True
+8-bit Up Counter,Sequential Logic,False,False,,"NORMAL (error: nan, threshold: 0.143573)",True
+JK Flip-Flop,Sequential Logic,False,True,0.2533986568450928,"ANOMALOUS (error: 0.253399, threshold: 0.143573)",False
+4:1 Multiplexer,Combinational Logic,False,False,0.04012927785515785,"NORMAL (error: 0.040129, threshold: 0.143573)",True
+Full Adder,Combinational Logic,False,True,0.14898675680160522,"ANOMALOUS (error: 0.148987, threshold: 0.143573)",False
+Shift Register,Sequential Logic,False,True,0.20203697681427002,"ANOMALOUS (error: 0.202037, threshold: 0.143573)",False
+Priority Encoder,Combinational Logic,False,False,0.06656726449728012,"NORMAL (error: 0.066567, threshold: 0.143573)",True
+Ring Counter,Sequential Logic,False,True,0.15799856185913086,"ANOMALOUS (error: 0.157999, threshold: 0.143573)",False
+Decoder 3to8,Combinational Logic,False,False,0.06353144347667694,"NORMAL (error: 0.063531, threshold: 0.143573)",True
+Gray Code Counter,Sequential Logic,False,True,0.18513768911361694,"ANOMALOUS (error: 0.185138, threshold: 0.143573)",False
+Barrel Shifter,Combinational Logic,False,False,0.0589476004242897,"NORMAL (error: 0.058948, threshold: 0.143573)",True
+BCD Counter,Sequential Logic,False,False,,"NORMAL (error: nan, threshold: 0.143573)",True
+Synchronous FIFO,Memory,False,False,0.12132760882377625,"NORMAL (error: 0.121328, threshold: 0.143573)",True
+PWM Generator,Signal Generation,False,False,,"NORMAL (error: nan, threshold: 0.143573)",True
+Broken Toggle FF (no toggle),Sequential Logic,True,False,0.13859176635742188,"NORMAL (error: 0.138592, threshold: 0.143573)",False
+Stuck Counter,Sequential Logic,True,False,,"NORMAL (error: nan, threshold: 0.143573)",False
+Inverted D FF,Sequential Logic,True,False,0.1291077435016632,"NORMAL (error: 0.129108, threshold: 0.143573)",False
+No-output Circuit,Sequential Logic,True,False,0.11587554216384888,"NORMAL (error: 0.115876, threshold: 0.143573)",False
+Wrong Count Direction,Sequential Logic,True,False,,"NORMAL (error: nan, threshold: 0.143573)",False
+Bad JK FF (wrong toggle),Sequential Logic,True,True,0.23906737565994263,"ANOMALOUS (error: 0.239067, threshold: 0.143573)",True
+Wrong Mux Selection,Combinational Logic,True,False,0.05324932187795639,"NORMAL (error: 0.053249, threshold: 0.143573)",False
+Wrong Full Adder,Combinational Logic,True,True,0.16131359338760376,"ANOMALOUS (error: 0.161314, threshold: 0.143573)",True
+Broken Shift Register,Sequential Logic,True,True,0.20613719522953033,"ANOMALOUS (error: 0.206137, threshold: 0.143573)",True
+Always Invalid Priority Encoder,Combinational Logic,True,False,0.04668219015002251,"NORMAL (error: 0.046682, threshold: 0.143573)",False
+Stationary Ring Counter,Sequential Logic,True,True,0.21435168385505676,"ANOMALOUS (error: 0.214352, threshold: 0.143573)",True
+Always Disabled Decoder,Combinational Logic,True,False,0.07747223973274231,"NORMAL (error: 0.077472, threshold: 0.143573)",False
+Wrong Gray Code,Sequential Logic,True,True,0.17855089902877808,"ANOMALOUS (error: 0.178551, threshold: 0.143573)",True
+No-shift Barrel Shifter,Combinational Logic,True,False,0.06825020909309387,"NORMAL (error: 0.068250, threshold: 0.143573)",False
+Overflow BCD Counter,Sequential Logic,True,False,,"NORMAL (error: nan, threshold: 0.143573)",False
+Broken FIFO,Memory,True,False,0.13857534527778625,"NORMAL (error: 0.138575, threshold: 0.143573)",False
+Constant PWM,Signal Generation,True,False,,"NORMAL (error: nan, threshold: 0.143573)",False

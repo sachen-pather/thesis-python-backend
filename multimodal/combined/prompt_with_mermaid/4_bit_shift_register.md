@@ -1,0 +1,43 @@
+# 4-bit Shift Register
+
+**Category**: Sequential  
+**Complexity**: medium
+
+## Original Prompt
+
+```
+Create a 4-bit PISO shift register with clock, reset, load, parallel input[3:0], and serial output. Include testbench.
+```
+
+## Generated Mermaid Diagram
+
+```mermaid
+graph LR
+    CLK[Clock] --> REG[[4-bit Register]]
+    RST[Reset] --> REG
+    LOAD[Load] --> MUX
+    PIN0[Pin0] --> REG
+    PIN1[Pin1] --> REG
+    PIN2[Pin2] --> REG
+    PIN3[Pin3] --> REG
+    REG --> MUX{2:1 MUX}
+    REG --> REG1[[Bit 2]]
+    REG --> REG2[[Bit 1]]
+    REG --> REG3[[Bit 0]]
+    MUX --> SOUT[Serial Out]
+    CLK --> REG1
+    CLK --> REG2
+    CLK --> REG3
+    RST --> REG1
+    RST --> REG2
+    RST --> REG3
+    REG1 --> MUX1{2:1 MUX}
+    REG2 --> MUX2{2:1 MUX}
+    REG3 --> MUX3{2:1 MUX}
+    MUX1 --> REG1
+    MUX2 --> REG2
+    MUX3 --> REG3
+    LOAD --> MUX1
+    LOAD --> MUX2
+    LOAD --> MUX3
+```
