@@ -1259,17 +1259,22 @@ async def get_session(session_id: str):
         return {"success": False, "error": str(e)}
 
 if __name__ == "__main__":
+    import os
+    
+    # Get port from environment variable (Render provides this)
+    port = int(os.environ.get("PORT", 8000))
+    
     print("🚀 Starting Enhanced Verilog Generation System v2.0...")
     print(f"🤖 Multi-Model Support: {'Available' if MULTI_MODEL_AVAILABLE else 'Not Available (Groq only)'}")
     print(f"🔬 VerilogEval Support: {'Available' if VERILOGEVAL_AVAILABLE else 'Not Available'}")
-    print("📚 API Documentation: http://localhost:8000/docs")
-    print("🔍 Health Check: http://localhost:8000/api/health")
-    print("🎯 Available Models: http://localhost:8000/api/models/available")
+    print(f"📚 API Documentation: http://0.0.0.0:{port}/docs")
+    print(f"🔍 Health Check: http://0.0.0.0:{port}/api/health")
+    print(f"🎯 Available Models: http://0.0.0.0:{port}/api/models/available")
     
     uvicorn.run(
         app, 
         host="0.0.0.0", 
-        port=8000, 
-        reload=True,
+        port=port,  # ✅ Use dynamic port
+        reload=False,  # ✅ Disable reload in production
         log_level="info"
     )
