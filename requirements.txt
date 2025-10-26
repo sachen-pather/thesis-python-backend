@@ -7,3 +7,7 @@ openai
 groq
 anthropic
 langchain-groq
+sentence-transformers
+torch
+numpy
+scikit-learn
