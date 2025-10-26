@@ -1,6 +1,6 @@
 # services/mermaid_service.py - Updated with RAG support
 from .unified_llm_service import UnifiedLLMService
-from .rag_service import VerilogRAGService
+#from .rag_service import VerilogRAGService
 import re
 
 class MermaidService:
