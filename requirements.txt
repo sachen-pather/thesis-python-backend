@@ -6,3 +6,4 @@ python-multipart
 openai
 groq
 anthropic
+langchain-groq
