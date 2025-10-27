@@ -3,7 +3,7 @@
 Comprehensive LLM & VAE Verification Analysis Script
 Analyzes circuit verification data from modular_comparison_simple_*.json
 
-Implements RQ4 (VAE), RQ5 (Complementarity), and comparative analysis:
+Implements RQ3, RQ4 (VAE), RQ5 (Complementarity), and comparative analysis:
 - Classification metrics (accuracy, precision, recall, F1)
 - Error analysis by type (FP/FN patterns)
 - Statistical tests (McNemar's, paired t-tests, chi-square)

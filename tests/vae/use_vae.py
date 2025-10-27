@@ -1,6 +1,7 @@
 # tests/vae/use_vae.py
 """
 Simple script to use the trained VAE for verification
+FIXED: Now uses the same feature extraction as vae_mvp.py
 """
 
 import sys
@@ -41,45 +42,181 @@ class SimpleVAE(torch.nn.Module):
 
 
 def csv_to_features(csv_data, feature_dim=128):
-    """Convert CSV to features"""
+    """
+    Behavioral feature extraction with proper numerical stability
+    MUST MATCH THE TRAINING IMPLEMENTATION IN vae_mvp.py
+    """
     try:
+        if not csv_data or len(csv_data.strip()) < 10:
+            return np.zeros(feature_dim, dtype=np.float32)
+            
         df = pd.read_csv(StringIO(csv_data))
-        signals = sorted(df['signal'].unique())
-        features_per_signal = feature_dim // max(len(signals), 1)
+        if df.empty:
+            return np.zeros(feature_dim, dtype=np.float32)
         
+        # Sort by timestamp to ensure proper temporal analysis
+        df = df.sort_values('timestamp')
+        
+        # Initialize feature list
         all_features = []
+        
+        # 1. BEHAVIORAL PATTERN ANALYSIS 
+        signals = sorted(df['signal'].unique())
+        
         for signal in signals:
             signal_data = df[df['signal'] == signal].sort_values('timestamp')
-            values = []
-            for val in signal_data['value']:
-                try:
-                    if isinstance(val, str) and 'b' in val:
-                        values.append(int(val.replace('b', ''), 2))
-                    else:
-                        values.append(float(val))
-                except:
-                    values.append(0)
+            if len(signal_data) < 2:
+                continue
+                
+            values = extract_signal_values(signal_data)
+            if len(values) < 2:
+                continue
             
-            values = np.array(values, dtype=np.float32)
-            if len(values) > features_per_signal:
-                values = values[:features_per_signal]
-            else:
-                values = np.pad(values, (0, features_per_signal - len(values)))
-            
-            if values.max() > 0:
-                values = values / values.max()
-            
-            all_features.extend(values)
+            # Safe behavioral pattern features with bounds checking
+            all_features.extend([
+                # State transition rate (0 to 1)
+                min(1.0, np.sum(np.diff(values) != 0) / max(len(values), 1)),
+                
+                # Value stability (0 to 1)
+                min(1.0, np.sum(np.diff(values) == 0) / max(len(values), 1)),
+                
+                # Monotonic patterns (0 or 1)
+                float(np.all(np.diff(values) >= 0)) if len(values) > 1 else 0.0,
+                float(np.all(np.diff(values) <= 0)) if len(values) > 1 else 0.0,
+                
+                # Value range utilization (0 to 1)
+                safe_divide(np.max(values) - np.min(values), np.max(values) + 1e-8),
+                
+                # Duty cycle for binary signals (0 to 1)
+                np.mean(values > 0.5) if len(values) > 0 else 0.0,
+                
+                # Signal variance (bounded)
+                min(10.0, np.var(values)) if len(values) > 0 else 0.0,
+                
+                # Simple periodicity measure (0 to 1)
+                safe_periodicity(values),
+            ])
         
-        features = np.array(all_features, dtype=np.float32)
-        if len(features) > feature_dim:
-            features = features[:feature_dim]
-        else:
-            features = np.pad(features, (0, feature_dim - len(features)))
+        # 2. SIMPLE TEMPORAL FEATURES
+        # Look for clock-like signals
+        clock_signal = find_clock_signal_simple(df, signals)
+        
+        if clock_signal:
+            clock_data = df[df['signal'] == clock_signal]
+            clock_values = extract_signal_values(clock_data)
+            
+            # Clock-related features (bounded)
+            all_features.extend([
+                # Clock transition rate
+                min(1.0, np.sum(np.diff(clock_values) != 0) / max(len(clock_values), 1)),
+                
+                # Clock duty cycle
+                np.mean(clock_values > 0.5) if len(clock_values) > 0 else 0.0,
+            ])
+        
+        # 3. CIRCUIT-TYPE DETECTION (simplified)
+        all_features.extend([
+            # Has counter-like signal names
+            float(any('count' in str(s).lower() for s in signals)),
+            
+            # Has clock signal
+            float(any('clk' in str(s).lower() for s in signals)),
+            
+            # Has reset signal  
+            float(any('rst' in str(s).lower() or 'reset' in str(s).lower() for s in signals)),
+            
+            # Number of signals (normalized)
+            min(1.0, len(signals) / 10.0),
+        ])
+        
+        # 4. RAW SIGNAL SAMPLING (bounded)
+        for signal in signals[:3]:  # Limit to first 3 signals
+            signal_data = df[df['signal'] == signal].sort_values('timestamp')
+            values = extract_signal_values(signal_data)
+            
+            if len(values) >= 3:
+                # Normalize values to [0, 1] range
+                if np.max(values) > np.min(values):
+                    normalized = (values - np.min(values)) / (np.max(values) - np.min(values))
+                else:
+                    normalized = np.zeros_like(values)
+                
+                # Sample key points
+                all_features.extend([
+                    normalized[0],                    # Initial value
+                    normalized[len(normalized)//2],   # Middle value  
+                    normalized[-1],                   # Final value
+                    np.mean(normalized),              # Average
+                ])
+        
+        # Ensure we have enough features, pad with zeros if needed
+        while len(all_features) < feature_dim:
+            all_features.append(0.0)
+        
+        # Convert to numpy array and trim to exact size
+        features = np.array(all_features[:feature_dim], dtype=np.float32)
+        
+        # CRITICAL: Final safety checks
+        features = np.nan_to_num(features, nan=0.0, posinf=1.0, neginf=-1.0)
+        features = np.clip(features, -10.0, 10.0)  # Hard bounds
+        
+        # Optional: Additional normalization
+        feature_max = np.max(np.abs(features))
+        if feature_max > 1.0:
+            features = features / feature_max
         
         return features
+        
+    except Exception as e:
+        print(f"Feature extraction error: {e}")
+        return np.zeros(feature_dim, dtype=np.float32)
+
+
+def safe_divide(numerator, denominator):
+    """Safe division with bounds"""
+    if abs(denominator) < 1e-8:
+        return 0.0
+    result = numerator / denominator
+    return np.clip(result, 0.0, 1.0)
+
+
+def safe_periodicity(values):
+    """Simple periodicity measure with bounds"""
+    if len(values) < 4:
+        return 0.0
+    
+    try:
+        # Simple alternating pattern detection
+        alternating = 0
+        for i in range(2, min(len(values), 10)):  # Limit to first 10 values
+            if values[i] == values[i-2] and values[i] != values[i-1]:
+                alternating += 1
+        
+        return min(1.0, alternating / max(len(values) - 2, 1))
     except:
-        return None
+        return 0.0
+
+
+def find_clock_signal_simple(df, signals):
+    """Simple clock signal detection"""
+    for signal in signals:
+        if 'clk' in str(signal).lower():
+            return signal
+    return None
+
+
+def extract_signal_values(signal_data):
+    """Extract numeric values from signal data with error handling"""
+    values = []
+    for val in signal_data['value']:
+        try:
+            if isinstance(val, str) and 'b' in val:
+                values.append(int(val.replace('b', ''), 2))
+            else:
+                values.append(float(val))
+        except:
+            values.append(0.0)
+    return np.array(values, dtype=np.float32)
 
 
 def load_vae_model(model_path=None):
