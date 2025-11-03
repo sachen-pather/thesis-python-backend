@@ -1,6 +1,6 @@
 # Enhanced Verilog Generation and dual verification system
 
-A comprehensive AI-powered hardware design pipeline with industry-standard VerilogEval quality assessment.
+A comprehensive AI-powered hardware design pipeline with quality assessment.
 
 ##  Quick Start
 
